@@ -7,7 +7,6 @@ public class infoReserva {
     private String provArt;
     private String nombreArt;
     private int idRes;
-    private Estado estado;
     
     /*public infoReserva(DtInfoReserva dtir, Articulo a, Reserva r){
         this.fechaIni = dtir.GetFechaIni();
@@ -16,14 +15,6 @@ public class infoReserva {
         this.art = a;
         this.res = r;
     }*/
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
     
     public infoReserva(String provArt, String nombreArt, int idRes){
         this.provArt = provArt;

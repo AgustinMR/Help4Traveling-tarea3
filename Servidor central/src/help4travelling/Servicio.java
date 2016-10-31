@@ -17,6 +17,18 @@ public class Servicio extends Articulo{
     private Ciudad ciudadOrigen;
     private Ciudad ciudadDestino;
     private Visita visitas;
+    //private Promocion[] prom;
+
+    public Servicio() {
+    }
+
+    public Visita getVisitas() {
+        return visitas;
+    }
+
+    public void setVisitas(Visita visitas) {
+        this.visitas = visitas;
+    }
     
     public Servicio(String nombre, String nickProv, String desc, Ciudad ciudadO, Ciudad ciudadD, float precio){
         this.SetNombre(nombre);
@@ -25,16 +37,6 @@ public class Servicio extends Articulo{
         this.ciudadOrigen = ciudadO;
         this.ciudadDestino = ciudadD;
         this.precio = precio;
-    }
-    
-    public Servicio(String nombre, String nickProv, String desc, Ciudad ciudadO, Ciudad ciudadD, float precio, Visita v){
-        this.SetNombre(nombre);
-        this.setProv(nickProv);
-        this.descripcion = desc;
-        this.ciudadOrigen = ciudadO;
-        this.ciudadDestino = ciudadD;
-        this.precio = precio;
-        this.visitas = v;
     }
     
     public Servicio(String nickProv, String nombre){
@@ -49,14 +51,7 @@ public class Servicio extends Articulo{
     }
     
     public void AddImage(Blob Image){}
-
-    public Visita getVisitas() {
-        return visitas;
-    }
-
-    public void setVisitas(Visita visitas) {
-        this.visitas = visitas;
-    }
+   
     
     public Blob[] GetImage(){
         return this.image;

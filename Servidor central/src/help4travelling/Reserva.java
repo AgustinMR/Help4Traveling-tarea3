@@ -51,7 +51,7 @@ public class Reserva {
     
     
     public infoReserva ReservarArticulo(DtInfoReserva dtir, Articulo a){
-        return new infoReserva(a.getProv(), a.GetNombre(), dtir.GetIdReserva());
+        return new infoReserva(a.getProv(), a.GetNombre(), dtir.getIdReserva());
     }
     
     public void EnlazarReserva(infoReserva ir){

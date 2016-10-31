@@ -20,12 +20,12 @@ public class ControladorCategoria implements IControladorCategoria{
         return ManejadorCategoria.GetInstance().datosServicio(nombreServ);
     }
     
-    public void IngresarCategoria(String nombre){
-        ManejadorCategoria.GetInstance().IngresarCategoria(nombre);
+    public boolean IngresarCategoria(String nombre){
+        return ManejadorCategoria.GetInstance().IngresarCategoria(nombre);
     }
     
-    public void IngresarCategoria(String nombre, String padre){
-        ManejadorCategoria.GetInstance().IngresarCategoria(nombre, padre);
+    public boolean IngresarCategoria(String nombre, String padre){
+        return ManejadorCategoria.GetInstance().IngresarCategoria(nombre, padre);
     }
     
     public Categoria BuscarCategoria(String nombre){

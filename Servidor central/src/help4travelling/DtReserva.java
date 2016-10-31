@@ -1,22 +1,17 @@
 
 package help4travelling;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-public class DtReserva implements Serializable{
-    
+public class DtReserva {
     private int id;
     private DtFecha date;
     private Estado estado;
-    private ArrayList<DtInfoReserva> infoReserva = new ArrayList<>();
+    private ArrayList<DtInfoReserva> infoReserva = new ArrayList<DtInfoReserva>();
     private String cli;
     private float precio;
-
-    public DtReserva() {
+    
+    public DtReserva(){
     }
     
     public DtReserva(int id, Estado estado, DtFecha date, ArrayList<DtInfoReserva> infoReserva ,String nickCli, float precio){
@@ -36,48 +31,53 @@ public class DtReserva implements Serializable{
         this.precio = precio;
     }   
 
-    public int GetId() {
+    public int getId() {
         return id;
     }
 
-    public void GetId(int id) {
-        this.id = id;
-    }
-
-    public DtFecha GetFecha() {
+    public DtFecha getDate() {
         return date;
     }
 
-    public Estado GetEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public ArrayList<DtInfoReserva> GetInfoReservas() {
+    public ArrayList<DtInfoReserva> getInfoReserva() {
         return infoReserva;
     }
 
-    public void setInfoReserva(ArrayList<DtInfoReserva> infoReserva) {
-        this.infoReserva = infoReserva;
-    }
-
-    public String GetCliente() {
+    public String getCli() {
         return cli;
-    }
-
-    public void setCli(String cli) {
-        this.cli = cli;
     }
 
     public float getPrecio() {
         return precio;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(DtFecha date) {
+        this.date = date;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public void setInfoReserva(ArrayList<DtInfoReserva> infoReserva) {
+        this.infoReserva = infoReserva;
+    }
+
+    public void setCli(String cli) {
+        this.cli = cli;
+    }
+
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-    
+     
+     
 }

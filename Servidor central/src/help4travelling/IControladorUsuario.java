@@ -7,7 +7,7 @@ import java.util.List;
  * @author Bruno
  */
 public abstract interface IControladorUsuario {
-  
+
   /*public abstract void ingresarUsuario( DtCliente cliente);
   public abstract void ingresarUsuario( DtProveedor proveedor);
 */
@@ -17,8 +17,8 @@ public abstract interface IControladorUsuario {
   public abstract DtProveedor datosProveedor(String nick);
   public abstract DtReserva datosReserva(int num);
   public abstract DtServicio datosServicio(int num);
-  
-  
+
+
   public abstract boolean VerificarUsuario(String nickUsaurio, String email);
   public abstract boolean AltaCliente(DtCliente dataCli);
   public abstract boolean AltaProveedor(DtProveedor dataProv);

@@ -1,13 +1,8 @@
 package help4travelling;
 
-import java.io.Serializable;
-import java.sql.Blob;
 import java.util.ArrayList;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-public class DtCliente implements Serializable {
+public class DtCliente {
     
     private String nick;
     private String clave;
@@ -16,72 +11,54 @@ public class DtCliente implements Serializable {
     private String email;
     private DtFecha fechaN;
     private ArrayList<Integer> reservas;
-
-    public DtCliente() {
+    
+    public DtCliente(){
     }
     
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar, ArrayList<Integer> r){
+    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, ArrayList<Integer> r, String clave){
         this.nick=nick;
         this.nombre=nombre;
         this.apellido=apellido;
         this.email=email;
         this.fechaN=fechaN;
         this.reservas=r;
-    }
-    
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar, ArrayList<Integer> r, String clave){
-        this.nick=nick;
         this.clave=clave;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.email=email;
-        this.fechaN=fechaN;
-        this.reservas=r;
-    }
-    
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, ArrayList<Integer> r){
-        this.nick=nick;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.email=email;
-        this.fechaN=fechaN;
-        this.reservas=r;
     }
 
-    public ArrayList<Integer> getReservas() {
-        return reservas;
-    }
-    
-    public String getNick(){
-        return this.nick;
-    }
-    
-    public String getNombre(){
-        return this.nombre;
-    }
-    
-    public String getApellido(){
-        return this.apellido;
-    }
-    
-    public String getEmail(){
-        return this.email;
-    }
-    
-    public DtFecha getFechaN(){
-        return this.fechaN;
+    public String getNick() {
+        return nick;
     }
 
     public String getClave() {
         return clave;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public DtFecha getFechaN() {
+        return fechaN;
+    }
+
+    public ArrayList<Integer> getReservas() {
+        return reservas;
     }
 
     public void setNick(String nick) {
         this.nick = nick;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public void setNombre(String nombre) {
@@ -99,11 +76,11 @@ public class DtCliente implements Serializable {
     public void setFechaN(DtFecha fechaN) {
         this.fechaN = fechaN;
     }
-    
+
     public void setReservas(ArrayList<Integer> reservas) {
         this.reservas = reservas;
     }
-    
+
     
     
 }

@@ -1,5 +1,8 @@
 package Model;
 
+import servidor.Publicador;
+import servidor.PublicadorService;
+
 public class ModelUsuario {
     private static ModelUsuario instancia;
     
@@ -11,8 +14,8 @@ public class ModelUsuario {
     }
     
     public boolean autenticarProveedor(String nick, String pass){
-        servidor.PublicadorService service =  new servidor.PublicadorService();
-        servidor.Publicador port = service.getPublicadorPort();
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
         return port.autenticarProveedor(nick, pass) == 1;
     }
     

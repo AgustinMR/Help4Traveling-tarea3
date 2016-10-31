@@ -1,5 +1,8 @@
 package Model;
 
+import servidor.Publicador;
+import servidor.PublicadorService;
+
 public class ModelRegistro {
     private static ModelRegistro instancia;
     
@@ -11,8 +14,8 @@ public class ModelRegistro {
     }
     
     public boolean agregarRegistro(String ip, String url, String so, String nav){
-        servidor.PublicadorService service =  new servidor.PublicadorService();
-        servidor.Publicador port = service.getPublicadorPort();
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
         return port.agregarRegistro(ip, url, so, nav);
     }
     

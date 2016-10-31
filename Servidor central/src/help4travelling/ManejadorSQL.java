@@ -123,7 +123,7 @@ public class ManejadorSQL {
         }
         return ret;
     }
-    
+
     public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA, String estadoNuevo){
         boolean ret = false;
         String sql = "UPDATE INFO_RESERVA SET estado='" + estadoNuevo + "' WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
@@ -139,7 +139,7 @@ public class ManejadorSQL {
         }
         return ret;
     }
-    
+
     public String devolverEstadoArticulo(String idReserva, String nickP, String nombreA){
         String ret = null;
         String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
@@ -155,7 +155,7 @@ public class ManejadorSQL {
         }
         return ret;
     }
-    
+
     public int devolverVisitas(String nickP, String nombreA){
         int ret = 0;
         String sql1 = "SELECT cantVisitas FROM RECIBEN WHERE nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
@@ -171,7 +171,7 @@ public class ManejadorSQL {
         }
         return ret;
     }
-    
+
     public boolean ingresarVisita(String nickP, String nombreA){
         boolean ret = false;
         Statement usuarios;
@@ -192,10 +192,10 @@ public class ManejadorSQL {
     public boolean agregarServicioReserva(DtInfoReserva inf){
         boolean ret = false;
         String sql1 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,fechaIni,fechaFin,precioUnitario,precioTotal)";
-        sql1 += " VALUES (" + inf.GetIdReserva() + "," + inf.GetCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.GetNombreArticulo() + "','";
-        sql1 += inf.GetFechaIni().getAnio() + "/" + inf.GetFechaIni().getMes() + "/" + inf.GetFechaIni().getDia() + "','";
-        sql1 += inf.GetFechaFin().getAnio() + "/" + inf.GetFechaFin().getMes() + "/" + inf.GetFechaFin().getDia() + "',";
-        sql1 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.GetCantidad()) + ");";
+        sql1 += " VALUES (" + inf.getIdReserva() + "," + inf.getCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.getNameArticulo() + "','";
+        sql1 += inf.getFechaIni().getAnio() + "/" + inf.getFechaIni().getMes() + "/" + inf.getFechaIni().getDia() + "','";
+        sql1 += inf.getFechaFin().getAnio() + "/" + inf.getFechaFin().getMes() + "/" + inf.getFechaFin().getDia() + "',";
+        sql1 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.getCantidad()) + ");";
 
         Statement usuarios;
         Connection conex = getConex();
@@ -269,20 +269,20 @@ public class ManejadorSQL {
     }
 
     public boolean autenticarCliente(String nickname, String pass){
-        boolean ret = false;
-        String sql = "SELECT nickname FROM USUARIOS WHERE nickname='"+nickname+"' AND clave='"+pass+"';";
-        Statement usuarios;
-        try {
-            Connection conex = getConex();
-            usuarios = conex.createStatement();
-            ResultSet rs = usuarios.executeQuery(sql);
-            if(rs.first())
-                ret = true;    
-                
-        } catch (SQLException ex) {
-            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return ret;
+      boolean ret = false;
+      String sql = "SELECT nickname FROM USUARIOS WHERE nickname='"+nickname+"' AND clave='"+pass+"';";
+      Statement usuarios;
+      try {
+          Connection conex = getConex();
+          usuarios = conex.createStatement();
+          ResultSet rs = usuarios.executeQuery(sql);
+          if(rs.first())
+              ret = true;
+
+      } catch (SQLException ex) {
+          Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      return ret;
     }
 
     // CARGAR USUARIOS
@@ -616,7 +616,8 @@ public class ManejadorSQL {
     public boolean agregarReserva(DtReserva r){
         boolean ret = false;
         Statement usuario;
-        String sql1 = "INSERT INTO RESERVAS(precioTotal,fechaCreacion,estado,nicknameCliente) VALUES ('" + r.getPrecio() + "', '" + r.GetFecha().getAnio() + "/" + r.GetFecha().getMes() + "/" + r.GetFecha().getDia() + "', '" + r.GetEstado() + "', '" + r.GetCliente() + "' );";
+        //System.out.println(r.getPrecio() + "', '" + r.getDate().getAnio() + "/" + r.getDate().getMes() + "/" + r.getDate().getDia() + "', '" + r.getEstado() + "', '" + r.getCli());
+        String sql1 = "INSERT INTO RESERVAS(precioTotal,fechaCreacion,estado,nicknameCliente) VALUES ('" + r.getPrecio() + "', '" + r.getDate().getAnio() + "/" + r.getDate().getMes() + "/" + r.getDate().getDia() + "', '" + r.getEstado() + "', '" + r.getCli() + "' );";
         String sql2 = "SELECT MAX(id) FROM RESERVAS;";
         //String sql3;
         try {
@@ -627,11 +628,11 @@ public class ManejadorSQL {
             ResultSet rs = usuario.executeQuery(sql2);
             rs.next();
             int id = rs.getInt("MAX(id)");
-            for(int x = 0; x < r.GetInfoReservas().size(); x++){
-                DtInfoReserva inf = r.GetInfoReservas().get(x);
+            for(int x = 0; x < r.getInfoReserva().size(); x++){
+                DtInfoReserva inf = r.getInfoReserva().get(x);
                 String sql3 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,precioUnitario,precioTotal)";
-                sql3 += " VALUES (" + id + "," + inf.GetCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.GetNombreArticulo() + "',";
-                sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.GetCantidad()) + ");";
+                sql3 += " VALUES (" + id + "," + inf.getCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.getNameArticulo() + "',";
+                sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.getCantidad()) + ");";
                 //System.out.println(sql3);
                 usuario.executeUpdate(sql3);
             }
@@ -683,7 +684,7 @@ public class ManejadorSQL {
             while(rs.next()){
                 ids.add(usuario.getResultSet().getInt("id"));
             }
-            ret = new DtCliente(nickUsuario, name, ap, email, nac, ids);
+            ret = new DtCliente(nickUsuario, name, ap, email, nac, ids, null);
             conex.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
@@ -717,7 +718,7 @@ public class ManejadorSQL {
             while(rs.next()){
                 nombreA.add(new DtServicio(rs.getString("nombreArticulo")));
             }
-            ret = new DtProveedor(nickUsuario, name, ap, email, nac, nombreE, linkE, nombreA);
+            ret = new DtProveedor(nickUsuario, name, ap, email, nac, nombreE, linkE, nombreA, null);
             conex.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);

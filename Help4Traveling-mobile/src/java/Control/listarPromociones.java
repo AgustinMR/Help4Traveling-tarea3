@@ -1,7 +1,6 @@
 package Control;
 
 import Model.ModelArticulo;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servidor.DtPromocion;
+
 
 public class listarPromociones extends HttpServlet {
 

@@ -10,11 +10,11 @@ public class ManejadorUsuario {
     private static ManejadorUsuario instancia=null;
     private static HashMap<String, Usuario> usuarios;
     private static ArrayList<String> emails = new ArrayList<>();
-    
+
      private ManejadorUsuario(){
        usuarios=new HashMap<String, Usuario>();
     }
-     
+
      public static ManejadorUsuario getinstance(){
         if (instancia==null){
             instancia = new ManejadorUsuario();
@@ -38,9 +38,9 @@ public class ManejadorUsuario {
         }
         return instancia;
     }
-     
+
      public List<String> listarClientes(){
-        List<String> userCi = new ArrayList<String>();      
+        List<String> userCi = new ArrayList<String>();
         for (String name: usuarios.keySet()){
             String nombre = usuarios.get(name).getNickCliente();
             if (nombre != null)
@@ -48,9 +48,9 @@ public class ManejadorUsuario {
         }
         return  userCi;
   }
-     
+
      public List<String> listarProveedores(){
-        List<String> userCi = new ArrayList<String>();      
+        List<String> userCi = new ArrayList<String>();
         for (String name: usuarios.keySet()){
             String nombre = usuarios.get(name).getNickProveedor();
             if (nombre != null)
@@ -59,23 +59,23 @@ public class ManejadorUsuario {
         return  userCi;
   }
     public Cliente ObtenerCliente(String nameCli){
-        return (Cliente)this.usuarios.get(nameCli);         
+        return (Cliente)this.usuarios.get(nameCli);
     }
-    
+
     public Proveedor ObtenerProveedor(String nameProv){
-        return (Proveedor)this.usuarios.get(nameProv);         
+        return (Proveedor)this.usuarios.get(nameProv);
     }
-    
+
    /* public void InstertarUsuario(Usuario u){
         this.usuarios.put(u.getNickCliente(), u);
     }*/
-    
+
    /* public void InstertarProveedor(DtProveedor p){
         Proveedor newprov = new Proveedor(p);
         this.usuarios.put(p.getNick(), newprov);
         ManejadorSQL.GetInstance().agregarUsuario(p);
     }*/
-    
+
     public boolean InstertarProveedor(DtProveedor p){
         if (this.chequearNick(p.getNick()) || this.chequearEmail(p.getEmail()))
             return false;
@@ -83,7 +83,7 @@ public class ManejadorUsuario {
         this.usuarios.put(p.getNick(), newprov);
         return ManejadorSQL.GetInstance().agregarUsuario(p);
     }
-     
+
     public boolean chequearNick(String nick){
         for (String name: usuarios.keySet()){
             if (name.equals(nick))
@@ -91,7 +91,7 @@ public class ManejadorUsuario {
         }
         return false;
     }
-    
+
     public boolean chequearEmail(String email){
         for (int i = 0; i < emails.size(); i++) {
             if (emails.get(i).equals(email))
@@ -99,7 +99,7 @@ public class ManejadorUsuario {
         }
         return false;
     }
-    
+
     public boolean InstertarCliente(DtCliente c){
         if (this.chequearNick(c.getNick()) || this.chequearEmail(c.getEmail()))
             return false;
@@ -107,7 +107,7 @@ public class ManejadorUsuario {
         this.usuarios.put(c.getNick(), newcli);
         return ManejadorSQL.GetInstance().agregarUsuario(c);
     }
-    
+
      public boolean ExisteUsuario(String nickUsu, String email){
          return this.usuarios.containsKey(nickUsu);
      }
@@ -116,5 +116,4 @@ public class ManejadorUsuario {
          return ManejadorSQL.GetInstance().autenticarCliente(nickname, password);
          // la funcion se llama autenticarCliente, pero chequea en la tabla usuarios, no en cliente unicamente. cosas de la vida...
      }
-    
 }

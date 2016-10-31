@@ -51,5 +51,19 @@ public class DtFecha {
 
     public int getDia() {
         return this.dia;
-    }    
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    
 }

@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ControladorUsuario implements IControladorUsuario{
-    
+
     private Usuario usuMem;
 
     @Override
@@ -45,17 +45,12 @@ public class ControladorUsuario implements IControladorUsuario{
     public DtServicio datosServicio(int num) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public boolean VerificarUsuario(String nickUsaurio, String email){
         return ManejadorUsuario.getinstance().ExisteUsuario(nickUsaurio, email);
     }
-    
-    @Override
-    public boolean AutenticarProveedor(String nickP, String password){
-        return ManejadorUsuario.getinstance().autenticarProveedor(nickP, password);
-    }
-    
+
     @Override
     public boolean AltaCliente(DtCliente dataCli){
         String hashtext ="";
@@ -69,14 +64,14 @@ public class ControladorUsuario implements IControladorUsuario{
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+            }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        dataCli.setClave(hashtext); 
+        dataCli.setClave(hashtext);
         return ManejadorUsuario.getinstance().InstertarCliente(dataCli);
     }
-    
+
     @Override
     public boolean AltaProveedor(DtProveedor dataProv){
         String hashtext ="";
@@ -90,11 +85,11 @@ public class ControladorUsuario implements IControladorUsuario{
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+            }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        dataProv.setClave(hashtext);            
+        dataProv.setClave(hashtext);
         return ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
     }
 
@@ -102,9 +97,15 @@ public class ControladorUsuario implements IControladorUsuario{
     public boolean chequearNick(String nick){
         return ManejadorUsuario.getinstance().chequearNick(nick);
     }
-    
+
     @Override
     public boolean chequearEmail(String email){
         return ManejadorUsuario.getinstance().chequearEmail(email);
     }
+
+    @Override
+    public boolean AutenticarProveedor(String nickP, String password){
+        return ManejadorUsuario.getinstance().autenticarProveedor(nickP, password);
+    }
+    
 }

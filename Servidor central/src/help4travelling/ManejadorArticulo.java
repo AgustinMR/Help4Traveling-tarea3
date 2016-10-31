@@ -5,11 +5,11 @@ import java.util.Map;
 import javafx.util.Pair;
 
 public class ManejadorArticulo {
-    
+
     private static ArrayList<Articulo> articulos = new ArrayList<Articulo>();
     private static ManejadorArticulo instance = null;
-    
-    
+
+
     public static ManejadorArticulo GetInstance(){
         if (instance==null){
             instance = new ManejadorArticulo();
@@ -24,19 +24,19 @@ public class ManejadorArticulo {
         for (Pair<String,String> name2: arrayServ.keySet()) {
             Servicio ser = new Servicio(name2.getKey(),name2.getValue());
             articulos.add((Articulo)ser);
-            
+
         }
         return instance;
     }
-    
+
     public void AgregarPromocion(Promocion p){
         this.articulos.add(p);
     }
-    
+
     public void AgregarServicio(Servicio s){
         this.articulos.add(s);
     }
-    
+
     public boolean IsPromocion(String name, String nomProv){
         for (int i = 0; i < articulos.size(); i++) {
              if (articulos.get(i).GetNombre() == name && articulos.get(i).getProv() == nomProv && articulos.get(i).isPromocion())
@@ -44,7 +44,7 @@ public class ManejadorArticulo {
         }
         return false;
     }
-    
+
      public ArrayList<DtPromocion> listarPromociones(){
         ArrayList<DtPromocion> ArrayPromociones = new ArrayList<DtPromocion>();
         for (int i = 0; i < articulos.size(); i++) {
@@ -53,7 +53,7 @@ public class ManejadorArticulo {
         }
         return ArrayPromociones;
     }
-     
+
     public ArrayList<DtServicio> ListarServicios(){
         ArrayList<DtServicio> ret = new ArrayList<DtServicio>();
         for (int i = 0; i < articulos.size(); i++) {
@@ -63,7 +63,7 @@ public class ManejadorArticulo {
         }
         return ret;
     }
-    
+
     public ArrayList<DtPromocion> listarPromocionesProv(String nick){
         ArrayList<DtPromocion> ArrayPromociones = new ArrayList<DtPromocion>();
         for (int i = 0; i < articulos.size(); i++) {
@@ -72,7 +72,7 @@ public class ManejadorArticulo {
         }
         return ArrayPromociones;
     }
-     
+
     public ArrayList<DtServicio> ListarServiciosProv(String nick){
         ArrayList<DtServicio> ret = new ArrayList<DtServicio>();
         for (int i = 0; i < articulos.size(); i++) {
@@ -82,8 +82,8 @@ public class ManejadorArticulo {
         }
         return ret;
     }
-     
-     
+
+
     public DtPromocion datosPromociones(String nombreProm, String nomProv){
          for (int i = 0; i < articulos.size(); i++) {
              if (articulos.get(i).GetNombre().equals(nombreProm) && articulos.get(i).getProv().equals(nomProv))
@@ -91,13 +91,13 @@ public class ManejadorArticulo {
          }
          return ManejadorSQL.GetInstance().devolverPromocion(nomProv, nombreProm);
     }
-    
+
     public DtServicio datosServicio(String nombreServ, String nomProv){
          return this.BuscarServicio(nombreServ, nomProv).GetDtServicio();
     }
-    
+
     public Servicio BuscarServicio(String nameServ, String nomProv){
-        Articulo serv = null; 
+        Articulo serv = null;
         for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).GetNombre().equals(nameServ) && articulos.get(i).getProv().equals(nomProv) && articulos.get(i).IsServicio()){
                 serv = articulos.get(i);
@@ -105,14 +105,14 @@ public class ManejadorArticulo {
         }
         return (Servicio)serv;
     }
-    
+
     public Servicio ModificarServicio(DtServicio modSer){
-        ManejadorSQL.GetInstance().atualizarServicio(modSer);        
+        ManejadorSQL.GetInstance().atualizarServicio(modSer);
         return new Servicio(modSer);
     }
-    
+
     public Articulo ObtenerArticulo(String nameArti, String nomProv){
-        Articulo Art = null; 
+        Articulo Art = null;
         for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).GetNombre().equals(nameArti) && articulos.get(i).getProv().equals(nomProv)){
                 Art = articulos.get(i);
@@ -120,7 +120,7 @@ public class ManejadorArticulo {
         }
         return Art;
     }
-    
+
     public boolean insertarServicio(DtServicio DtServ, Ciudad ciudadO, Ciudad ciudadD){
        for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).GetNombre().equals(DtServ.getNombre()) && articulos.get(i).getProv().equals(DtServ.getNickProveedor()) )
@@ -132,7 +132,7 @@ public class ManejadorArticulo {
        //mandar datos a la base de datos
        return ManejadorSQL.GetInstance().agregarServicio(DtServ, DtServ.getNickProveedor(), DtServ.getCategorias());
     }
-    
+
     public boolean insertarPromocion(DtPromocion promo){
        for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).GetNombre().equals(promo.getNombre()) && articulos.get(i).getProv().equals(promo.getNickProv()) )
@@ -142,13 +142,13 @@ public class ManejadorArticulo {
        articulos.add((Articulo)p);
        return ManejadorSQL.GetInstance().agregarPromocion(promo, promo.getNickProv(), promo.getServicios());
     }
-    
+
     public int devolverVisitas(String nickP, String nombreA){
         return ManejadorSQL.GetInstance().devolverVisitas(nickP, nombreA);
     }
-    
+
     public boolean agregarVisita(String nickP, String nombreA){
         return ManejadorSQL.GetInstance().ingresarVisita(nickP, nombreA);
     }
-    
+
 }
