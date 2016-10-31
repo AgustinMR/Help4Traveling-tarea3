@@ -29,13 +29,29 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg0
      * @return
      *     returns servidor.DtServicioArray
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarServiciosRequest", output = "http://servidor/Publicador/listarServiciosResponse")
-    public DtServicioArray listarServicios();
+    @Action(input = "http://servidor/Publicador/serviciosXprovRequest", output = "http://servidor/Publicador/serviciosXprovResponse")
+    public DtServicioArray serviciosXprov(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/cancelarReservaRequest", output = "http://servidor/Publicador/cancelarReservaResponse")
+    public boolean cancelarReserva(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
 
     /**
      * 
@@ -55,80 +71,13 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg0
      * @return
-     *     returns servidor.DtServicioArray
+     *     returns servidor.DtCategoriaArray
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/serviciosXprovRequest", output = "http://servidor/Publicador/serviciosXprovResponse")
-    public DtServicioArray serviciosXprov(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtServicioArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/serviciosXcatRequest", output = "http://servidor/Publicador/serviciosXcatResponse")
-    public DtServicioArray serviciosXcat(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/agregarReservaRequest", output = "http://servidor/Publicador/agregarReservaResponse")
-    public void agregarReserva(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        Estado arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        DtFecha arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        ArrayList arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        float arg5);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtReserva
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/devolverReservaRequest", output = "http://servidor/Publicador/devolverReservaResponse")
-    public DtReserva devolverReserva(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns net.java.dev.jaxb.array.IntArray
-     */
-    @WebMethod(operationName = "ObtenerReservas")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/ObtenerReservasRequest", output = "http://servidor/Publicador/ObtenerReservasResponse")
-    public IntArray obtenerReservas(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+    @Action(input = "http://servidor/Publicador/listarCategoriasRequest", output = "http://servidor/Publicador/listarCategoriasResponse")
+    public DtCategoriaArray listarCategorias();
 
     /**
      * 
@@ -151,6 +100,29 @@ public interface Publicador {
 
     /**
      * 
+     * @return
+     *     returns servidor.DtServicioArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarServiciosRequest", output = "http://servidor/Publicador/listarServiciosResponse")
+    public DtServicioArray listarServicios();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtServicioArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/serviciosXcatRequest", output = "http://servidor/Publicador/serviciosXcatResponse")
+    public DtServicioArray serviciosXcat(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns net.java.dev.jaxb.array.IntArray
@@ -161,6 +133,19 @@ public interface Publicador {
     public IntArray listarReservas(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtReserva
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/devolverReservaRequest", output = "http://servidor/Publicador/devolverReservaResponse")
+    public DtReserva devolverReserva(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
 
     /**
      * 
@@ -193,12 +178,12 @@ public interface Publicador {
      * @return
      *     returns boolean
      */
-    @WebMethod
+    @WebMethod(operationName = "EsServicio")
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/cancelarReservaRequest", output = "http://servidor/Publicador/cancelarReservaResponse")
-    public boolean cancelarReserva(
+    @Action(input = "http://servidor/Publicador/EsServicioRequest", output = "http://servidor/Publicador/EsServicioResponse")
+    public boolean esServicio(
         @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
+        String arg0);
 
     /**
      * 
@@ -215,130 +200,28 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "EsServicio")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/EsServicioRequest", output = "http://servidor/Publicador/EsServicioResponse")
-    public boolean esServicio(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns servidor.DtCategoriaArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarCategoriasRequest", output = "http://servidor/Publicador/listarCategoriasResponse")
-    public DtCategoriaArray listarCategorias();
-
-    /**
-     * 
-     * @return
-     *     returns net.java.dev.jaxb.array.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarProveedoresRequest", output = "http://servidor/Publicador/listarProveedoresResponse")
-    public StringArray listarProveedores();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "VerificarNickCliente")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/VerificarNickClienteRequest", output = "http://servidor/Publicador/VerificarNickClienteResponse")
-    public boolean verificarNickCliente(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtInfoReservaArray
-     */
-    @WebMethod(operationName = "ObtenerDatosReserva")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/ObtenerDatosReservaRequest", output = "http://servidor/Publicador/ObtenerDatosReservaResponse")
-    public DtInfoReservaArray obtenerDatosReserva(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
-
-    /**
-     * 
+     * @param arg3
      * @param arg2
+     * @param arg5
+     * @param arg4
      * @param arg1
      * @param arg0
-     * @return
-     *     returns boolean
      */
     @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/actualizarEstadoArticuloRequest", output = "http://servidor/Publicador/actualizarEstadoArticuloResponse")
-    public boolean actualizarEstadoArticulo(
+    @Action(input = "http://servidor/Publicador/agregarReservaRequest", output = "http://servidor/Publicador/agregarReservaResponse")
+    public void agregarReserva(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
+        int arg0,
         @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
+        Estado arg1,
         @WebParam(name = "arg2", partName = "arg2")
-        String arg2);
-
-    /**
-     * 
-     * @return
-     *     returns servidor.DtPromocionArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarPromocionesRequest", output = "http://servidor/Publicador/listarPromocionesResponse")
-    public DtPromocionArray listarPromociones();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "VerificarEmailCliente")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/VerificarEmailClienteRequest", output = "http://servidor/Publicador/VerificarEmailClienteResponse")
-    public boolean verificarEmailCliente(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns servidor.DtProveedorArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarProveedoresDatosRequest", output = "http://servidor/Publicador/listarProveedoresDatosResponse")
-    public DtProveedorArray listarProveedoresDatos();
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns servidor.DtServicio
-     */
-    @WebMethod(operationName = "ObtenerDatosServicio")
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/ObtenerDatosServicioRequest", output = "http://servidor/Publicador/ObtenerDatosServicioResponse")
-    public DtServicio obtenerDatosServicio(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
+        DtFecha arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        ArrayList arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        float arg5);
 
     /**
      * 
@@ -346,23 +229,10 @@ public interface Publicador {
      * @return
      *     returns net.java.dev.jaxb.array.IntArray
      */
-    @WebMethod
+    @WebMethod(operationName = "ObtenerReservas")
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarReservasXprovRequest", output = "http://servidor/Publicador/listarReservasXprovResponse")
-    public IntArray listarReservasXprov(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtServicioArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarServiciosXprovRequest", output = "http://servidor/Publicador/listarServiciosXprovResponse")
-    public DtServicioArray listarServiciosXprov(
+    @Action(input = "http://servidor/Publicador/ObtenerReservasRequest", output = "http://servidor/Publicador/ObtenerReservasResponse")
+    public IntArray obtenerReservas(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -398,15 +268,68 @@ public interface Publicador {
     /**
      * 
      * @param arg0
+     * @return
+     *     returns boolean
      */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/agregarClienteRequest", output = "http://servidor/Publicador/agregarClienteResponse")
-    public void agregarCliente(
+    @WebMethod(operationName = "VerificarNickCliente")
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/VerificarNickClienteRequest", output = "http://servidor/Publicador/VerificarNickClienteResponse")
+    public boolean verificarNickCliente(
         @WebParam(name = "arg0", partName = "arg0")
-        DtCliente arg0);
+        String arg0);
 
     /**
      * 
+     * @return
+     *     returns net.java.dev.jaxb.array.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarProveedoresRequest", output = "http://servidor/Publicador/listarProveedoresResponse")
+    public StringArray listarProveedores();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns net.java.dev.jaxb.array.IntArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarReservasXprovRequest", output = "http://servidor/Publicador/listarReservasXprovResponse")
+    public IntArray listarReservasXprov(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns servidor.DtProveedorArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarProveedoresDatosRequest", output = "http://servidor/Publicador/listarProveedoresDatosResponse")
+    public DtProveedorArray listarProveedoresDatos();
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns servidor.DtServicio
+     */
+    @WebMethod(operationName = "ObtenerDatosServicio")
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/ObtenerDatosServicioRequest", output = "http://servidor/Publicador/ObtenerDatosServicioResponse")
+    public DtServicio obtenerDatosServicio(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg2
      * @param arg1
      * @param arg0
      * @return
@@ -414,12 +337,92 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/agregarVisitaRequest", output = "http://servidor/Publicador/agregarVisitaResponse")
-    public boolean agregarVisita(
+    @Action(input = "http://servidor/Publicador/actualizarEstadoArticuloRequest", output = "http://servidor/Publicador/actualizarEstadoArticuloResponse")
+    public boolean actualizarEstadoArticulo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtServicioArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarServiciosXprovRequest", output = "http://servidor/Publicador/listarServiciosXprovResponse")
+    public DtServicioArray listarServiciosXprov(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtInfoReservaArray
+     */
+    @WebMethod(operationName = "ObtenerDatosReserva")
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/ObtenerDatosReservaRequest", output = "http://servidor/Publicador/ObtenerDatosReservaResponse")
+    public DtInfoReservaArray obtenerDatosReserva(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/autenticarProveedorRequest", output = "http://servidor/Publicador/autenticarProveedorResponse")
+    public int autenticarProveedor(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "VerificarEmailCliente")
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/VerificarEmailClienteRequest", output = "http://servidor/Publicador/VerificarEmailClienteResponse")
+    public boolean verificarEmailCliente(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns servidor.DtPromocionArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarPromocionesRequest", output = "http://servidor/Publicador/listarPromocionesResponse")
+    public DtPromocionArray listarPromociones();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtCliente
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/devolverClienteRequest", output = "http://servidor/Publicador/devolverClienteResponse")
+    public DtCliente devolverCliente(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
     /**
      * 
@@ -446,6 +449,16 @@ public interface Publicador {
     /**
      * 
      * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/agregarClienteRequest", output = "http://servidor/Publicador/agregarClienteResponse")
+    public void agregarCliente(
+        @WebParam(name = "arg0", partName = "arg0")
+        DtCliente arg0);
+
+    /**
+     * 
+     * @param arg0
      * @return
      *     returns byte[]
      */
@@ -458,15 +471,18 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
-     *     returns servidor.DtCliente
+     *     returns boolean
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/devolverClienteRequest", output = "http://servidor/Publicador/devolverClienteResponse")
-    public DtCliente devolverCliente(
+    @Action(input = "http://servidor/Publicador/agregarVisitaRequest", output = "http://servidor/Publicador/agregarVisitaResponse")
+    public boolean agregarVisita(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
 }

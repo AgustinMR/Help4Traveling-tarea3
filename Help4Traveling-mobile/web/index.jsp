@@ -25,22 +25,22 @@
       <div class="collapse fade col-xs-12" id="myNavbar" style="background-color: #E6E6E6">
         <div class="col-xs-3"></div>
         <div class="col-xs-6">
-          <form>
+          <form id="formInicioSesion" action="iniciarSesion" method="post">
             <div class="row" style="min-height: 25%; margin-top: 20px">
               <h4 style="font-family: Helvetica; color: #01529e; margin-top: 30px">NICKNAME</h4>
             </div>
             <div class="row" style="min-height: 25%">
-              <input style="width: 100%; height: 25px; font-family: Helvetica" type="text">
+                <input name="nickname" style="width: 100%; height: 25px; font-family: Helvetica" type="text">
             </div>
             <div class="row" style="min-height: 25%; margin-top: -20px">
               <h4 style="font-family: Helvetica; color: #01529e; margin-top: 30px">CONTRASEÑA</h4>
             </div>
             <div class="row" style="min-height: 25%">
-              <input style="width: 100%; height: 25px; font-family: Helvetica" type="password">
+                <input name="password" style="width: 100%; height: 25px; font-family: Helvetica" type="password">
             </div>
             <div class="row" style="min-height: 50%; margin-top: 50px">
               <center>
-                <button type="button" class="btn btn-primary" style="background-color: #01529e;color: white; border: none; font-family: Helvetica">
+                <button type="submit" class="btn btn-primary" style="background-color: #01529e;color: white; border: none; font-family: Helvetica">
                   <b>INICIAR SESIÓN</b>
                 </button>
               </center>

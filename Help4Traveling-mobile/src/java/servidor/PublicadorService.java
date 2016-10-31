@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PublicadorService", targetNamespace = "http://servidor/", wsdlLocation = "file:/C:/Users/Agustin/Documents/NetBeansProjects/Help4Traveling-mobile/src/conf/xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl")
+@WebServiceClient(name = "PublicadorService", targetNamespace = "http://servidor/", wsdlLocation = "file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Help4Traveling-mobile/src/conf/xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl")
 public class PublicadorService
     extends Service
 {
@@ -30,7 +30,7 @@ public class PublicadorService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/Agustin/Documents/NetBeansProjects/Help4Traveling-mobile/src/conf/xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl");
+            url = new URL("file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Help4Traveling-mobile/src/conf/xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

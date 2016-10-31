@@ -20,23 +20,25 @@ public class iniciarSesion extends HttpServlet {
             HttpSession objSesion = request.getSession();
             String nickname = request.getParameter("nickname");
             String password = request.getParameter("password");
+            
             EstadoSesion nuevoEstado;
             RequestDispatcher dispatcher = null;
             try {
-                boolean usr = ModelUsuario.getInstance().autenticarCliente(nickname, password);
+                boolean usr = ModelUsuario.getInstance().autenticarProveedor(nickname, password);
                 if(!usr){
+                        out.print(nickname);
                         nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
+                        objSesion.setAttribute("estado_sesion", nuevoEstado);
                         dispatcher = request.getRequestDispatcher("errorPages/error404.jsp");
                 } else {
+                        
                         nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
                         request.getSession().setAttribute("usuario_logueado", nickname);
+                        objSesion.setAttribute("estado_sesion", nuevoEstado);
                         dispatcher = request.getRequestDispatcher("/inicioProv.jsp");
                 }
             } catch(Exception ex){
-                    nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
             }
-            objSesion.setAttribute("estado_sesion", nuevoEstado);
-            dispatcher.forward(request, response);
         }
     }
 

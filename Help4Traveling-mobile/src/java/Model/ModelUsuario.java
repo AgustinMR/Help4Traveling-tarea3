@@ -10,10 +10,10 @@ public class ModelUsuario {
         return instancia;
     }
     
-    public boolean autenticarCliente(String nick, String email){
+    public boolean autenticarProveedor(String nick, String pass){
         servidor.PublicadorService service =  new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        return port.autenticarCliente(nick, email);
+        return port.autenticarProveedor(nick, pass) == 1;
     }
     
 }

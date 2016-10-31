@@ -246,4 +246,13 @@ public class Publicador {
         return ICArticulo.agregarVisita(nickP, nombreA);
     }
     
+    @WebMethod
+    public int autenticarProveedor(String nickP, String pass){
+        if(ICUsuario.AutenticarProveedor(nickP, pass))
+            return 1;
+        else
+            return 0;
+    }
+    
+    
 }

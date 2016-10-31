@@ -111,5 +111,10 @@ public class ManejadorUsuario {
      public boolean ExisteUsuario(String nickUsu, String email){
          return this.usuarios.containsKey(nickUsu);
      }
+     
+     public boolean autenticarProveedor(String nickname, String password){
+         return ManejadorSQL.GetInstance().autenticarCliente(nickname, password);
+         // la funcion se llama autenticarCliente, pero chequea en la tabla usuarios, no en cliente unicamente. cosas de la vida...
+     }
     
 }

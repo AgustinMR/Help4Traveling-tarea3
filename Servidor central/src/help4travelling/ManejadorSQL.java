@@ -270,15 +270,15 @@ public class ManejadorSQL {
 
     public boolean autenticarCliente(String nickname, String pass){
         boolean ret = false;
-        String sql = "SELECT COUNT(*) FROM USUARIOS WHERE nickname='"+nickname+"' AND clave='"+pass+"';";
+        String sql = "SELECT nickname FROM USUARIOS WHERE nickname='"+nickname+"' AND clave='"+pass+"';";
         Statement usuarios;
         try {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
-            if(rs.isAfterLast()){
-                ret = true;
-            }
+            if(rs.first())
+                ret = true;    
+                
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }

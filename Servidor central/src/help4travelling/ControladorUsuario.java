@@ -52,6 +52,11 @@ public class ControladorUsuario implements IControladorUsuario{
     }
     
     @Override
+    public boolean AutenticarProveedor(String nickP, String password){
+        return ManejadorUsuario.getinstance().autenticarProveedor(nickP, password);
+    }
+    
+    @Override
     public boolean AltaCliente(DtCliente dataCli){
         String hashtext ="";
         try {
