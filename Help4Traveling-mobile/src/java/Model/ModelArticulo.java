@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.List;
 import servidor.DtPromocion;
 import servidor.DtPromocionArray;
 import servidor.DtServicio;

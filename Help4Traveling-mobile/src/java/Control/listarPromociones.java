@@ -1,17 +1,23 @@
 package Control;
 
+import Model.ModelArticulo;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servidor.DtPromocion;
 
 public class listarPromociones extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-
+            List<DtPromocion> p = ModelArticulo.getInstance().listarPromocionesXprov(request.getSession().getAttribute("usuario_logueado").toString());
+            request.setAttribute("listaPromociones", p);
+            request.getRequestDispatcher("verArticulos.jsp").forward(request, response);
         }
     }
 

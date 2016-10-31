@@ -1,22 +1,17 @@
 package Control;
 
-import Model.ModelArticulo;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servidor.DtServicio;
 
-public class listarServicios extends HttpServlet {
+public class devolverImagen extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-            List<DtServicio> p = ModelArticulo.getInstance().listarServiciosXprov(request.getSession().getAttribute("usuario_logueado").toString());
-            request.setAttribute("listaServicios", p);
-            request.getRequestDispatcher("verArticulos.jsp").forward(request, response);
+ 
         }
     }
 

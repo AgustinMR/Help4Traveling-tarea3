@@ -13,20 +13,24 @@
         <servlet-class>Control.devolverReserva</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>listarServicios</servlet-name>
-        <servlet-class>Control.listarServicios</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>devolverServicio</servlet-name>
         <servlet-class>Control.devolverServicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>devolverPromocion</servlet-name>
+        <servlet-class>Control.devolverPromocion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listarServicios</servlet-name>
+        <servlet-class>Control.listarServicios</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>listarPromociones</servlet-name>
         <servlet-class>Control.listarPromociones</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>devolverPromocion</servlet-name>
-        <servlet-class>Control.devolverPromocion</servlet-class>
+        <servlet-name>devolverImagen</servlet-name>
+        <servlet-class>Control.devolverImagen</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>iniciarSesion</servlet-name>
@@ -41,20 +45,24 @@
         <url-pattern>/devolverReserva</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>listarServicios</servlet-name>
-        <url-pattern>/listarServicios</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>devolverServicio</servlet-name>
         <url-pattern>/devolverServicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>devolverPromocion</servlet-name>
+        <url-pattern>/devolverPromocion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>listarPromociones</servlet-name>
         <url-pattern>/listarPromociones</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>devolverPromocion</servlet-name>
-        <url-pattern>/devolverPromocion</url-pattern>
+        <servlet-name>listarServicios</servlet-name>
+        <url-pattern>/listarServicios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>devolverImagen</servlet-name>
+        <url-pattern>/devolverImagen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
