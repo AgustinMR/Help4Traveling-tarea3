@@ -1,9 +1,13 @@
 package help4travelling;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-public class DtCliente {
-    
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtCliente implements Serializable {
+
     private String nick;
     private String clave;
     private String nombre;
@@ -11,10 +15,10 @@ public class DtCliente {
     private String email;
     private DtFecha fechaN;
     private ArrayList<Integer> reservas;
-    
-    public DtCliente(){
+
+    public DtCliente() {
     }
-    
+
     public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, ArrayList<Integer> r, String clave){
         this.nick=nick;
         this.nombre=nombre;
@@ -24,7 +28,7 @@ public class DtCliente {
         this.reservas=r;
         this.clave=clave;
     }
-
+    
     public String getNick() {
         return nick;
     }
@@ -81,6 +85,4 @@ public class DtCliente {
         this.reservas = reservas;
     }
 
-    
-    
 }

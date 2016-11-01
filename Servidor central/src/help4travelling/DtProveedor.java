@@ -1,8 +1,12 @@
 package help4travelling;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-public class DtProveedor {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtProveedor implements Serializable {
  
     private String nick;
     private String nombre;
@@ -16,7 +20,6 @@ public class DtProveedor {
     
     public DtProveedor(){
     }
-    
      
     public DtProveedor(String nick, String nombre, String apellido, String email, DtFecha fechaN, String nombreEmpresa, String url, ArrayList<DtServicio> servicio, String clave){
         this.nick=nick;

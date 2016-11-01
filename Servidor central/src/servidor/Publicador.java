@@ -111,41 +111,41 @@ public class Publicador {
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     //Reservas
-
+    
     @WebMethod
     public Integer[] listarReservas(String nickname){
         //return ICReserva.listarReservasXcli(nickname);
-        ArrayList<Integer> res = ICReserva.listarReservasXcli(nickname);
+        ArrayList<Integer> res = ICReserva.listarReservasXcli(nickname);             
         Integer[] ret = res.toArray(new Integer[res.size()]);
         return ret;
     }
-
+    
     @WebMethod
     public DtReserva devolverReserva(int id){
         return ICReserva.datosReservas(id);
     }
-
+    
     @WebMethod
     public Integer[] ObtenerReservas(String cli){
-        ArrayList<Integer> res = ICReserva.listarReservasXcli(cli);
+        ArrayList<Integer> res = ICReserva.listarReservasXcli(cli);             
         Integer[] Iret = res.toArray(new Integer[res.size()]);
         return Iret;
     }
-
+    
     @WebMethod
     public DtInfoReserva[] ObtenerDatosReserva(int idRes){
         //return ICReserva.ObtenerInfoArticulosReservados(idRes);
-        ArrayList<DtInfoReserva> datRes = ICReserva.ObtenerInfoArticulosReservados(idRes);
+        ArrayList<DtInfoReserva> datRes = ICReserva.ObtenerInfoArticulosReservados(idRes);             
         DtInfoReserva[] ret = datRes.toArray(new DtInfoReserva[datRes.size()]);
         return ret;
     }
-
-    @WebMethod
+    
+    @WebMethod  
     public boolean agregarRes(Estado E, DtFecha fecha, DtInfoReserva[] DtInf,String nick,float F){
         ArrayList<DtInfoReserva> infRes = new ArrayList<>(Arrays.asList(DtInf));
         return ICReserva.CrearReserva(new DtReserva(E, fecha, infRes, nick, F));
     }
-
+    
     @WebMethod
     public boolean cancelarReserva(int id){
         return ICReserva.actualizarEstado(Estado.Cancelada, id);

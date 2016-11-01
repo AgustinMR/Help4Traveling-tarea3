@@ -1,6 +1,12 @@
 package help4travelling;
 
-public class DtInfoReserva {
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtInfoReserva implements Serializable {
+
     private DtFecha fechaIni;
     private DtFecha fechaFin;
     private int cantidad;
@@ -8,11 +14,12 @@ public class DtInfoReserva {
     private String nickProveedor;
     private int idReserva;
     private float precioArticulo;
+    private Estado estado;
 
     public DtInfoReserva() {
 
     }
-    
+
     public DtInfoReserva(DtFecha fechaIni, DtFecha fechaFin, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo) {
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
@@ -22,7 +29,7 @@ public class DtInfoReserva {
         this.idReserva = idReserva;
         this.precioArticulo = precioArticulo;
     }
-    
+
     public DtInfoReserva(DtFecha fechaIni, DtFecha fechaFin, int cantidad, String nameArticulo, String nickProveedor, float precioArticulo) {
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
@@ -31,14 +38,32 @@ public class DtInfoReserva {
         this.nickProveedor = nickProveedor;
         this.precioArticulo = precioArticulo;
     }
-      
-    public DtInfoReserva(String nombreArticulo, int cantidad, String nickProv, DtFecha fechaFin, DtFecha fechaIni, float precio){
+
+    public DtInfoReserva(String nombreArticulo, int cantidad, String nickProv, DtFecha fechaFin, DtFecha fechaIni, float precio) {
         this.nameArticulo = nombreArticulo;
         this.cantidad = cantidad;
         this.nickProveedor = nickProv;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
         this.precioArticulo = precio;
+    }
+
+    public DtInfoReserva(DtFecha fechaIni, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo, Estado estado) {
+        this.fechaIni = fechaIni;
+        this.cantidad = cantidad;
+        this.nameArticulo = nameArticulo;
+        this.nickProveedor = nickProveedor;
+        this.idReserva = idReserva;
+        this.precioArticulo = precioArticulo;
+        this.estado = estado;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public DtFecha getFechaIni() {
@@ -96,7 +121,5 @@ public class DtInfoReserva {
     public void setPrecioArticulo(float precioArticulo) {
         this.precioArticulo = precioArticulo;
     }
-    
-    
-  
+
 }

@@ -7,6 +7,7 @@ public class infoReserva {
     private String provArt;
     private String nombreArt;
     private int idRes;
+    private Estado estado;
     
     /*public infoReserva(DtInfoReserva dtir, Articulo a, Reserva r){
         this.fechaIni = dtir.GetFechaIni();
@@ -15,6 +16,63 @@ public class infoReserva {
         this.art = a;
         this.res = r;
     }*/
+
+    public infoReserva(DtFecha fechaIni, DtFecha fechaFin, int cantidad, String provArt, String nombreArt, int idRes, Estado estado) {
+        this.fechaIni = fechaIni;
+        this.fechaFin = fechaFin;
+        this.cantidad = cantidad;
+        this.provArt = provArt;
+        this.nombreArt = nombreArt;
+        this.idRes = idRes;
+        this.estado = estado;
+    }
+
+    public infoReserva() {
+    }
+    
+    
+    
+    public DtFecha getFechaIni() {
+        return fechaIni;
+    }
+
+    public void setFechaIni(DtFecha fechaIni) {
+        this.fechaIni = fechaIni;
+    }
+
+    public DtFecha getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(DtFecha fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getProvArt() {
+        return provArt;
+    }
+
+    public void setProvArt(String provArt) {
+        this.provArt = provArt;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    
     
     public infoReserva(String provArt, String nombreArt, int idRes){
         this.provArt = provArt;

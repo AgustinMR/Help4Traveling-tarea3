@@ -1,9 +1,13 @@
 
 package help4travelling;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-public class DtFecha {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtFecha implements Serializable{
     private int anio;
     private int mes;
     private int dia;

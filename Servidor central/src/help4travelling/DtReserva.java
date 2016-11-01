@@ -1,9 +1,14 @@
 
 package help4travelling;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-public class DtReserva {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtReserva implements Serializable {
+    
     private int id;
     private DtFecha date;
     private Estado estado;
