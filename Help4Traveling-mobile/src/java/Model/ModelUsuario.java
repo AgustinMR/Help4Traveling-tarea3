@@ -19,4 +19,10 @@ public class ModelUsuario {
         return port.autenticarProveedor(nick, pass) == 1;
     }
     
+    public boolean verificarUsuario(String nick, String pass){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        return port.autenticarCliente(nick, pass);
+    }
+    
 }

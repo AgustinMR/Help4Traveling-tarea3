@@ -1,9 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : 30/10/2016, 12:42:08 PM
-    Author     : Agustin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head>
@@ -17,13 +11,14 @@
     <nav class="navbar navbar-fixed-top" style="background-color: #01529e; height: 50px; z-index: 999">
       <div class="container-fluid" style="height: 50px">
         <div class="navbar-header">
-          <a class="navbar-brand" href="inicioProv.jsp" style="color: white">NICKNAME PROV...</a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="color: white; font-size: 20px; margin-top: 0px; background-color: #01529e; display: block; visibility: visible; position: absolute; right: 7px">☰</button>
+            <img src="img/logo2.png" style="margin-top: 3px; margin-left: 5px">
+            <h4 href="inicioProv.jsp" style="color: white; font-family: Helvetica; margin-top: -34px; margin-left: 60px"><%= request.getSession().getAttribute("usuario_logueado") %></h4>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="color: white; font-size: 20px; margin-top: 0px; background-color: #01529e; display: block; visibility: visible; position: absolute; right: 7px; top: 0px">☰</button>
         </div>
         
       </div>
         <div class="collapse fade" id="myNavbar" style="background-color: #01529e">
-        <ul class="nav navbar-nav" style="font-family: Helvetica; width: 100%; margin-left: 0px; background-color: #01529e">
+        <ul class="nav navbar-nav" style="font-family: Helvetica; width: 100%; margin-left: 0px; background-color: #01529e; z-index: 999">
           <li class="active">
               <a href="verReservas.jsp" style="color: white">RESERVAS</a>
           </li>

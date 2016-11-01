@@ -1,8 +1,9 @@
 package Control;
 
+import Model.ModelArticulo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,8 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 public class devolverImagen extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
- 
+        try {
+            String nickU = request.getParameter("nickP");
+            System.out.println(nickU);
+            String nomA = request.getParameter("nomA");
+            System.out.println(nomA);
+            String campo = "imagen";
+            campo += request.getParameter("campo");
+            System.out.println(campo);
+            
+            response.setContentType("image/jpg");
+            try{
+                byte[] img = ModelArticulo.getInstance().getImagen(nickU, nomA, campo);
+                ServletOutputStream oStream = response.getOutputStream();
+                if (img != null)
+                    oStream.write(img);
+                oStream.flush();
+                oStream.close();
+            }catch(Exception e){   
+            }
+            
+        } finally {
+
         }
     }
 

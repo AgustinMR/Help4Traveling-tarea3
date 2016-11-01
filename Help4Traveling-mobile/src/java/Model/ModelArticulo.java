@@ -59,4 +59,11 @@ public class ModelArticulo {
         return port.datosPromocion(nickP, nombreA);
     }
     
+    public byte[] getImagen(String nickP, String nombreA, String num){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        byte[] a = port.getImagenArt(nickP, nombreA, num);
+        return a;
+    }
+    
 }
