@@ -32,6 +32,10 @@
         <servlet-name>devolverImagen</servlet-name>
         <servlet-class>Control.devolverImagen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>Control.CerrarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>iniciarSesion</servlet-name>
         <url-pattern>/iniciarSesion</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>devolverImagen</servlet-name>
         <url-pattern>/devolverImagen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

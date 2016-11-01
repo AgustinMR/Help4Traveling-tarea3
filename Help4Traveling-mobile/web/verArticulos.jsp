@@ -31,11 +31,11 @@
             <div class="row bg-primary" style="height: 32px">
                 <div class="col-xs-6">
                     <button style="width: 100%; height: 100%; font-family: Helvetica; border-style: none"
-                            class="btn btn-primary">SERVICIOS</button>
+                            class="btn btn-primary" onclick="Servicios()">SERVICIOS</button>
                 </div>
                 <div class="col-xs-6">
                     <button style="width: 100%; height: 100%; font-family: Helvetica; border-style: none"
-                            class="btn btn-primary" onclick="listarPromociones()">PROMOCIONES</button>
+                            class="btn btn-primary" onclick="Promociones()">PROMOCIONES</button>
                 </div>
             </div>
             <!-- COMIENZO SECCION PARA PANELES CON ARTICULOS DE MIERDA --> 
@@ -44,16 +44,16 @@
                 <%   for (int x = 0; x < s.size(); x++) {%>
 
                 <!-- SECCION A TENER POR CADA SERVICIO -->
-                <div class="panel panel-success" id="<%="serv" + (x + 1)%>">
+                <div class="panel panel-success" id="<%="serv" + (x + 1)%>" style="margin-top: 5px">
                     <div class="panel-heading btn" data-toggle="collapse" data-target="#<%="bodyServ" + (x + 1)%>" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left"><%= s.get(x).getNombre()%></div>
                     <h4 style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"><%= s.get(x).getPrecio().toString()%></h4>
-                    <div class="panel-body collapse" id="<%="bodyServ" + (x + 1)%>">
+                    <div class="panel-body collapse fade" id="<%="bodyServ" + (x + 1)%>">
                         <div class="row">
                             <div class="col-xs-12" style="max-height: 100px; overflow-y: auto">
                                 <% if (s.get(x).getDescripcion() != null && !s.get(x).getDescripcion().isEmpty()) {%>
-                                <h4 style="font-family: Helvetica; color: #212121"><%= s.get(x).getDescripcion()%></h4>
+                                <h5 style="font-family: Helvetica; color: #212121"><%= s.get(x).getDescripcion()%></h5>
                                 <% } else { %>
-                                <h4 style="font-family: Helvetica; color: #212121">Sin descripcion...</h4>
+                                <h5 style="font-family: Helvetica; color: #212121">Sin descripcion...</h5>
                                 <% }%>
                             </div>
                         </div>
@@ -69,10 +69,10 @@
                                         </ol>
                                         <div class="carousel-inner" role="listbox">
                                             <div class="item active">
-                                                <img src="devolverImagen?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=3" style="height: 250px" class="img-responsive img-thumbnail">
+                                                <img src="devolverImagen?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=1" style="height: 250px" class="img-responsive img-thumbnail">
                                             </div>
                                             <div class="item">
-                                                <img src="devolverImagen?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=3" style="height: 250px" class="img-responsive img-thumbnail">
+                                                <img src="devolverImagen?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=2" style="height: 250px" class="img-responsive img-thumbnail">
                                             </div>
                                             <div class="item">
                                                 <img src="devolverImagen?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=3" style="height: 250px" class="img-responsive img-thumbnail">
@@ -96,11 +96,11 @@
 
                 <%   for (int x = 0; x < p.size(); x++) {%>
 
-                <div class="panel panel-success">
+                <div class="panel panel-success" id="<%="promo" + (x + 1)%>" style="margin-top: 5px">
                     <div class="panel-heading btn" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left"
-                         data-toggle="collapse" data-target="#body"><%= p.get(x).getNombre() %></div>
+                         data-toggle="collapse" data-target="#<%="bodyPromo" + (x + 1)%>"><%= p.get(x).getNombre() %></div>
                     <h4 style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"><%= p.get(x).getPrecio() %></h4>
-                    <div class="panel-body collapse" id="body">
+                    <div class="panel-body collapse fade" id="<%="bodyPromo" + (x + 1)%>">
                         <div class="row">
                             <div class="col-xs-12" style="max-height: 100px; overflow-y: auto">
                                 <h5 style="font-family: Helvetica; color: #212121; margin-top: 0px">
@@ -138,4 +138,27 @@
                 <% }%>
 
             </div>
+                
+                <script>
+                    function Promociones(){
+                            for(var x = 0; x < <%= s.size() %>; x++){
+                                document.getElementById('serv' + (x+1)).style.display="none"; 
+                            }
+                            for(var x = 0; x < <%= p.size() %>; x++){
+                                document.getElementById('promo' + (x+1)).style.display="block"; 
+                            }
+                        
+                    }
+                </script>
+                <script>
+                    function Servicios(){
+                            for(var x = 0; x < <%= s.size() %>; x++){
+                                document.getElementById('serv' + (x+1)).style.display="block"; 
+                            }
+                            for(var x = 0; x < <%= p.size() %>; x++){
+                                document.getElementById('promo' + (x+1)).style.display="none"; 
+                            }
+                        
+                    }
+                </script>
     </body></html>
