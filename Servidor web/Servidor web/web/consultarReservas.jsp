@@ -9,6 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jspdf.min.js"></script>
+        <script type="text/javascript" src="dom-to-image.min.js"></script>
         <script src="tree/src/js/bootstrap-treeview.js"></script>
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/consultarReservas.css" rel="stylesheet" type="text/css">
@@ -20,6 +22,7 @@
             /*System.out.println(nameCli);
             System.out.println(arr[0]);*/
         %>
+        
         <div class="divPrincipal">
             <div class="section">
                 <div class="container-fluid">
@@ -106,13 +109,13 @@
         <div id="modalFactura" class="modal fade" role="dialog">
             <div class="modal-dialog" style="width: 50%">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: #4A4C4E; min-height: 50px; max-height: 50px">
+                    <div class="modal-header" id="modalHeader" style="background-color: #4A4C4E; min-height: 50px; max-height: 50px">
                         <button type="button" class="close" data-dismiss="modal" style="color: white">×</button>
                         <img src="img/logo.png" style="margin-top: -12px; margin-left: -10px">
                         <h3 style="font-family: Helvetica; color: #8e969f; margin-top: -35px; margin-left: 50px">Información de la factura</h3>
                     </div>
-                    <div class="modal-body" style="height: 90%; max-height: 90%; min-height: 550px; overflow-y: auto; background-color: white">
-                        <div class="row" style="border-left-style: solid; border-width: 4px; border-color: #01529e">
+                    <div id="modalBody" class="modal-body" style="height: 90%; max-height: 90%; min-height: 550px; overflow-y: auto; background-color: white">
+                        <div class="row" id="vapai" style="border-left-style: solid; border-width: 4px; border-color: #01529e">
                             <div class="row" style="width: 100%; margin-left: 0px">
                                 <div class="col-md-3">
                                     <h4 style="font-family: Helvetica">
@@ -180,9 +183,9 @@
                         <!-- FIN FILA A TENER POR CADA ARTICULO EN LA RESERVA -->
                     </div>
                     <div class="modal-footer" style="background-color: #8e969f; height: 50px">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" style="color: white; border: none; font-family: Helvetica; margin-top: -5px; right: 7px; position: absolute">
+                        <a type="button" class="btn btn-primary" style="color: white; border: none; font-family: Helvetica; margin-top: -5px; right: 7px; position: absolute" href="javascript:toPDF()">
                             <b>GENERAR PDF</b>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -253,7 +256,7 @@
                     
                     document.getElementById("idReservaModal").innerHTML = id;
                     document.getElementById("nickClienteModal").innerHTML = name;
-                    document.getElementById("precioTot").innerHTML = responseJson.precio;
+                    document.getElementById("precioTotalModal").innerHTML = responseJson.precio;
                     var f = new Date();
                     document.getElementById("fechaModal").innerHTML = (f.getFullYear() + "/" + f.getMonth() + "/" + f.getDate());
                     
@@ -272,6 +275,19 @@
                     }
                 }
 
+            }
+        </script>
+        
+        <script type="text/javascript">
+            function toPDF(){
+                domtoimage.toJpeg(document.getElementById("modalHeader")).then(function (data) {
+                    var doc = new jsPDF('landscape');
+                    doc.addImage(data, 'JPEG', 10, 10);
+                    domtoimage.toJpeg(document.getElementById("modalBody")).then(function (data) {
+                        doc.addImage(data, 'JPEG', 10, 30);
+                        doc.save(document.getElementById("nickClienteModal").innerHTML + "_" + document.getElementById("fechaModal").innerHTML + ".pdf");
+                    });
+                });
             }
         </script>
 
