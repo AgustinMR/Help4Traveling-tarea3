@@ -12,10 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Agustin/Downloads/ProgApp2016-master/ProgApp2016-master/Servidor%20web/Servidor%20web/src/java/Modelo/ModelReserva.java</file>
-            <file>file:/C:/Users/Agustin/Downloads/ProgApp2016-master/ProgApp2016-master/Servidor%20web/Servidor%20web/src/conf/xml-resources/web-service-references/publicadorWeb/wsdl/localhost_9130/publicadorWeb.wsdl</file>
-            <file>file:/C:/Users/Agustin/Downloads/ProgApp2016-master/ProgApp2016-master/Servidor%20web/Servidor%20web/src/java/Control/ControllerUsuario.java</file>
-            <file>file:/C:/Users/Agustin/Downloads/ProgApp2016-master/ProgApp2016-master/Servidor%20web/Servidor%20web/src/java/Control/AgregarAlCarrito.java</file>
+            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/consultarPromVisitante.jsp</file>
+            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/consultarServVisitante.jsp</file>
+            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerArticulo.java</file>
+            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/agregarRegistro.java</file>
+            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/errorCliente.jsp</file>
         </group>
     </open-files>
 </project-private>

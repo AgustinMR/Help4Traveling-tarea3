@@ -119,7 +119,7 @@
                               <div class="col-md-6">
                               </div>
                               <div class="col-md-6">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#<%="serv"+(x+1)%>" style="height: 35px; font-family: Helvetica; font-size: 20px; margin-top: 130px; margin-left: -20px">Consultar</button>
+                                  <button class="btn btn-info" data-toggle="modal" data-target="#<%="serv"+(x+1)%>" style="height: 35px; font-family: Helvetica; font-size: 20px; margin-top: 130px; margin-left: -20px" onclick="agregarRegistro()">Consultar</button>
                               </div>
                             </div>
                           </div>
@@ -243,6 +243,37 @@
 <!--FOOTER-->
 <!---->
  <jsp:include page="templates/footer.jsp"/>
+ 
+ <form method="post" id="registro" name="registro">
+    </form>
+
+    <script type="text/javascript">
+        function agregarRegistro(){
+            var nav="Desconocido";
+            if (navigator.userAgent.indexOf("Firefox") !== -1) nav="Firefox";
+            if (navigator.userAgent.indexOf("Chrome") !== -1) nav="Chrome";
+            if (navigator.userAgent.indexOf("Vivaldi") !== -1) nav="Vivaldi";
+            if (navigator.userAgent.indexOf("Opera") !== -1) nav="Opera";
+
+            var so="Desconocido";
+            if (navigator.appVersion.indexOf("Win") !== -1) so="Windows";
+            if (navigator.appVersion.indexOf("Mac") !== -1) so="MacOS";
+            if (navigator.appVersion.indexOf("X11") !== -1) so="UNIX";
+            if (navigator.appVersion.indexOf("Linux") !== -1) so="Linux";
+
+            var servlet = "agregarRegistro?so=" + so + "&nav=" + nav;
+
+            /*document.forms['registro'].action += servlet; 
+            alert(document.forms['registro'].action);
+            document.form['registro'].submit();
+            alert(servlet);
+            */
+
+            document.getElementById("registro").action = servlet;
+            alert(document.getElementById("registro").action);
+            document.getElementById("registro").submit();
+        }
+    </script>
  
  <script type="text/javascript">
         function CATEGORIA(nomCat) {

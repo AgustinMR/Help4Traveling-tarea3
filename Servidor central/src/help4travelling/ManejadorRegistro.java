@@ -17,7 +17,7 @@ public class ManejadorRegistro {
     }
 
     public boolean agregarRegistro(DtRegistro r){
-        return ManejadorSQL.GetInstance().ingresarRegistro(r.getIp(), r.getUrl(), r.getSo(), r.getNavegador());
+        return ManejadorSQL.GetInstance().ingresarRegistro(r.getIp(), r.getUrl(), r.getNavegador(), r.getSo());
     }
 
     public ArrayList<DtRegistro> listarRegistros(){

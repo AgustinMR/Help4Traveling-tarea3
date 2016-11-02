@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12" style="border-bottom-style: solid; border-color: rgb(1, 82, 158); border-width: 9px">
-            <h1 class="text-center" style="color: #313131; font-family: Helvetica; ">PROMOCIONES</h1>
+              <h1 class="text-center" style="color: #313131; font-family: Helvetica; ">PROMOCIONES</h1>
           </div>
         </div>
         <div class="row">
@@ -130,7 +130,37 @@
     </div>
     <!--FOOTER-->
     <!---->
+    
+    
+    
     <jsp:include page="templates/footer.jsp"/>
+    
+    <form method="post" id="registro">
+    </form>
+
+    <script type="text/javascript">
+        function agregarRegistro(){
+            alert("entre madafaka");
+            var nav="Desconocido";
+            if (navigator.userAgent.indexOf("Firefox") !== -1) nav="Firefox";
+            if (navigator.userAgent.indexOf("Chrome") !== -1) nav="Chrome";
+            if (navigator.userAgent.indexOf("Vivaldi") !== -1) nav="Vivaldi";
+            if (navigator.userAgent.indexOf("Opera") !== -1) nav="Opera";
+            alert(nav);
+            var so="Desconocido";
+            if (navigator.appVersion.indexOf("Win") !== -1) so="Windows";
+            if (navigator.appVersion.indexOf("Mac") !== -1) so="MacOS";
+            if (navigator.appVersion.indexOf("X11") !== -1) so="UNIX";
+            if (navigator.appVersion.indexOf("Linux") !== -1) so="Linux";
+            alert(nav);
+            String servlet = "agregarRegistro?so=" + so + "&nav=" + nav;
+            alert(servlet);
+            document.forms['registro'].action = servlet;    
+            document.form['registro'].submit();
+           
+           
+        }
+    </script>
 
 <script type="text/javascript">
     $("#tabla tr").click(function(){
@@ -185,6 +215,7 @@
                 document.getElementById("oriServ").innerHTML = responseJson.ciudadOrigen;
                 document.getElementById("destServ").innerHTML = responseJson.ciudadDestino;
                 document.getElementById("descServ").innerHTML = responseJson.descripcion;
+                
             });
         }
          

@@ -90,14 +90,16 @@ public class ManejadorSQL {
         return ret;
     }
 
-    public boolean ingresarRegistro(String ip, String url, String so, String navegador){
-        String sql = "INSERT INTO REGISTROS (ip, url, so, navegador) VALUES ('"+ ip +"','"+ url +"','"+ so +"','"+ navegador +"');";
-        Statement usuario;
+    public boolean ingresarRegistro(String ip, String url, String navegador, String so){
+        String sql = "INSERT INTO REGISTROS (ip, url, navegador, so) VALUES ('"+ ip +"','"+ url +"','"+ navegador +"','"+ so +"');";
+        Statement usuarios;
         boolean ret = false;
         try {
             Connection conex = getConex();
-            usuario = conex.createStatement();
-            usuario.executeUpdate(sql);
+            usuarios = conex.createStatement();
+            ManejadorSQL.GetInstance().setForeignKeysOff(usuarios);
+            usuarios.executeUpdate(sql);
+            ManejadorSQL.GetInstance().setForeignKeysOn(usuarios);
             ret = true;
             conex.close();
         } catch (SQLException ex) {

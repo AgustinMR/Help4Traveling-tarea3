@@ -247,8 +247,11 @@ public class Publicador {
     }
 
     @WebMethod
-    public boolean agregarRegistro(String ip, String url, String so, String navegador){
-        return ICRegistro.agregarRegistro(ip, url, so, navegador);
+    public int agregarRegistro(String ip, String url, String navegador, String so){
+        if(ICRegistro.agregarRegistro(ip, url, navegador, so))
+            return 1;
+        else
+            return 0;
     }
 
     @WebMethod
