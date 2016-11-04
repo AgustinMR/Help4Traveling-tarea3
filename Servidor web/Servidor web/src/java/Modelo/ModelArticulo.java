@@ -3,18 +3,8 @@ package Modelo;
 import java.util.List;
 
 public class ModelArticulo {
-    private static ModelArticulo instancia;
-    private static servidor.PublicadorService service;
-    private static servidor.Publicador port;
-    
-    public static ModelArticulo getInstance(){
-        if (instancia==null){
-            instancia = new ModelArticulo();
-            service =  new servidor.PublicadorService();
-            port = service.getPublicadorPort();
-        }
-        return instancia;
-    }
+    private servidor.PublicadorService service =  new servidor.PublicadorService();
+    private servidor.Publicador port = service.getPublicadorPort();
     
     public List<servidor.DtPromocion> listarPromociones(){
         //return ICArticulo.listarPromociones();

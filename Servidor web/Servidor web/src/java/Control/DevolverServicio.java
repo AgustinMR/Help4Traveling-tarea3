@@ -22,7 +22,8 @@ public class DevolverServicio extends HttpServlet {
         try {
             if (ajax) {
                 if (nickP == null){
-                    DtServicio s = ModelArticulo.getInstance().ObtenerDatosServicio(nickP, nombreA);
+                    ModelArticulo modArt = new ModelArticulo();
+                    DtServicio s = modArt.ObtenerDatosServicio(nickP, nombreA);
                     String json = new Gson().toJson(s);
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");

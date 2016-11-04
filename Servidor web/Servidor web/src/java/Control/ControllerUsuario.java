@@ -44,7 +44,7 @@ public class ControllerUsuario extends HttpServlet {
         String fanio = request.getParameter("fnac3");        
         String fnac = (fanio+"/"+fmes+"/"+fdia);
         
-        ModelUsuario modUsu = ModelUsuario.getInstance();        
+        ModelUsuario modUsu = new ModelUsuario();       
                     
         if(modUsu.VerificarNickCliente(nick)){
             request.setAttribute("error_registro","nick");

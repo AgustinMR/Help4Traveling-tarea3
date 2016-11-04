@@ -13,14 +13,16 @@ public class agregarRegistro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
+        
         try {
-            String uri = request.getRequestURI();
-            String so = request.getAttribute("so").toString();
-            String nav = request.getAttribute("nav").toString();
-            String ip = request.getRemoteAddr();
-            System.out.print(uri + "/" + so + "/" + nav + "/" + ip);
-            out.print(uri + "/" + so + "/" + nav + "/" + ip);
-            if(ModelRegistro.getInstance().agregarRegistro(ip, uri, nav, so))
+            String uri = request.getRequestURL().toString();
+            String ip = request.getParameter("ip");
+            String so = request.getParameter("so");
+            String nav = request.getParameter("nav");
+            //System.out.print(uri + "/" + so + "/" + nav + "/" + ip);
+            //out.print(uri + "/" + so + "/" + nav + "/" + ip);
+            ModelRegistro modReg = new ModelRegistro();
+            if(modReg.agregarRegistro(ip, uri, nav, so))
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             else
                 request.getRequestDispatcher("errorVisitante.jsp").forward(request, response);

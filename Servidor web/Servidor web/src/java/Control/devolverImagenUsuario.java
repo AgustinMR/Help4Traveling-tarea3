@@ -15,7 +15,8 @@ public class devolverImagenUsuario extends HttpServlet {
         try {
             String nickU = request.getParameter("nickU");
             response.setContentType("image/jpg");
-            byte[] img = ModelUsuario.getInstance().getImagen(nickU);
+            ModelUsuario modUsu = new ModelUsuario();       
+            byte[] img = modUsu.getImagen(nickU);
             ServletOutputStream oStream = response.getOutputStream();
             oStream.write(img);
             oStream.flush();

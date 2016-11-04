@@ -18,7 +18,7 @@ public class DtRegistro implements Serializable{
         this.navegador = navegador;
     }
 
-    DtRegistro(String ip, String url, String so, String navegador) {
+    DtRegistro(String ip, String url, String navegador, String so) {
         this.ip = ip;
         this.url = url;
         this.so = so;

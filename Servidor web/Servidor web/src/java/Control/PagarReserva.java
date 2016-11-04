@@ -1,36 +1,30 @@
 package Control;
 
-import Modelo.ModelUsuario;
+import Modelo.ModelReserva;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "AutenticarCliente", urlPatterns = {"/AutenticarCliente"})
-public class AutenticarCliente extends HttpServlet {
+public class PagarReserva extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        String id2 = request.getParameter("id");
+        int id = 0;
+        if (id2 != null)
+            id = Integer.valueOf(id2);
+        
         try {
-            String nickU = request.getParameter("nickname");
-            String pass = request.getParameter("password");
-            if(nickU != null && pass != null){
-                boolean ret = ModelUsuario.getInstance().autenticarCliente(nickU, pass);
-                if(ret){
-                    request.setAttribute("nick", nickU);
-                    request.setAttribute("pass", pass);
-                    request.getRequestDispatcher("inicioCliente.jsp").forward(request, response);
-                }
-                else
-                    request.getRequestDispatcher("errorVisitante.jsp").forward(request, response);
-            }
-            else{
-                request.getRequestDispatcher("errorVisitante.jsp").forward(request, response);
-            }
+            boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+            if (ajax) {
+                ModelReserva modRes = new ModelReserva();   
+                modRes.pagarReserva(id);
+            }           
         } finally {
             out.close();
         }

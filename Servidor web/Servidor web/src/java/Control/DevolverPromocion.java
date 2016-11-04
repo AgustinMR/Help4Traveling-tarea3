@@ -17,7 +17,8 @@ public class DevolverPromocion extends HttpServlet {
         PrintWriter out = response.getWriter();
         String promo = request.getParameter("descProm");
         String promo2 = request.getParameter("preProm");
-        DtPromocion p = ModelArticulo.getInstance().datosPromocion(request.getParameter("nomProm"), request.getParameter("nickProm"));
+        ModelArticulo modArt = new ModelArticulo();
+        DtPromocion p = modArt.datosPromocion(request.getParameter("nomProm"), request.getParameter("nickProm"));
         boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
         try {
             if (ajax) {

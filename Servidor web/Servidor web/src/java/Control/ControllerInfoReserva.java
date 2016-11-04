@@ -21,7 +21,7 @@ public class ControllerInfoReserva extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ModelReserva modRes = ModelReserva.getInstance();
+        ModelReserva modRes = new ModelReserva();
         String cli = request.getParameter("cli");
         String id2 = request.getParameter("resID");
         String num2 = request.getParameter("num");

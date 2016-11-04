@@ -5,6 +5,12 @@ import Model.EstadoSesion;
 import Model.ModelUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,19 +20,31 @@ import javax.servlet.http.HttpSession;
 
 public class iniciarSesion extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession objSesion = request.getSession();
             String nickname = request.getParameter("nickname");
             String password = request.getParameter("password");
+            String hashtext = "";
             
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte[] clave = md.digest(password.getBytes("UTF-8"));
+                BigInteger bigInt = new BigInteger(1,clave);
+                hashtext = bigInt.toString(16);
+            } catch (UnsupportedEncodingException ex) {
+            }
+
             EstadoSesion nuevoEstado;
             RequestDispatcher dispatcher = null;
             try {
-                boolean usr = ModelUsuario.getInstance().verificarUsuario(nickname, password);
+                System.out.println("ssadsafdsafsaf");
+                boolean usr = ModelUsuario.getInstance().autenticarProveedor(nickname, hashtext);
+                System.out.println(usr);
+                //System.out.println("ssadsafdsafsaf");
                 if(!usr){
-                        out.print("sdfkgjfdkg");
+                        //out.print("sdfkgjfdkg");
                         nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
                         objSesion.setAttribute("estado_sesion", nuevoEstado);
                         dispatcher = request.getRequestDispatcher("errorPages/error404.jsp");
@@ -55,7 +73,11 @@ public class iniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(iniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -69,7 +91,11 @@ public class iniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(iniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

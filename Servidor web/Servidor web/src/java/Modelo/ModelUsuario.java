@@ -4,27 +4,17 @@ import java.util.List;
 import java.io.InputStream;
 
 public class ModelUsuario {
-    private static ModelUsuario instancia;
-    private static servidor.PublicadorService service;
-    private static servidor.Publicador port;
-    
-    public static ModelUsuario getInstance(){
-        if (instancia==null){
-            instancia = new ModelUsuario();
-            service =  new servidor.PublicadorService();
-            port = service.getPublicadorPort();
-        }
-        return instancia;
-    }
+    private servidor.PublicadorService service =  new servidor.PublicadorService();;
+    private servidor.Publicador port = service.getPublicadorPort();
     
     public servidor.DtCliente verPerfil(String nickname){
         //return ICUsuario.datosCliente(nickname);
         return port.verPerfil(nickname);
     }
     
-    public boolean autenticarCliente(String nick, String email){
+    public boolean autenticarCliente(String nick, String pass){
         //return ICUsuario.VerificarUsuario(email, email);
-        return port.autenticarCliente(nick, email);
+        return port.autenticarCliente(nick, pass);
     }
     
     public List<String> listarProveedores(){

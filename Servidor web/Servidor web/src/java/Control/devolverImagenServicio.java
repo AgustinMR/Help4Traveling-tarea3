@@ -24,7 +24,8 @@ public class devolverImagenServicio extends HttpServlet {
             
             response.setContentType("image/jpg");
             try{
-                byte[] img = ModelArticulo.getInstance().getImagen(nickU, nomA, campo);
+                ModelArticulo modArt = new ModelArticulo();
+                byte[] img = modArt.getImagen(nickU, nomA, campo);
                 ServletOutputStream oStream = response.getOutputStream();
                 if (img != null)
                     oStream.write(img);

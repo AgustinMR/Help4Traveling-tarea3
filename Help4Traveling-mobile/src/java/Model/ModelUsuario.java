@@ -16,13 +16,8 @@ public class ModelUsuario {
     public boolean autenticarProveedor(String nick, String pass){
         PublicadorService service =  new PublicadorService();
         Publicador port = service.getPublicadorPort();
-        return port.autenticarProveedor(nick, pass) == 1;
+        return port.autenticarProveedor(nick, pass);
     }
     
-    public boolean verificarUsuario(String nick, String pass){
-        PublicadorService service =  new PublicadorService();
-        Publicador port = service.getPublicadorPort();
-        return port.autenticarCliente(nick, pass);
-    }
     
 }

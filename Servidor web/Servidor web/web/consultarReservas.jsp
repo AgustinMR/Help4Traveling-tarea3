@@ -22,7 +22,7 @@
             /*System.out.println(nameCli);
             System.out.println(arr[0]);*/
         %>
-        
+
         <div class="divPrincipal">
             <div class="section">
                 <div class="container-fluid">
@@ -52,6 +52,7 @@
                             </div>
                             <div class="col-md-4" style="background-color: #01529e; min-height: 70px; max-height: 70px">
                                 <div class="col-md-6">
+                                    <button id="pagar" class="btn btn-primary" style="height: 35px; font-family: Helvetica; font-size: 20px; margin-top: 15px; width: 100%; display: none" onclick="pagar()" >Pagar</button>
                                     <button id="factura" data-toggle="modal" data-target="#modalFactura" class="btn btn-primary" style="height: 35px; font-family: Helvetica; font-size: 20px; margin-top: 15px; width: 100%; display: none">Ver factura</button>
                                 </div>
                                 <div class="col-md-6">
@@ -105,7 +106,7 @@
         </div>
 
         <!-- COMIENZO MODAL CON INFORMACION DE LA FACTURA -->
-        
+
         <div id="modalFactura" class="modal fade" role="dialog">
             <div class="modal-dialog" style="width: 50%">
                 <div class="modal-content">
@@ -183,9 +184,9 @@
                         <!-- FIN FILA A TENER POR CADA ARTICULO EN LA RESERVA -->
                     </div>
                     <div class="modal-footer" style="background-color: #8e969f; height: 50px">
-                        <a type="button" class="btn btn-primary" style="color: white; border: none; font-family: Helvetica; margin-top: -5px; right: 7px; position: absolute" href="javascript:toPDF()">
+                        <button type="button" class="btn btn-primary" style="color: white; border: none; font-family: Helvetica; margin-top: -5px; right: 7px; position: absolute" onclick="toPDF()">
                             <b>GENERAR PDF</b>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -201,9 +202,10 @@
                 //alert("holaaaaaaaaaa");
                 //alert(id + " " + name);
                 document.getElementById("cancel").value = id;
+                document.getElementById("pagar").value = id;
                 $.get("ControllerInfoReserva", "cli=" + name + "&resID=" + id + "&num=1", function (responseJson) {
                     //alert(responseJson);
-                    document.getElementById("tbody")
+                    //document.getElementById("tbody");
                     $("#tbody").children().remove();
                     var tblBody = document.getElementById("tbody");
 
@@ -234,42 +236,48 @@
                         row.appendChild(cell);
 
                         tblBody.appendChild(row);
-                        
+
                         // cargo mismos datos en modal
-                        
+
                         document.getElementById("nombreModal").innerHTML = product.nameArticulo;
                         document.getElementById("nickProvModal").innerHTML = product.nickProveedor;
                         document.getElementById("cantidadModal").innerHTML = product.cantidad;
                         document.getElementById("precioArticuloModal").innerHTML = product.precioArticulo;
-                        
+
                     });
                 });
                 $.get("ControllerInfoReserva", "cli=" + name + "&resID=" + id + "&num=2", function (responseJson) {
                     document.getElementById("estadoAct").innerHTML = responseJson.estado;
                     document.getElementById("precioTot").innerHTML = responseJson.precio;
-                    
-                    if(document.getElementById("estadoAct").innerHTML === "FACTURADA" || document.getElementById("estadoAct").innerHTML === "Facturada"){
+
+                    if (document.getElementById("estadoAct").innerHTML === "FACTURADA" || document.getElementById("estadoAct").innerHTML === "Facturada") {
                         document.getElementById("factura").style.display = "block";
-                    }
+                    } else
+                        document.getElementById("factura").style.display = "none";
                     
+                    if (document.getElementById("estadoAct").innerHTML === "REGISTRADA" || document.getElementById("estadoAct").innerHTML === "Registrada") {
+                        document.getElementById("pagar").style.display = "block";
+                    } else
+                        document.getElementById("pagar").style.display = "none";
+
                     // cargo la misma mierda en el modal
-                    
+
                     document.getElementById("idReservaModal").innerHTML = id;
                     document.getElementById("nickClienteModal").innerHTML = name;
                     document.getElementById("precioTotalModal").innerHTML = responseJson.precio;
                     var f = new Date();
                     document.getElementById("fechaModal").innerHTML = (f.getFullYear() + "/" + f.getMonth() + "/" + f.getDate());
-                    
+
                 });
             }
 
         </script>
         <script>
             function cancelar() {
-                if (document.getElementById("estadoAct").innerHTML === "Registrada") {
+                if (document.getElementById("estadoAct").innerHTML === "REGISTRADA") {
                     if (document.getElementById("cancel").value != "") {
                         $.get("ControlCancelarReserva", "id=" + document.getElementById("cancel").value, function (resonse) {
-                            document.getElementById("estadoAct").innerHTML = "Cancelada";
+                            document.getElementById("estadoAct").innerHTML = "CANCELADA";
                             alert("Reserva Cancelada");
                         });
                     }
@@ -278,8 +286,25 @@
             }
         </script>
         
+        <script>
+            function pagar() {
+                //alert("asdsadsa");
+                if (document.getElementById("estadoAct").innerHTML === "REGISTRADA") {
+                    //alert(document.getElementById("pagar").value);
+                    if (document.getElementById("pagar").value != "") {
+                        //alert("asdsadsa");
+                        $.get("PagarReserva", "id=" + document.getElementById("pagar").value, function (resonse) {
+                            document.getElementById("estadoAct").innerHTML = "PAGADA";
+                            alert("Reserva Pagada");
+                        });
+                    }
+                }
+
+            }
+        </script>
+
         <script type="text/javascript">
-            function toPDF(){
+            function toPDF() {
                 domtoimage.toJpeg(document.getElementById("modalHeader")).then(function (data) {
                     var doc = new jsPDF('landscape');
                     doc.addImage(data, 'JPEG', 10, 10);

@@ -24,27 +24,26 @@ public class Publicador {
     private Endpoint endpoint = null;
 
     //Constructor
-    public Publicador(){}
-
+    public Publicador() {
+    }
 
     @WebMethod(exclude = true)
-    public void publicar(){
+    public void publicar() {
         //System.out.println("init");
-        ManejadorSQL.GetInstance().init("192.168.142.145");
+        ManejadorSQL.GetInstance().init("192.168.10.132");
         //System.out.println(ICUsuario.chequearNick("eWatson"));
         endpoint = Endpoint.publish("http://localhost:9130/publicadorWeb", this);
     }
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
-            return endpoint;
+        return endpoint;
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     //Articulos
-
     @WebMethod
-    public DtPromocion[] listarPromociones(){
+    public DtPromocion[] listarPromociones() {
         //return ICArticulo.listarPromociones();
         ArrayList<DtPromocion> prom = ICArticulo.listarPromociones();
         DtPromocion[] ret = prom.toArray(new DtPromocion[prom.size()]);
@@ -52,23 +51,25 @@ public class Publicador {
     }
 
     @WebMethod
-    public DtPromocion datosPromocion(String nombreProm, String nameProv){
+    public DtPromocion datosPromocion(String nombreProm, String nameProv) {
         return ICArticulo.datosPromociones(nombreProm, nameProv);
     }
 
     @WebMethod
-    public boolean EsServicio(String nombreServicio){
+    public boolean EsServicio(String nombreServicio) {
         //Toma por sentado que el nombre es de un servicio, recorre todos las promociones del sistema, si el nombre es igual a una de ellas devuelve false
         ArrayList<DtPromocion> lart = ICArticulo.listarPromociones();
         boolean ret = true;
-        for(DtPromocion x : lart){
-            if(x.getNombre().equalsIgnoreCase(nombreServicio)) ret = false;
+        for (DtPromocion x : lart) {
+            if (x.getNombre().equalsIgnoreCase(nombreServicio)) {
+                ret = false;
+            }
         }
         return ret;
     }
 
     @WebMethod
-    public DtServicio[] serviciosXprov(String nickP){
+    public DtServicio[] serviciosXprov(String nickP) {
         //return ICArticulo.ListarServiciosProv(nickP);
         ArrayList<DtServicio> servXprom = ICArticulo.ListarServiciosProv(nickP);
         DtServicio[] ret = servXprom.toArray(new DtServicio[servXprom.size()]);
@@ -76,7 +77,7 @@ public class Publicador {
     }
 
     @WebMethod
-    public DtCategoria[] listarCategorias(){
+    public DtCategoria[] listarCategorias() {
         //return ICCategoria.listarCategorias();
         ArrayList<DtCategoria> cat = ICCategoria.listarCategorias();
         DtCategoria[] ret = cat.toArray(new DtCategoria[cat.size()]);
@@ -84,7 +85,7 @@ public class Publicador {
     }
 
     @WebMethod
-    public DtServicio[] listarServicios(){
+    public DtServicio[] listarServicios() {
         //return ICArticulo.ListarServicios();
         ArrayList<DtServicio> serv = ICArticulo.ListarServicios();
         DtServicio[] ret = serv.toArray(new DtServicio[serv.size()]);
@@ -92,7 +93,7 @@ public class Publicador {
     }
 
     @WebMethod
-    public DtServicio[] serviciosXcat(String nameCat){
+    public DtServicio[] serviciosXcat(String nameCat) {
         //return ICCategoria.listarServicios(nameCat);
         ArrayList<DtServicio> servXcat = ICCategoria.listarServicios(nameCat);
         DtServicio[] ret = servXcat.toArray(new DtServicio[servXcat.size()]);
@@ -100,98 +101,108 @@ public class Publicador {
     }
 
     @WebMethod
-    public DtServicio ObtenerDatosServicio(String nameServ, String nameProv){
+    public DtServicio ObtenerDatosServicio(String nameServ, String nameProv) {
         return ICArticulo.datosServicio(nameServ, nameProv);
     }
 
     @WebMethod
-    public byte[] getImagenArt(String nickP, String nomA, String num){
+    public byte[] getImagenArt(String nickP, String nomA, String num) {
         return ManejadorSQL.GetInstance().selectImgServicio(num, nickP, nomA);
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     //Reservas
-    
     @WebMethod
-    public Integer[] listarReservas(String nickname){
+    public Integer[] listarReservas(String nickname) {
         //return ICReserva.listarReservasXcli(nickname);
-        ArrayList<Integer> res = ICReserva.listarReservasXcli(nickname);             
+        ArrayList<Integer> res = ICReserva.listarReservasXcli(nickname);
         Integer[] ret = res.toArray(new Integer[res.size()]);
         return ret;
     }
-    
+
     @WebMethod
-    public DtReserva devolverReserva(int id){
+    public DtReserva devolverReserva(int id) {
         return ICReserva.datosReservas(id);
     }
-    
+
     @WebMethod
-    public Integer[] ObtenerReservas(String cli){
-        ArrayList<Integer> res = ICReserva.listarReservasXcli(cli);             
+    public Integer[] ObtenerReservas(String cli) {
+        ArrayList<Integer> res = ICReserva.listarReservasXcli(cli);
         Integer[] Iret = res.toArray(new Integer[res.size()]);
         return Iret;
     }
-    
+
     @WebMethod
-    public DtInfoReserva[] ObtenerDatosReserva(int idRes){
+    public DtInfoReserva[] ObtenerDatosReserva(int idRes) {
         //return ICReserva.ObtenerInfoArticulosReservados(idRes);
-        ArrayList<DtInfoReserva> datRes = ICReserva.ObtenerInfoArticulosReservados(idRes);             
+        ArrayList<DtInfoReserva> datRes = ICReserva.ObtenerInfoArticulosReservados(idRes);
         DtInfoReserva[] ret = datRes.toArray(new DtInfoReserva[datRes.size()]);
         return ret;
     }
-    
-    @WebMethod  
-    public boolean agregarRes(Estado E, DtFecha fecha, DtInfoReserva[] DtInf,String nick,float F){
+
+    @WebMethod
+    public boolean agregarRes(Estado E, DtFecha fecha, DtInfoReserva[] DtInf, String nick, float F) {
         ArrayList<DtInfoReserva> infRes = new ArrayList<>(Arrays.asList(DtInf));
         return ICReserva.CrearReserva(new DtReserva(E, fecha, infRes, nick, F));
     }
+
+    @WebMethod
+    public boolean cancelarReserva(int id) {
+        return ICReserva.actualizarEstado(Estado.Cancelada, id);
+    }
     
     @WebMethod
-    public boolean cancelarReserva(int id){
-        return ICReserva.actualizarEstado(Estado.Cancelada, id);
+    public boolean pagarReserva(int id) {
+        //System.out.println("pagada");
+        return ICReserva.actualizarEstado(Estado.Pagada, id);
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     //Usuarios
+    
+    @WebMethod
+    public boolean autenticarProveedor(String nickname, String password) {
+        return ICUsuario.autenticarProveedor(nickname, password);
+    }
+    
+    @WebMethod
+    public boolean autenticarCliente(String nickname, String password) {
+        return ICUsuario.autenticarCliente(nickname, password);
+    }
 
     @WebMethod
-    public DtCliente verPerfil(String nickname){
+    public DtCliente verPerfil(String nickname) {
         return ICUsuario.datosCliente(nickname);
     }
 
     @WebMethod
-    public boolean autenticarCliente(String nick, String email){
-        return ICUsuario.VerificarUsuario(email, email);
-    }
-
-    @WebMethod
-    public String[] listarProveedores(){
+    public String[] listarProveedores() {
         //return (ArrayList)ICUsuario.listarProveedores();
-        ArrayList<String> listProv = (ArrayList)ICUsuario.listarProveedores();
+        ArrayList<String> listProv = (ArrayList) ICUsuario.listarProveedores();
         String[] ret = listProv.toArray(new String[listProv.size()]);
         return ret;
     }
 
     @WebMethod
-    public void agregarCliente(DtCliente dtcli){
+    public void agregarCliente(DtCliente dtcli) {
         ICUsuario.AltaCliente(dtcli);
     }
 
     @WebMethod
-    public boolean VerificarNickCliente(String nick){
+    public boolean VerificarNickCliente(String nick) {
         return ICUsuario.chequearNick(nick);
     }
 
     @WebMethod
-    public boolean VerificarEmailCliente(String email){
+    public boolean VerificarEmailCliente(String email) {
         return ICUsuario.chequearEmail(email);
     }
 
     @WebMethod
-    public DtProveedor[] listarProveedoresDatos(){
+    public DtProveedor[] listarProveedoresDatos() {
         ArrayList<DtProveedor> ret = new ArrayList<>();
-        ArrayList<String> provs = (ArrayList)ICUsuario.listarProveedores();
-        for(int x = 0; x < provs.size(); x++){
+        ArrayList<String> provs = (ArrayList) ICUsuario.listarProveedores();
+        for (int x = 0; x < provs.size(); x++) {
             ret.add(ICUsuario.datosProveedor(provs.get(x).trim()));
         }
         DtProveedor[] ret2 = ret.toArray(new DtProveedor[ret.size()]);
@@ -199,73 +210,64 @@ public class Publicador {
     }
 
     @WebMethod
-    public byte[] getImagenUsu(String nickP){
+    public byte[] getImagenUsu(String nickP) {
         //System.out.println(ManejadorSQL.GetInstance().selectImgUsuario(nickP));
         return ManejadorSQL.GetInstance().selectImgUsuario(nickP);
     }
 
     @WebMethod
-    public DtCliente devolverCliente(String nick){
+    public DtCliente devolverCliente(String nick) {
         return ICUsuario.datosCliente(nick);
     }
 
     @WebMethod
-    public DtProveedor devolverProveedor(String nick){
+    public DtProveedor devolverProveedor(String nick) {
         return ICUsuario.datosProveedor(nick);
     }
 
-    public void agregarImagenCliente(InputStream f, String NickC){
-        try{
+    public void agregarImagenCliente(InputStream f, String NickC) {
+        try {
             ManejadorSQL.GetInstance().insertImgUsuariov2(f, NickC);
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     // DISPOSITIVO MOVIL
-
     @WebMethod
-    public Integer[] listarReservasXprov(String nickP){
+    public Integer[] listarReservasXprov(String nickP) {
         ArrayList<Integer> res = ICReserva.listarReservasXprov(nickP);
         return res.toArray(new Integer[res.size()]);
     }
 
     @WebMethod
-    public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA){
+    public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA) {
         return ICReserva.actualizarEstadoArticulo(idReserva, nickP, nombreA);
     }
 
     @WebMethod
-    public DtServicio[] listarServiciosXprov(String nickP){
+    public DtServicio[] listarServiciosXprov(String nickP) {
         ArrayList<DtServicio> s = ICArticulo.ListarServiciosProv(nickP);
         return s.toArray(new DtServicio[s.size()]);
     }
 
     @WebMethod
-    public DtPromocion[] listarPromocionesXprov(String nickP){
+    public DtPromocion[] listarPromocionesXprov(String nickP) {
         ArrayList<DtPromocion> s = ICArticulo.listarPromocionesProv(nickP);
         return s.toArray(new DtPromocion[s.size()]);
     }
 
     @WebMethod
-    public int agregarRegistro(String ip, String url, String navegador, String so){
-        if(ICRegistro.agregarRegistro(ip, url, navegador, so))
+    public int agregarRegistro(String ip, String url, String navegador, String so) {
+        if (ICRegistro.agregarRegistro(ip, url, navegador, so)) {
             return 1;
-        else
+        } else {
             return 0;
+        }
     }
 
     @WebMethod
-    public boolean agregarVisita(String nickP, String nombreA){
+    public boolean agregarVisita(String nickP, String nombreA) {
         return ICArticulo.agregarVisita(nickP, nombreA);
     }
-
-    @WebMethod
-    public int autenticarProveedor(String nickP, String pass){
-        if(ICUsuario.AutenticarProveedor(nickP, pass))
-            return 1;
-        else
-            return 0;
-    }
-
-
 }

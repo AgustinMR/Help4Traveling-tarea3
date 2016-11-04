@@ -42,7 +42,7 @@ public class ControllerUserImage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
-        ModelUsuario modUsu = ModelUsuario.getInstance();
+        ModelUsuario modUsu = new ModelUsuario();
         
         String description = request.getParameter("namecli"); // Retrieves <input type="text" name="description">
         Part filePart = request.getPart("imagentest"); // Retrieves <input type="file" name="file">

@@ -18,7 +18,6 @@
     <target name="wsimport-init" depends="init">
         <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
         <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
-        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
         <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
         <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
             <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
@@ -43,25 +42,5 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/servidor"/>
         <delete dir="${build.generated.dir}/jax-wsCache/publicadorWeb"/>
     </target>
-    <target name="wsimport-service-ws" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/service/ws"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/ws" destdir="${build.generated.dir}/jax-wsCache/service/ws" wsdl="${basedir}/${conf-dir}xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl" catalog="catalog.xml" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-services/ws/wsdl/localhost_9130/publicadorWeb.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/service/ws"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/service/ws">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy todir="${build.web.dir}/WEB-INF/wsdl/ws">
-            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/ws/wsdl/"/>
-        </copy>
-    </target>
-    <target name="wsimport-service-clean-ws" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/servidor"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/service/ws"/>
-    </target>
     <target name="wsimport-client-generate" depends="wsimport-client-publicadorWeb"/>
-    <target name="wsimport-service-generate" depends="wsimport-service-ws"/>
 </project>

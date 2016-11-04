@@ -12,11 +12,23 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/consultarPromVisitante.jsp</file>
-            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerArticulo.java</file>
-            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerInfoReserva.java</file>
-            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/errorCliente.jsp</file>
-            <file>file:/C:/Users/Agustin/Downloads/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/consultarReservas.jsp</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/DevolverPromocion.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/DevolverServicio.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/devolverImagenUsuario.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/web/consultarReservas.jsp</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/PagarReserva.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/devolverImagenServicio.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControlCancelarReserva.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerReserva.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerReservav2.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerUsuario.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/IniciarSesion.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/DevolverCategoria.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerInfoReserva.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/DevolverProveedor.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/ControllerUserImage.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/DevolverServiciosXcat.java</file>
+            <file>file:/C:/GitHub/Help4Traveling-tarea3/Servidor%20web/Servidor%20web/src/java/Control/agregarRegistro.java</file>
         </group>
     </open-files>
 </project-private>

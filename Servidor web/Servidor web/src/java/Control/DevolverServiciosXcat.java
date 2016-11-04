@@ -20,7 +20,8 @@ public class DevolverServiciosXcat extends HttpServlet {
         String cat = request.getParameter("categoria");
         try {
             if(cat != null){
-                List<DtServicio> servicios = ModelArticulo.getInstance().serviciosXcat(cat);
+                ModelArticulo modArt = new ModelArticulo();
+                List<DtServicio> servicios = modArt.serviciosXcat(cat);
                 String json = new Gson().toJson(servicios);
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");

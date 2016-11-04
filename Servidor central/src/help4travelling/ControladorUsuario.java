@@ -103,9 +103,19 @@ public class ControladorUsuario implements IControladorUsuario{
         return ManejadorUsuario.getinstance().chequearEmail(email);
     }
 
-    @Override
+    /*@Override
     public boolean AutenticarProveedor(String nickP, String password){
         return ManejadorUsuario.getinstance().autenticarProveedor(nickP, password);
+    }*/
+
+    @Override
+    public boolean autenticarProveedor(String nickname, String password) {
+        return ManejadorUsuario.getinstance().autenticarProveedor(nickname, password);
+    }
+
+    @Override
+    public boolean autenticarCliente(String nickname, String password) {
+        return ManejadorUsuario.getinstance().autenticarCliente(nickname, password);
     }
     
 }

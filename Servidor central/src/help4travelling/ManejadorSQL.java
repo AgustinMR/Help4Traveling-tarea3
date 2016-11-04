@@ -33,6 +33,22 @@ public class ManejadorSQL {
         this.ip = ip;
         return true;
     }
+    
+    public boolean esCliente(String nickname){
+        boolean ret = false;
+        String sql = "SELECT nicknameCliente FROM CLIENTES WHERE nicknameCliente='"+nickname+"';";
+        Statement usuarios;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ResultSet rs = usuarios.executeQuery(sql);
+            if(rs.first())
+              ret = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
 
     public ArrayList<String> listarServiciosProv(String nickP){
         String sql = "SELECT nombreArticulo FROM SERVICIOS WHERE nicknameProveedor='"+ nickP +"';";
@@ -270,7 +286,7 @@ public class ManejadorSQL {
         return ret;
     }
 
-    public boolean autenticarCliente(String nickname, String pass){
+    public boolean autenticarUsuario(String nickname, String pass){
       boolean ret = false;
       String sql = "SELECT nickname FROM USUARIOS WHERE nickname='"+nickname+"' AND clave='"+pass+"';";
       Statement usuarios;

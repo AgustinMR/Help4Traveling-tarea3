@@ -9,6 +9,12 @@ import Modelo.EstadoSesion;
 import Modelo.ModelUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,23 +28,33 @@ import javax.servlet.http.HttpSession;
  */
 
 public class IniciarSesion extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
         try {
         HttpSession objSesion = null;
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String nickname = request.getParameter("idNick");
         String password = request.getParameter("idPass");
+        String hashtext ="";
+        
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] clave = md.digest(password.getBytes("UTF-8"));
+            BigInteger bigInt = new BigInteger(1,clave);
+            hashtext = bigInt.toString(16);
+        } catch (UnsupportedEncodingException ex) {
+        }
         
         EstadoSesion nuevoEstado;
         RequestDispatcher dispatcher = null;
         
         try {
-            boolean usr = ModelUsuario.getInstance().autenticarCliente(nickname, password);    
+            ModelUsuario modUsu = new ModelUsuario();       
+            boolean usr = modUsu.autenticarCliente(nickname, hashtext);    
             out.print(usr);
             if(!usr){
                 nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
-                dispatcher = request.getRequestDispatcher("errorVisitante.jsp");
+                dispatcher = request.getRequestDispatcher("errorPages/error404.html");
             } else {
                 dispatcher = request.getRequestDispatcher("inicioCliente.jsp");
                 nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
@@ -68,7 +84,11 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,7 +102,11 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

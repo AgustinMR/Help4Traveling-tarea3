@@ -40,8 +40,7 @@ public class ControllerReserva extends HttpServlet {
             
             String nickname = request.getSession().getAttribute("usuario_logueado").toString();
              
-            
-            ModelReserva modRes = ModelReserva.getInstance();
+            ModelReserva modRes = new ModelReserva();
             modRes.agregarRes(Estado.REGISTRADA, fechaActual, infodeReserva, nickname, precio);
             request.getRequestDispatcher("inicioCliente.jsp").forward(request, response);
             

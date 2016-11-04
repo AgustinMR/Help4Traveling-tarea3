@@ -24,7 +24,8 @@ public class DevolverProveedor extends HttpServlet {
         try {
             if(request.getParameter("listProv") != null){
                 String nickP = request.getParameter("listProv");
-                DtProveedor p = ModelUsuario.getInstance().devolverProveedor(nickP);
+                ModelUsuario modUsu = new ModelUsuario();       
+                DtProveedor p = modUsu.devolverProveedor(nickP);
                 //if(ManejadorSQL.GetInstance().selectImgUsuario(p.getNick().trim()) != null){
                 //    byte[] img = ManejadorSQL.GetInstance().selectImgUsuario(nickP);
                 //}

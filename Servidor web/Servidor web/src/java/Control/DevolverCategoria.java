@@ -16,7 +16,8 @@ public class DevolverCategoria extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            List<DtCategoria> cats = ModelArticulo.getInstance().listarCategorias();
+            ModelArticulo modArt = new ModelArticulo();
+            List<DtCategoria> cats = modArt.listarCategorias();
             request.setAttribute("categorias", cats);
         } finally {
             out.close();

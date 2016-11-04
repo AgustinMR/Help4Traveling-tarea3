@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="ws">
-      <implementation-class>wss.ws</implementation-class>
-      <wsdl-url>http://localhost:9130/publicadorWeb?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_9130/publicadorWeb.wsdl</local-wsdl-file>
-      <service-name>PublicadorService</service-name>
-      <port-name>PublicadorPort</port-name>
-      <package-name>servidor</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <use-provider>false</use-provider>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </service>
   </services>
   <clients>
     <client name="publicadorWeb">
@@ -40,6 +8,7 @@
       <local-wsdl-file>localhost_9130/publicadorWeb.wsdl</local-wsdl-file>
       <package-name>servidor</package-name>
       <catalog-file>catalog.xml</catalog-file>
+      <use-dispatch>true</use-dispatch>
       <wsimport-options>
         <wsimport-option>
           <wsimport-option-name>extension</wsimport-option-name>

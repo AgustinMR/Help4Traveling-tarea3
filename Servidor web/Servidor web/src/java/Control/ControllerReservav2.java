@@ -13,9 +13,8 @@ public class ControllerReservav2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        ModelReserva modRes = ModelReserva.getInstance();
-        ModelArticulo modArt = ModelArticulo.getInstance();
+        ModelReserva modRes = new ModelReserva();
+        ModelReserva modArt = new ModelReserva();
         
         request.setAttribute("ModeloCarrito", modRes);
         request.setAttribute("ModeloServicio", modArt);

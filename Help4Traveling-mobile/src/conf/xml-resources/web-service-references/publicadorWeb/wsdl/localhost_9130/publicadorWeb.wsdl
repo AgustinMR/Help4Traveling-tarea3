@@ -7,131 +7,17 @@
 <xsd:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://localhost:9130/publicadorWeb?xsd=2"></xsd:import>
 </xsd:schema>
 </types>
-<message name="VerificarNickCliente">
+<message name="getImagenUsu">
 <part name="arg0" type="xsd:string"></part>
 </message>
-<message name="VerificarNickClienteResponse">
-<part name="return" type="xsd:boolean"></part>
+<message name="getImagenUsuResponse">
+<part name="return" type="xsd:base64Binary"></part>
 </message>
-<message name="listarReservasXprov">
+<message name="ObtenerReservas">
 <part name="arg0" type="xsd:string"></part>
 </message>
-<message name="listarReservasXprovResponse">
+<message name="ObtenerReservasResponse">
 <part xmlns:ns1="http://jaxb.dev.java.net/array" name="return" type="ns1:intArray"></part>
-</message>
-<message name="listarPromociones"></message>
-<message name="listarPromocionesResponse">
-<part name="return" type="tns:dtPromocionArray"></part>
-</message>
-<message name="listarProveedoresDatos"></message>
-<message name="listarProveedoresDatosResponse">
-<part name="return" type="tns:dtProveedorArray"></part>
-</message>
-<message name="actualizarEstadoArticulo">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-<part name="arg2" type="xsd:string"></part>
-</message>
-<message name="actualizarEstadoArticuloResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
-<message name="devolverProveedor">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="devolverProveedorResponse">
-<part name="return" type="tns:dtProveedor"></part>
-</message>
-<message name="listarPromocionesXprov">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="listarPromocionesXprovResponse">
-<part name="return" type="tns:dtPromocionArray"></part>
-</message>
-<message name="ObtenerDatosServicio">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="ObtenerDatosServicioResponse">
-<part name="return" type="tns:dtServicio"></part>
-</message>
-<message name="autenticarCliente">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="autenticarClienteResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
-<message name="VerificarEmailCliente">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="VerificarEmailClienteResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
-<message name="listarProveedores"></message>
-<message name="listarProveedoresResponse">
-<part xmlns:ns2="http://jaxb.dev.java.net/array" name="return" type="ns2:stringArray"></part>
-</message>
-<message name="ObtenerDatosReserva">
-<part name="arg0" type="xsd:int"></part>
-</message>
-<message name="ObtenerDatosReservaResponse">
-<part name="return" type="tns:dtInfoReservaArray"></part>
-</message>
-<message name="agregarImagenCliente">
-<part name="arg0" type="tns:inputStream"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="agregarImagenClienteResponse"></message>
-<message name="listarServiciosXprov">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="listarServiciosXprovResponse">
-<part name="return" type="tns:dtServicioArray"></part>
-</message>
-<message name="autenticarProveedor">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="autenticarProveedorResponse">
-<part name="return" type="xsd:int"></part>
-</message>
-<message name="serviciosXcat">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="serviciosXcatResponse">
-<part name="return" type="tns:dtServicioArray"></part>
-</message>
-<message name="listarReservas">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="listarReservasResponse">
-<part xmlns:ns3="http://jaxb.dev.java.net/array" name="return" type="ns3:intArray"></part>
-</message>
-<message name="listarServicios"></message>
-<message name="listarServiciosResponse">
-<part name="return" type="tns:dtServicioArray"></part>
-</message>
-<message name="cancelarReserva">
-<part name="arg0" type="xsd:int"></part>
-</message>
-<message name="cancelarReservaResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
-<message name="EsServicio">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="EsServicioResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
-<message name="verPerfil">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="verPerfilResponse">
-<part name="return" type="tns:dtCliente"></part>
-</message>
-<message name="listarCategorias"></message>
-<message name="listarCategoriasResponse">
-<part name="return" type="tns:dtCategoriaArray"></part>
 </message>
 <message name="datosPromocion">
 <part name="arg0" type="xsd:string"></part>
@@ -140,25 +26,21 @@
 <message name="datosPromocionResponse">
 <part name="return" type="tns:dtPromocion"></part>
 </message>
-<message name="ObtenerReservas">
+<message name="listarCategorias"></message>
+<message name="listarCategoriasResponse">
+<part name="return" type="tns:dtCategoriaArray"></part>
+</message>
+<message name="serviciosXcat">
 <part name="arg0" type="xsd:string"></part>
 </message>
-<message name="ObtenerReservasResponse">
-<part xmlns:ns4="http://jaxb.dev.java.net/array" name="return" type="ns4:intArray"></part>
-</message>
-<message name="serviciosXprov">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="serviciosXprovResponse">
+<message name="serviciosXcatResponse">
 <part name="return" type="tns:dtServicioArray"></part>
 </message>
-<message name="getImagenArt">
+<message name="EsServicio">
 <part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-<part name="arg2" type="xsd:string"></part>
 </message>
-<message name="getImagenArtResponse">
-<part name="return" type="xsd:base64Binary"></part>
+<message name="EsServicioResponse">
+<part name="return" type="xsd:boolean"></part>
 </message>
 <message name="agregarRes">
 <part name="arg0" type="tns:estado"></part>
@@ -170,28 +52,146 @@
 <message name="agregarResResponse">
 <part name="return" type="xsd:boolean"></part>
 </message>
+<message name="pagarReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="pagarReservaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="cancelarReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="cancelarReservaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="verPerfil">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="verPerfilResponse">
+<part name="return" type="tns:dtCliente"></part>
+</message>
+<message name="serviciosXprov">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="serviciosXprovResponse">
+<part name="return" type="tns:dtServicioArray"></part>
+</message>
 <message name="devolverReserva">
 <part name="arg0" type="xsd:int"></part>
 </message>
 <message name="devolverReservaResponse">
 <part name="return" type="tns:dtReserva"></part>
 </message>
+<message name="getImagenArt">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+<part name="arg2" type="xsd:string"></part>
+</message>
+<message name="getImagenArtResponse">
+<part name="return" type="xsd:base64Binary"></part>
+</message>
 <message name="agregarCliente">
 <part name="arg0" type="tns:dtCliente"></part>
 </message>
 <message name="agregarClienteResponse"></message>
-<message name="getImagenUsu">
+<message name="listarReservas">
 <part name="arg0" type="xsd:string"></part>
 </message>
-<message name="getImagenUsuResponse">
-<part name="return" type="xsd:base64Binary"></part>
+<message name="listarReservasResponse">
+<part xmlns:ns2="http://jaxb.dev.java.net/array" name="return" type="ns2:intArray"></part>
 </message>
-<message name="devolverCliente">
+<message name="listarServicios"></message>
+<message name="listarServiciosResponse">
+<part name="return" type="tns:dtServicioArray"></part>
+</message>
+<message name="listarProveedoresDatos"></message>
+<message name="listarProveedoresDatosResponse">
+<part name="return" type="tns:dtProveedorArray"></part>
+</message>
+<message name="listarPromociones"></message>
+<message name="listarPromocionesResponse">
+<part name="return" type="tns:dtPromocionArray"></part>
+</message>
+<message name="devolverProveedor">
 <part name="arg0" type="xsd:string"></part>
 </message>
-<message name="devolverClienteResponse">
-<part name="return" type="tns:dtCliente"></part>
+<message name="devolverProveedorResponse">
+<part name="return" type="tns:dtProveedor"></part>
 </message>
+<message name="ObtenerDatosServicio">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="ObtenerDatosServicioResponse">
+<part name="return" type="tns:dtServicio"></part>
+</message>
+<message name="autenticarProveedor">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="autenticarProveedorResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="autenticarCliente">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="autenticarClienteResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="VerificarNickCliente">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="VerificarNickClienteResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="ObtenerDatosReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="ObtenerDatosReservaResponse">
+<part name="return" type="tns:dtInfoReservaArray"></part>
+</message>
+<message name="listarServiciosXprov">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="listarServiciosXprovResponse">
+<part name="return" type="tns:dtServicioArray"></part>
+</message>
+<message name="listarPromocionesXprov">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="listarPromocionesXprovResponse">
+<part name="return" type="tns:dtPromocionArray"></part>
+</message>
+<message name="actualizarEstadoArticulo">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+<part name="arg2" type="xsd:string"></part>
+</message>
+<message name="actualizarEstadoArticuloResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="listarReservasXprov">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="listarReservasXprovResponse">
+<part xmlns:ns3="http://jaxb.dev.java.net/array" name="return" type="ns3:intArray"></part>
+</message>
+<message name="VerificarEmailCliente">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="VerificarEmailClienteResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="listarProveedores"></message>
+<message name="listarProveedoresResponse">
+<part xmlns:ns4="http://jaxb.dev.java.net/array" name="return" type="ns4:stringArray"></part>
+</message>
+<message name="agregarImagenCliente">
+<part name="arg0" type="tns:inputStream"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="agregarImagenClienteResponse"></message>
 <message name="agregarRegistro">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -199,7 +199,7 @@
 <part name="arg3" type="xsd:string"></part>
 </message>
 <message name="agregarRegistroResponse">
-<part name="return" type="xsd:boolean"></part>
+<part name="return" type="xsd:int"></part>
 </message>
 <message name="agregarVisita">
 <part name="arg0" type="xsd:string"></part>
@@ -208,70 +208,68 @@
 <message name="agregarVisitaResponse">
 <part name="return" type="xsd:boolean"></part>
 </message>
+<message name="devolverCliente">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="devolverClienteResponse">
+<part name="return" type="tns:dtCliente"></part>
+</message>
 <portType name="Publicador">
-<operation name="VerificarNickCliente">
-<input wsam:Action="http://servidor/Publicador/VerificarNickClienteRequest" message="tns:VerificarNickCliente"></input>
-<output wsam:Action="http://servidor/Publicador/VerificarNickClienteResponse" message="tns:VerificarNickClienteResponse"></output>
+<operation name="getImagenUsu">
+<input wsam:Action="http://servidor/Publicador/getImagenUsuRequest" message="tns:getImagenUsu"></input>
+<output wsam:Action="http://servidor/Publicador/getImagenUsuResponse" message="tns:getImagenUsuResponse"></output>
 </operation>
-<operation name="listarReservasXprov">
-<input wsam:Action="http://servidor/Publicador/listarReservasXprovRequest" message="tns:listarReservasXprov"></input>
-<output wsam:Action="http://servidor/Publicador/listarReservasXprovResponse" message="tns:listarReservasXprovResponse"></output>
+<operation name="ObtenerReservas">
+<input wsam:Action="http://servidor/Publicador/ObtenerReservasRequest" message="tns:ObtenerReservas"></input>
+<output wsam:Action="http://servidor/Publicador/ObtenerReservasResponse" message="tns:ObtenerReservasResponse"></output>
 </operation>
-<operation name="listarPromociones">
-<input wsam:Action="http://servidor/Publicador/listarPromocionesRequest" message="tns:listarPromociones"></input>
-<output wsam:Action="http://servidor/Publicador/listarPromocionesResponse" message="tns:listarPromocionesResponse"></output>
+<operation name="datosPromocion" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/datosPromocionRequest" message="tns:datosPromocion"></input>
+<output wsam:Action="http://servidor/Publicador/datosPromocionResponse" message="tns:datosPromocionResponse"></output>
 </operation>
-<operation name="listarProveedoresDatos">
-<input wsam:Action="http://servidor/Publicador/listarProveedoresDatosRequest" message="tns:listarProveedoresDatos"></input>
-<output wsam:Action="http://servidor/Publicador/listarProveedoresDatosResponse" message="tns:listarProveedoresDatosResponse"></output>
-</operation>
-<operation name="actualizarEstadoArticulo" parameterOrder="arg0 arg1 arg2">
-<input wsam:Action="http://servidor/Publicador/actualizarEstadoArticuloRequest" message="tns:actualizarEstadoArticulo"></input>
-<output wsam:Action="http://servidor/Publicador/actualizarEstadoArticuloResponse" message="tns:actualizarEstadoArticuloResponse"></output>
-</operation>
-<operation name="devolverProveedor">
-<input wsam:Action="http://servidor/Publicador/devolverProveedorRequest" message="tns:devolverProveedor"></input>
-<output wsam:Action="http://servidor/Publicador/devolverProveedorResponse" message="tns:devolverProveedorResponse"></output>
-</operation>
-<operation name="listarPromocionesXprov">
-<input wsam:Action="http://servidor/Publicador/listarPromocionesXprovRequest" message="tns:listarPromocionesXprov"></input>
-<output wsam:Action="http://servidor/Publicador/listarPromocionesXprovResponse" message="tns:listarPromocionesXprovResponse"></output>
-</operation>
-<operation name="ObtenerDatosServicio" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/ObtenerDatosServicioRequest" message="tns:ObtenerDatosServicio"></input>
-<output wsam:Action="http://servidor/Publicador/ObtenerDatosServicioResponse" message="tns:ObtenerDatosServicioResponse"></output>
-</operation>
-<operation name="autenticarCliente" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/autenticarClienteRequest" message="tns:autenticarCliente"></input>
-<output wsam:Action="http://servidor/Publicador/autenticarClienteResponse" message="tns:autenticarClienteResponse"></output>
-</operation>
-<operation name="VerificarEmailCliente">
-<input wsam:Action="http://servidor/Publicador/VerificarEmailClienteRequest" message="tns:VerificarEmailCliente"></input>
-<output wsam:Action="http://servidor/Publicador/VerificarEmailClienteResponse" message="tns:VerificarEmailClienteResponse"></output>
-</operation>
-<operation name="listarProveedores">
-<input wsam:Action="http://servidor/Publicador/listarProveedoresRequest" message="tns:listarProveedores"></input>
-<output wsam:Action="http://servidor/Publicador/listarProveedoresResponse" message="tns:listarProveedoresResponse"></output>
-</operation>
-<operation name="ObtenerDatosReserva">
-<input wsam:Action="http://servidor/Publicador/ObtenerDatosReservaRequest" message="tns:ObtenerDatosReserva"></input>
-<output wsam:Action="http://servidor/Publicador/ObtenerDatosReservaResponse" message="tns:ObtenerDatosReservaResponse"></output>
-</operation>
-<operation name="agregarImagenCliente" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/agregarImagenClienteRequest" message="tns:agregarImagenCliente"></input>
-<output wsam:Action="http://servidor/Publicador/agregarImagenClienteResponse" message="tns:agregarImagenClienteResponse"></output>
-</operation>
-<operation name="listarServiciosXprov">
-<input wsam:Action="http://servidor/Publicador/listarServiciosXprovRequest" message="tns:listarServiciosXprov"></input>
-<output wsam:Action="http://servidor/Publicador/listarServiciosXprovResponse" message="tns:listarServiciosXprovResponse"></output>
-</operation>
-<operation name="autenticarProveedor" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/autenticarProveedorRequest" message="tns:autenticarProveedor"></input>
-<output wsam:Action="http://servidor/Publicador/autenticarProveedorResponse" message="tns:autenticarProveedorResponse"></output>
+<operation name="listarCategorias">
+<input wsam:Action="http://servidor/Publicador/listarCategoriasRequest" message="tns:listarCategorias"></input>
+<output wsam:Action="http://servidor/Publicador/listarCategoriasResponse" message="tns:listarCategoriasResponse"></output>
 </operation>
 <operation name="serviciosXcat">
 <input wsam:Action="http://servidor/Publicador/serviciosXcatRequest" message="tns:serviciosXcat"></input>
 <output wsam:Action="http://servidor/Publicador/serviciosXcatResponse" message="tns:serviciosXcatResponse"></output>
+</operation>
+<operation name="EsServicio">
+<input wsam:Action="http://servidor/Publicador/EsServicioRequest" message="tns:EsServicio"></input>
+<output wsam:Action="http://servidor/Publicador/EsServicioResponse" message="tns:EsServicioResponse"></output>
+</operation>
+<operation name="agregarRes" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+<input wsam:Action="http://servidor/Publicador/agregarResRequest" message="tns:agregarRes"></input>
+<output wsam:Action="http://servidor/Publicador/agregarResResponse" message="tns:agregarResResponse"></output>
+</operation>
+<operation name="pagarReserva">
+<input wsam:Action="http://servidor/Publicador/pagarReservaRequest" message="tns:pagarReserva"></input>
+<output wsam:Action="http://servidor/Publicador/pagarReservaResponse" message="tns:pagarReservaResponse"></output>
+</operation>
+<operation name="cancelarReserva">
+<input wsam:Action="http://servidor/Publicador/cancelarReservaRequest" message="tns:cancelarReserva"></input>
+<output wsam:Action="http://servidor/Publicador/cancelarReservaResponse" message="tns:cancelarReservaResponse"></output>
+</operation>
+<operation name="verPerfil">
+<input wsam:Action="http://servidor/Publicador/verPerfilRequest" message="tns:verPerfil"></input>
+<output wsam:Action="http://servidor/Publicador/verPerfilResponse" message="tns:verPerfilResponse"></output>
+</operation>
+<operation name="serviciosXprov">
+<input wsam:Action="http://servidor/Publicador/serviciosXprovRequest" message="tns:serviciosXprov"></input>
+<output wsam:Action="http://servidor/Publicador/serviciosXprovResponse" message="tns:serviciosXprovResponse"></output>
+</operation>
+<operation name="devolverReserva">
+<input wsam:Action="http://servidor/Publicador/devolverReservaRequest" message="tns:devolverReserva"></input>
+<output wsam:Action="http://servidor/Publicador/devolverReservaResponse" message="tns:devolverReservaResponse"></output>
+</operation>
+<operation name="getImagenArt" parameterOrder="arg0 arg1 arg2">
+<input wsam:Action="http://servidor/Publicador/getImagenArtRequest" message="tns:getImagenArt"></input>
+<output wsam:Action="http://servidor/Publicador/getImagenArtResponse" message="tns:getImagenArtResponse"></output>
+</operation>
+<operation name="agregarCliente">
+<input wsam:Action="http://servidor/Publicador/agregarClienteRequest" message="tns:agregarCliente"></input>
+<output wsam:Action="http://servidor/Publicador/agregarClienteResponse" message="tns:agregarClienteResponse"></output>
 </operation>
 <operation name="listarReservas">
 <input wsam:Action="http://servidor/Publicador/listarReservasRequest" message="tns:listarReservas"></input>
@@ -281,57 +279,65 @@
 <input wsam:Action="http://servidor/Publicador/listarServiciosRequest" message="tns:listarServicios"></input>
 <output wsam:Action="http://servidor/Publicador/listarServiciosResponse" message="tns:listarServiciosResponse"></output>
 </operation>
-<operation name="cancelarReserva">
-<input wsam:Action="http://servidor/Publicador/cancelarReservaRequest" message="tns:cancelarReserva"></input>
-<output wsam:Action="http://servidor/Publicador/cancelarReservaResponse" message="tns:cancelarReservaResponse"></output>
+<operation name="listarProveedoresDatos">
+<input wsam:Action="http://servidor/Publicador/listarProveedoresDatosRequest" message="tns:listarProveedoresDatos"></input>
+<output wsam:Action="http://servidor/Publicador/listarProveedoresDatosResponse" message="tns:listarProveedoresDatosResponse"></output>
 </operation>
-<operation name="EsServicio">
-<input wsam:Action="http://servidor/Publicador/EsServicioRequest" message="tns:EsServicio"></input>
-<output wsam:Action="http://servidor/Publicador/EsServicioResponse" message="tns:EsServicioResponse"></output>
+<operation name="listarPromociones">
+<input wsam:Action="http://servidor/Publicador/listarPromocionesRequest" message="tns:listarPromociones"></input>
+<output wsam:Action="http://servidor/Publicador/listarPromocionesResponse" message="tns:listarPromocionesResponse"></output>
 </operation>
-<operation name="verPerfil">
-<input wsam:Action="http://servidor/Publicador/verPerfilRequest" message="tns:verPerfil"></input>
-<output wsam:Action="http://servidor/Publicador/verPerfilResponse" message="tns:verPerfilResponse"></output>
+<operation name="devolverProveedor">
+<input wsam:Action="http://servidor/Publicador/devolverProveedorRequest" message="tns:devolverProveedor"></input>
+<output wsam:Action="http://servidor/Publicador/devolverProveedorResponse" message="tns:devolverProveedorResponse"></output>
 </operation>
-<operation name="listarCategorias">
-<input wsam:Action="http://servidor/Publicador/listarCategoriasRequest" message="tns:listarCategorias"></input>
-<output wsam:Action="http://servidor/Publicador/listarCategoriasResponse" message="tns:listarCategoriasResponse"></output>
+<operation name="ObtenerDatosServicio" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/ObtenerDatosServicioRequest" message="tns:ObtenerDatosServicio"></input>
+<output wsam:Action="http://servidor/Publicador/ObtenerDatosServicioResponse" message="tns:ObtenerDatosServicioResponse"></output>
 </operation>
-<operation name="datosPromocion" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/datosPromocionRequest" message="tns:datosPromocion"></input>
-<output wsam:Action="http://servidor/Publicador/datosPromocionResponse" message="tns:datosPromocionResponse"></output>
+<operation name="autenticarProveedor" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/autenticarProveedorRequest" message="tns:autenticarProveedor"></input>
+<output wsam:Action="http://servidor/Publicador/autenticarProveedorResponse" message="tns:autenticarProveedorResponse"></output>
 </operation>
-<operation name="ObtenerReservas">
-<input wsam:Action="http://servidor/Publicador/ObtenerReservasRequest" message="tns:ObtenerReservas"></input>
-<output wsam:Action="http://servidor/Publicador/ObtenerReservasResponse" message="tns:ObtenerReservasResponse"></output>
+<operation name="autenticarCliente" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/autenticarClienteRequest" message="tns:autenticarCliente"></input>
+<output wsam:Action="http://servidor/Publicador/autenticarClienteResponse" message="tns:autenticarClienteResponse"></output>
 </operation>
-<operation name="serviciosXprov">
-<input wsam:Action="http://servidor/Publicador/serviciosXprovRequest" message="tns:serviciosXprov"></input>
-<output wsam:Action="http://servidor/Publicador/serviciosXprovResponse" message="tns:serviciosXprovResponse"></output>
+<operation name="VerificarNickCliente">
+<input wsam:Action="http://servidor/Publicador/VerificarNickClienteRequest" message="tns:VerificarNickCliente"></input>
+<output wsam:Action="http://servidor/Publicador/VerificarNickClienteResponse" message="tns:VerificarNickClienteResponse"></output>
 </operation>
-<operation name="getImagenArt" parameterOrder="arg0 arg1 arg2">
-<input wsam:Action="http://servidor/Publicador/getImagenArtRequest" message="tns:getImagenArt"></input>
-<output wsam:Action="http://servidor/Publicador/getImagenArtResponse" message="tns:getImagenArtResponse"></output>
+<operation name="ObtenerDatosReserva">
+<input wsam:Action="http://servidor/Publicador/ObtenerDatosReservaRequest" message="tns:ObtenerDatosReserva"></input>
+<output wsam:Action="http://servidor/Publicador/ObtenerDatosReservaResponse" message="tns:ObtenerDatosReservaResponse"></output>
 </operation>
-<operation name="agregarRes" parameterOrder="arg0 arg1 arg2 arg3 arg4">
-<input wsam:Action="http://servidor/Publicador/agregarResRequest" message="tns:agregarRes"></input>
-<output wsam:Action="http://servidor/Publicador/agregarResResponse" message="tns:agregarResResponse"></output>
+<operation name="listarServiciosXprov">
+<input wsam:Action="http://servidor/Publicador/listarServiciosXprovRequest" message="tns:listarServiciosXprov"></input>
+<output wsam:Action="http://servidor/Publicador/listarServiciosXprovResponse" message="tns:listarServiciosXprovResponse"></output>
 </operation>
-<operation name="devolverReserva">
-<input wsam:Action="http://servidor/Publicador/devolverReservaRequest" message="tns:devolverReserva"></input>
-<output wsam:Action="http://servidor/Publicador/devolverReservaResponse" message="tns:devolverReservaResponse"></output>
+<operation name="listarPromocionesXprov">
+<input wsam:Action="http://servidor/Publicador/listarPromocionesXprovRequest" message="tns:listarPromocionesXprov"></input>
+<output wsam:Action="http://servidor/Publicador/listarPromocionesXprovResponse" message="tns:listarPromocionesXprovResponse"></output>
 </operation>
-<operation name="agregarCliente">
-<input wsam:Action="http://servidor/Publicador/agregarClienteRequest" message="tns:agregarCliente"></input>
-<output wsam:Action="http://servidor/Publicador/agregarClienteResponse" message="tns:agregarClienteResponse"></output>
+<operation name="actualizarEstadoArticulo" parameterOrder="arg0 arg1 arg2">
+<input wsam:Action="http://servidor/Publicador/actualizarEstadoArticuloRequest" message="tns:actualizarEstadoArticulo"></input>
+<output wsam:Action="http://servidor/Publicador/actualizarEstadoArticuloResponse" message="tns:actualizarEstadoArticuloResponse"></output>
 </operation>
-<operation name="getImagenUsu">
-<input wsam:Action="http://servidor/Publicador/getImagenUsuRequest" message="tns:getImagenUsu"></input>
-<output wsam:Action="http://servidor/Publicador/getImagenUsuResponse" message="tns:getImagenUsuResponse"></output>
+<operation name="listarReservasXprov">
+<input wsam:Action="http://servidor/Publicador/listarReservasXprovRequest" message="tns:listarReservasXprov"></input>
+<output wsam:Action="http://servidor/Publicador/listarReservasXprovResponse" message="tns:listarReservasXprovResponse"></output>
 </operation>
-<operation name="devolverCliente">
-<input wsam:Action="http://servidor/Publicador/devolverClienteRequest" message="tns:devolverCliente"></input>
-<output wsam:Action="http://servidor/Publicador/devolverClienteResponse" message="tns:devolverClienteResponse"></output>
+<operation name="VerificarEmailCliente">
+<input wsam:Action="http://servidor/Publicador/VerificarEmailClienteRequest" message="tns:VerificarEmailCliente"></input>
+<output wsam:Action="http://servidor/Publicador/VerificarEmailClienteResponse" message="tns:VerificarEmailClienteResponse"></output>
+</operation>
+<operation name="listarProveedores">
+<input wsam:Action="http://servidor/Publicador/listarProveedoresRequest" message="tns:listarProveedores"></input>
+<output wsam:Action="http://servidor/Publicador/listarProveedoresResponse" message="tns:listarProveedoresResponse"></output>
+</operation>
+<operation name="agregarImagenCliente" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/agregarImagenClienteRequest" message="tns:agregarImagenCliente"></input>
+<output wsam:Action="http://servidor/Publicador/agregarImagenClienteResponse" message="tns:agregarImagenClienteResponse"></output>
 </operation>
 <operation name="agregarRegistro" parameterOrder="arg0 arg1 arg2 arg3">
 <input wsam:Action="http://servidor/Publicador/agregarRegistroRequest" message="tns:agregarRegistro"></input>
@@ -341,10 +347,14 @@
 <input wsam:Action="http://servidor/Publicador/agregarVisitaRequest" message="tns:agregarVisita"></input>
 <output wsam:Action="http://servidor/Publicador/agregarVisitaResponse" message="tns:agregarVisitaResponse"></output>
 </operation>
+<operation name="devolverCliente">
+<input wsam:Action="http://servidor/Publicador/devolverClienteRequest" message="tns:devolverCliente"></input>
+<output wsam:Action="http://servidor/Publicador/devolverClienteResponse" message="tns:devolverClienteResponse"></output>
+</operation>
 </portType>
 <binding name="PublicadorPortBinding" type="tns:Publicador">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"></soap:binding>
-<operation name="VerificarNickCliente">
+<operation name="getImagenUsu">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -353,187 +363,7 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="listarReservasXprov">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarPromociones">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarProveedoresDatos">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="actualizarEstadoArticulo">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="devolverProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarPromocionesXprov">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="ObtenerDatosServicio">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="autenticarCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="VerificarEmailCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarProveedores">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="ObtenerDatosReserva">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="agregarImagenCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarServiciosXprov">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="autenticarProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="serviciosXcat">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarReservas">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarServicios">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="cancelarReserva">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="EsServicio">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="verPerfil">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarCategorias">
+<operation name="ObtenerReservas">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -551,7 +381,7 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="ObtenerReservas">
+<operation name="listarCategorias">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -560,7 +390,7 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="serviciosXprov">
+<operation name="serviciosXcat">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -569,7 +399,7 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="getImagenArt">
+<operation name="EsServicio">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -587,7 +417,52 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
+<operation name="pagarReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="cancelarReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="verPerfil">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="serviciosXprov">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
 <operation name="devolverReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="getImagenArt">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -605,7 +480,7 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="getImagenUsu">
+<operation name="listarReservas">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -614,7 +489,142 @@
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
 </output>
 </operation>
-<operation name="devolverCliente">
+<operation name="listarServicios">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarProveedoresDatos">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarPromociones">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="devolverProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="ObtenerDatosServicio">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="autenticarProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="autenticarCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="VerificarNickCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="ObtenerDatosReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarServiciosXprov">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarPromocionesXprov">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="actualizarEstadoArticulo">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarReservasXprov">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="VerificarEmailCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarProveedores">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="agregarImagenCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -633,6 +643,15 @@
 </output>
 </operation>
 <operation name="agregarVisita">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="devolverCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>

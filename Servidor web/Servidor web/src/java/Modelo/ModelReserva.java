@@ -5,19 +5,9 @@ import servidor.DtInfoReservaArray;
 import servidor.Estado;
 
 public class ModelReserva {
-    private static ModelReserva instancia;
-    private static servidor.PublicadorService service;
-    private static servidor.Publicador port;
+    private servidor.PublicadorService service =  new servidor.PublicadorService();
+    private servidor.Publicador port = service.getPublicadorPort();
 
-    public static ModelReserva getInstance(){
-        if (instancia==null){
-            instancia = new ModelReserva();
-            service =  new servidor.PublicadorService();
-            port = service.getPublicadorPort();
-        }
-        return instancia;
-    }
-    
     public List<Integer> listarReservas(String nickname){
         //return ICReserva.listarReservasXcli(nickname);
         return port.listarReservas(nickname).getItem();
@@ -55,5 +45,10 @@ public class ModelReserva {
     public boolean cancelarReserva(int id){
         //return ICReserva.actualizarEstado(Estado.Cancelada, id);
         return port.cancelarReserva(id);
+    }
+    
+    public boolean pagarReserva(int id){
+        //return ICReserva.actualizarEstado(Estado.Cancelada, id);
+        return port.pagarReserva(id);
     }
 }

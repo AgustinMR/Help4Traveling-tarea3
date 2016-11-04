@@ -16,7 +16,7 @@ public class ModelRegistro {
     public boolean agregarRegistro(String ip, String url, String so, String nav){
         PublicadorService service =  new PublicadorService();
         Publicador port = service.getPublicadorPort();
-        return port.agregarRegistro(ip, url, so, nav);
+        return port.agregarRegistro(ip, url, so, nav) == 1;
     }
     
 }

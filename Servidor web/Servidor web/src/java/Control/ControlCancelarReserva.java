@@ -23,7 +23,8 @@ public class ControlCancelarReserva extends HttpServlet {
         try {
             boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
             if (ajax) {
-                ModelReserva.getInstance().cancelarReserva(id);
+                ModelReserva a =  new ModelReserva();
+                a.cancelarReserva(id);
             }           
         } finally {
             out.close();
