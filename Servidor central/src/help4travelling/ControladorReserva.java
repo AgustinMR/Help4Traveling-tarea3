@@ -83,12 +83,18 @@ public class ControladorReserva implements IControladorReserva{
     }
 
     @Override
-    public String devolverEstadoArticulo(String idReserva, String nickP, String nombreA){
-        return ManejadorSQL.GetInstance().devolverEstadoArticulo(idReserva, nickP, nombreA);
-    }
-
-    @Override
     public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA) {
         return ManejadorReserva.GetInstance().actualizarEstadoArticulo(idReserva, nickP, nombreA, Estado.Facturada);
     }
+
+    @Override
+    public boolean estaFacturadaReserva(int idReserva) {
+        return ManejadorReserva.GetInstance().estaFacturadaReserva(idReserva);
+    }
+
+    @Override
+    public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA) {
+        return ManejadorReserva.GetInstance().estaFacturadoArticulo(idReserva, nickP, nombreA);
+    }
+
 }

@@ -17,38 +17,43 @@ public class DtServicio implements Serializable {
     private String ciudadDestino;
     private DtVisita visitas;
 
-    public DtServicio(){
+    public DtServicio() {
     }
 
-    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino){
-        this.nombre=nombre;
-        this.nickProveedor=nickProv;
-        this.precio=precio;
-        this.descripcion=descripcion;
-        this.categorias=categorias;
-        this.ciudadOrigen=ciudadOrigen;
-        this.ciudadDestino=ciudadDestino;
+    public DtServicio(String nombre, String nickProveedor) {
+        this.nombre = nombre;
+        this.nickProveedor = nickProveedor;
     }
 
-    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino, DtVisita v){
-        this.nombre=nombre;
-        this.nickProveedor=nickProv;
-        this.precio=precio;
-        this.descripcion=descripcion;
-        this.categorias=categorias;
-        this.ciudadOrigen=ciudadOrigen;
-        this.ciudadDestino=ciudadDestino;
+    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino) {
+        this.nombre = nombre;
+        this.nickProveedor = nickProv;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.categorias = categorias;
+        this.ciudadOrigen = ciudadOrigen;
+        this.ciudadDestino = ciudadDestino;
+    }
+
+    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino, DtVisita v) {
+        this.nombre = nombre;
+        this.nickProveedor = nickProv;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.categorias = categorias;
+        this.ciudadOrigen = ciudadOrigen;
+        this.ciudadDestino = ciudadDestino;
         this.visitas = v;
     }
 
-    public DtServicio(String nombre, Float precio, String descripcion){
-        this.nombre=nombre;
-        this.precio=precio;
-        this.descripcion=descripcion;
+    public DtServicio(String nombre, Float precio, String descripcion) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
     }
 
-    public DtServicio(String nombre){
-        this.nombre=nombre;
+    public DtServicio(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getNombre() {
@@ -114,6 +119,5 @@ public class DtServicio implements Serializable {
     public void setVisitas(DtVisita visitas) {
         this.visitas = visitas;
     }
-
 
 }

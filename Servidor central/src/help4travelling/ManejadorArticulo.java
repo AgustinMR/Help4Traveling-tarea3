@@ -55,7 +55,7 @@ public class ManejadorArticulo {
     }
 
     public ArrayList<DtServicio> ListarServicios(){
-        ArrayList<DtServicio> ret = new ArrayList<DtServicio>();
+        ArrayList<DtServicio> ret = new ArrayList<>();
         for (int i = 0; i < articulos.size(); i++) {
             if(articulos.get(i).IsServicio()){
                 ret.add(articulos.get(i).GetDtServicio());
@@ -65,19 +65,20 @@ public class ManejadorArticulo {
     }
 
     public ArrayList<DtPromocion> listarPromocionesProv(String nick){
-        ArrayList<DtPromocion> ArrayPromociones = new ArrayList<DtPromocion>();
+        ArrayList<DtPromocion> ArrayPromociones = new ArrayList<>();
         for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).isPromocion() && articulos.get(i).getProv().equals(nick))
-                ArrayPromociones.add(articulos.get(i).getDtPromocion());
+            if (articulos.get(i).isPromocion() && articulos.get(i).getProv().equals(nick)){
+                ArrayPromociones.add(new DtPromocion(articulos.get(i).getDtPromocion().getNombre(),articulos.get(i).getDtPromocion().getNickProv()));
+            }
         }
         return ArrayPromociones;
     }
 
     public ArrayList<DtServicio> ListarServiciosProv(String nick){
-        ArrayList<DtServicio> ret = new ArrayList<DtServicio>();
+        ArrayList<DtServicio> ret = new ArrayList<>();
         for (int i = 0; i < articulos.size(); i++) {
             if(articulos.get(i).IsServicio() && articulos.get(i).getProv().equals(nick)){
-                ret.add(articulos.get(i).GetDtServicio());
+                ret.add(ManejadorSQL.GetInstance().devolverServicio(articulos.get(i).GetDtServicio().getNickProveedor(), articulos.get(i).GetDtServicio().getNombre()));
             }
         }
         return ret;
@@ -149,6 +150,10 @@ public class ManejadorArticulo {
 
     public boolean agregarVisita(String nickP, String nombreA){
         return ManejadorSQL.GetInstance().ingresarVisita(nickP, nombreA);
+    }
+    
+    public ArrayList<String> listarServiciosXprom(String nickP, String nombrePromo){
+        return ManejadorSQL.GetInstance().listarServiciosXprom(nickP, nombrePromo);
     }
 
 }

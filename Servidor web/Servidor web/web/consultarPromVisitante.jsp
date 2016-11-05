@@ -48,7 +48,8 @@
                     </tr>
                   </thead>
                   <tbody style="color: black; font-family: Helvetica; font-size: 13">
-                    <%! List<DtPromocion> prom = ModelArticulo.getInstance().listarPromociones(); %>
+                    <%! ModelArticulo modArt = new ModelArticulo();
+                        List<DtPromocion> prom = modArt.listarPromociones(); %>
                     <% for(int i=0; i<prom.size(); i++){ %>
                     <tr>
                       <td style="border-bottom-style: solid; border-width: 1px; border-color: #01529e"><%= prom.get(i).getNickProv() %></td>

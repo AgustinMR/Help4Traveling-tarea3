@@ -44,13 +44,15 @@
                                 <div class="row" style="height: 35px; margin-top: 20px">
 
                                     <%
+                                        ModelUsuario modUsu = new ModelUsuario();
+                                        ModelReserva modRes = new ModelReserva();
                                         String nick = request.getSession().getAttribute("usuario_logueado").toString();
-                                        DtCliente c = ModelUsuario.getInstance().devolverCliente(nick);
+                                        DtCliente c = modUsu.devolverCliente(nick);
                                     %>
 
                                     <!-- FILA A TENER POR CADA RESERVA -->
                                     <%   for (int x = 0; x < c.getReservas().size(); x++) {%>
-                                    <% DtReserva dtres = ModelReserva.getInstance().devolverReserva(c.getReservas().get(x));
+                                    <% DtReserva dtres = modRes.devolverReserva(c.getReservas().get(x));
                                  
                                     %>
    
@@ -87,7 +89,7 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                            <%  DtReserva res = ModelReserva.getInstance().devolverReserva(dtres.getId());   %>
+                                                            <%  DtReserva res = modRes.devolverReserva(dtres.getId());   %>
                                                             <script>
                                                        
                                                             </script>

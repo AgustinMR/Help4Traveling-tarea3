@@ -1,32 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Control;
 
 import Model.ModelArticulo;
-import com.google.gson.Gson;
+import Model.ModelReserva;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servidor.DtReserva;
-import servidor.DtServicio;
 
-public class devolverServicio extends HttpServlet {
+/**
+ *
+ * @author Antares
+ */
+public class VerReservas extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
-            if (ajax) {
-                String nickname = request.getParameter("nickname");
-                String servicio = request.getParameter("servicio");
-                ModelArticulo x = new ModelArticulo();
-                String json = new Gson().toJson(x.devolverServicio(nickname, servicio));
-                response.setContentType("application/json");
-                response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(json);
-            }           
-        } finally {
-        }
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("holaaaaaaaaaaaaaaaaaaaaaaa");
+        try{
+            ModelReserva modRes = new ModelReserva();
+            request.setAttribute("modeloReserva", modRes);
+            
+            ModelArticulo modArt = new ModelArticulo();
+            request.setAttribute("modeloArticulo", modArt);
+            request.getRequestDispatcher("verReservas.jsp").forward(request, response);
+                        
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

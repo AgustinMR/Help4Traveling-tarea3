@@ -1,6 +1,7 @@
 package servidor;
 
 import help4travelling.*;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,6 +74,17 @@ public class Publicador {
         //return ICArticulo.ListarServiciosProv(nickP);
         ArrayList<DtServicio> servXprom = ICArticulo.ListarServiciosProv(nickP);
         DtServicio[] ret = servXprom.toArray(new DtServicio[servXprom.size()]);
+        return ret;
+    }
+    
+    @WebMethod
+    public String[] listarServiciosXprom(String nickP, String nombrePromo) {
+        //return ICArticulo.ListarServiciosProv(nickP);
+        ArrayList<String> servXprom = ICArticulo.listarServiciosXprom(nickP, nombrePromo);
+        String[] ret = servXprom.toArray(new String[servXprom.size()]);
+        /*for(int x = 0; x < servXprom.size(); x++){
+            ret[x] = servXprom.get(x);
+        }*/
         return ret;
     }
 
@@ -225,9 +237,10 @@ public class Publicador {
         return ICUsuario.datosProveedor(nick);
     }
 
-    public void agregarImagenCliente(InputStream f, String NickC) {
+    public void agregarImagenCliente(byte[] f, String NickC) {
         try {
-            ManejadorSQL.GetInstance().insertImgUsuariov2(f, NickC);
+            InputStream is = new ByteArrayInputStream(f);
+            ManejadorSQL.GetInstance().insertImgUsuariov2(is, NickC);
         } catch (Exception e) {
         }
     }

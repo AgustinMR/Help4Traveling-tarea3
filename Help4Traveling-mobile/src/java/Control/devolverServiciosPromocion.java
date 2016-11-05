@@ -3,28 +3,27 @@ package Control;
 import Model.ModelArticulo;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servidor.DtReserva;
-import servidor.DtServicio;
 
-public class devolverServicio extends HttpServlet {
+public class devolverServiciosPromocion extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
             if (ajax) {
                 String nickname = request.getParameter("nickname");
-                String servicio = request.getParameter("servicio");
+                String promocion = request.getParameter("nombrePromo");
                 ModelArticulo x = new ModelArticulo();
-                String json = new Gson().toJson(x.devolverServicio(nickname, servicio));
+                List<String> s = x.listarServiciosXprom(nickname, promocion);
+                String json = new Gson().toJson(s);
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(json);
-            }           
+                response.getWriter().write(json); 
+            }
         } finally {
         }
     }

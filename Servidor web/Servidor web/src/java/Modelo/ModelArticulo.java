@@ -20,7 +20,7 @@ public class ModelArticulo {
     }
     
     public List<servidor.DtServicio> serviciosXprov(String nickP){
-        //return ICArticulo.ListarServiciosProv(nickP);
+        //return ICArticulo.ListarServiciosProv(nickP);        
         return port.serviciosXprov(nickP).getItem();
     }
     

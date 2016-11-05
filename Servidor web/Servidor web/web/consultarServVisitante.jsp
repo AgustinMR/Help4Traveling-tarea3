@@ -54,14 +54,15 @@
                         <div id="categoriasArbol" class="col-md-3" style="background-color: white; min-height: 550px; max-height: 550px; overflow-y: auto">
                             <div class="col-md-12">
                                 <div class="row" style="margin-top: 20px; border-top-style: solid; border-width: 4px; border-color: #01529e">
-                                    <h3 style="height: 35px; font-family: Helvetica; color: #01529e; margin-top: 10px">
-                                        <center>
+                                    <center>
+                                        <h3 style="height: 35px; font-family: Helvetica; color: #01529e; margin-top: 10px">
                                             <b>CATEGORÍAS</b>
-                                        </center>
-                                    </h3>
+                                        </h3>
+                                    </center>
                                 </div>
 
-                                <%!   List<DtCategoria> c = ModelArticulo.getInstance().listarCategorias();%>
+                                <%! ModelArticulo modArt = new ModelArticulo();
+                                    List<DtCategoria> c = modArt.listarCategorias();%>
 
                                 <!-- FILA A TENER POR CADA CATEGORIA -->
                                 <%    for (int x = 0; x < c.size(); x++) {%>
@@ -77,7 +78,7 @@
                         <div id="listaQNoEsLista" class="col-md-9" style="height: 550px; max-height: 550px; overflow-y: auto; background-color: #E6E6E6">
                             <!-- COMIENZO FILA A TENER POR CADA SERVICIO -->
 
-                            <% List<DtServicio> s = ModelArticulo.getInstance().listarServicios(); %>
+                            <% List<DtServicio> s = modArt.listarServicios(); %>
 
                             <%   for (int x = 0; x < s.size(); x++) {%>
 
@@ -135,9 +136,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: #4A4C4E; min-height: 50px; max-height: 50px">
                                             <button type="button" class="close" data-dismiss="modal" style="color: white">×</button>
-                                            <h3 class="modal-title" style="font-family: Helvetica; color: #8e969f; margin-top: -5px">
-                                                <center><%= s.get(x).getNombre().trim()%></center>
-                                            </h3>
+                                            <center>
+                                                <h3 class="modal-title" style="font-family: Helvetica; color: #8e969f; margin-top: -5px">
+                                                    <%= s.get(x).getNombre().trim()%>
+                                                </h3>
+                                            </center>
                                         </div>
                                         <div class="modal-body" style="height: 70%; max-height: 650px; min-height: 650px; overflow-y: auto; background-color: #E6E6E6">
                                             <div class="row" style="height: 50%; margin-top: -15px">
@@ -184,24 +187,36 @@
                                                 <!-- SECCION CON DESCRIPCION -->
                                                 <div class="row" style="margin-left: 0; width: 100%; height: 300px; max-height: 300px; min-height: 300px">
                                                     <div class="col-md-4">
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>PROVEEDOR:</center>
-                                                        </h4>
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>NOMBRE:</center>
-                                                        </h4>
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>PRECIO:</center>
-                                                        </h4>
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>CIUDAD ORIGEN:</center>
-                                                        </h4>
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>CIUDAD DESTINO:</center>
-                                                        </h4>
-                                                        <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
-                                                            <center>DESCRIPCION:</center>
-                                                        </h4>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                PROVEEDOR:
+                                                            </h4>
+                                                        </center>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                NOMBRE:
+                                                            </h4>
+                                                        </center>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                PRECIO:
+                                                            </h4>
+                                                        </center>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                CIUDAD ORIGEN:
+                                                            </h4>
+                                                        </center>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                CIUDAD DESTINO:
+                                                            </h4>
+                                                        </center>
+                                                        <center>
+                                                            <h4 style="font-family: Helvetica; color: #4A4C4E; border-bottom-style: solid">
+                                                                DESCRIPCION:
+                                                            </h4>
+                                                        </center>
                                                     </div>
                                                     <!-- FIN SECCION DESCRIPTIVA && COMIENZO INFORMACION A CARGAR -->
                                                     <div class="col-md-8">

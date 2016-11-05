@@ -1,8 +1,3 @@
-<%-- 
-    Document   : verArticulos
-    Created on : 30/10/2016, 11:45:45 AM
-    Author     : Agustin
---%>
 
 <%@page import="Model.ModelArticulo"%>
 <%@page import="servidor.DtPromocion"%>
@@ -44,17 +39,13 @@
                 <%   for (int x = 0; x < s.size(); x++) {%>
 
                 <!-- SECCION A TENER POR CADA SERVICIO -->
-                <div class="panel panel-success" id="<%="serv" + (x + 1)%>" style="margin-top: 5px">
-                    <div class="panel-heading btn" data-toggle="collapse" data-target="#<%="bodyServ" + (x + 1)%>" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left"><%= s.get(x).getNombre()%></div>
-                    <h4 style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"><%= s.get(x).getPrecio().toString()%></h4>
+                <div class="panel panel-success" id="<%="serv" + (x + 1)%>" style="margin-top: 5px; display: none">
+                    <div id="<%="nombreServ" + (x + 1)%>" class="panel-heading btn" data-toggle="collapse" data-target="#<%="bodyServ" + (x + 1)%>" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left" onclick="datosServicio('<%= s.get(x).getNickProveedor() %>', '<%= s.get(x).getNombre() %>')"><%= s.get(x).getNombre()%></div>
+                    <h4 id="<%="precioServ" + (x + 1)%>" style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"></h4>
                     <div class="panel-body collapse fade" id="<%="bodyServ" + (x + 1)%>">
                         <div class="row">
                             <div class="col-xs-12" style="max-height: 100px; overflow-y: auto">
-                                <% if (s.get(x).getDescripcion() != null && !s.get(x).getDescripcion().isEmpty()) {%>
-                                <h5 style="font-family: Helvetica; color: #212121"><%= s.get(x).getDescripcion()%></h5>
-                                <% } else { %>
-                                <h5 style="font-family: Helvetica; color: #212121">Sin descripcion...</h5>
-                                <% }%>
+                                <h5 id="<%="descServ" + (x + 1)%>" style="font-family: Helvetica; color: #212121"></h5>
                             </div>
                         </div>
                         <div class="row">
@@ -96,15 +87,15 @@
 
                 <%   for (int x = 0; x < p.size(); x++) {%>
 
-                <div class="panel panel-success" id="<%="promo" + (x + 1)%>" style="margin-top: 5px">
-                    <div class="panel-heading btn" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left"
-                         data-toggle="collapse" data-target="#<%="bodyPromo" + (x + 1)%>"><%= p.get(x).getNombre() %></div>
-                    <h4 style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"><%= p.get(x).getPrecio() %></h4>
+                <div class="panel panel-success" id="<%="promo" + (x + 1)%>" style="margin-top: 5px; display: none">
+                    <div id="<%="nombrePromo" + (x + 1)%>" class="panel-heading btn" style="color: #333333; font-family: Helvetica; font-size: 115%; width: 100%; text-align: left"
+                         data-toggle="collapse" data-target="#<%="bodyPromo" + (x + 1)%>" onclick="datosPromocion('<%= p.get(x).getNickProv() %>', '<%= p.get(x).getNombre() %>')"><%= p.get(x).getNombre() %></div>
+                         <h4 id="<%="precioPromo" + (x + 1)%>" style="position: absolute; right: 30px; margin-top: -30px; font-family: Helvetica; color: #212121"></h4>
                     <div class="panel-body collapse fade" id="<%="bodyPromo" + (x + 1)%>">
                         <div class="row">
                             <div class="col-xs-12" style="max-height: 100px; overflow-y: auto">
-                                <h5 style="font-family: Helvetica; color: #212121; margin-top: 0px">
-                                    <b><%= p.get(x).getDescuento() %> % descuento.</b>
+                                <h5 id="<%="descPromo" + (x + 1)%>" style="font-family: Helvetica; color: #212121; margin-top: 0px">
+                                    <b></b>
                                 </h5>
                             </div>
                         </div>
@@ -117,17 +108,10 @@
                                         </div>
                                     </div>
                                     
-                                    <%   for(int e = 0; e < p.get(x).getServicios().size(); e++ ){   %>
-                                    
                                     <!-- FILA A TENER POR CADA SERVICIO ASOCIADO A LA PROMO -->
-                                    <div class="row" style="border-left-style: solid; border-color: #01529e; border-width: 4px">
-                                        <div class="col-xs-12" style="border-bottom-style: solid; border-color: #01529e; border-width: 1px">
-                                            <h5 style="font-family: Helvetica; text-align: left"><%= p.get(x).getServicios().get(e) %></h5>
-                                        </div>
+                                    <div id="<%="articulosPromo" + (x + 1)%>" class="row" style="border-left-style: solid; border-color: #01529e; border-width: 4px">
                                         <!-- FIN FILA A TENER POR CADA SERVICIO ASOCIADO -->
                                     </div>
-                                
-                                    <%   }   %>
                                 
                                 </div>
                             </center>
@@ -139,26 +123,82 @@
 
             </div>
                 
+                <script type="text/javascript">
+                    function datosServicio(nicknameProv, nombreServ){
+                        $.get("devolverServicio", "nickname=" + nicknameProv + "&servicio=" + nombreServ, function (servicio) {
+                            for(var x = 0; x < <%= s.size() %>; x++){
+                                if(document.getElementById('nombreServ' + (x+1)).innerHTML === nombreServ){
+                                    document.getElementById('descServ' + (x+1)).innerHTML = servicio.descripcion;
+                                    document.getElementById('precioServ' + (x+1)).innerHTML = servicio.precio;
+                                }
+                            }
+                        });
+                    }
+                </script>
+                <script type="text/javascript">
+                    function datosPromocion(nicknameProv, nombrePromo){
+                        $.get("devolverPromocion", "nickname=" + nicknameProv + "&promocion=" + nombrePromo, function (promocion) {
+                             for(var x = 0; x < <%= p.size() %>; x++){
+                                if(document.getElementById('nombrePromo' + (x+1)).innerHTML === nombrePromo){
+                                    document.getElementById('descPromo' + (x+1)).innerHTML = promocion.descuento + "% descuento";
+                                    document.getElementById('precioPromo' + (x+1)).innerHTML = promocion.precio;
+                                }
+                             }
+                         });
+                         $.get("devolverServiciosPromocion", "nickname=" + nicknameProv + "&nombrePromo=" + nombrePromo, function (servicios) {
+                            for(var x = 0; x < <%= p.size() %>; x++){
+                                if(document.getElementById('nombrePromo' + (x+1)).innerHTML === nombrePromo){
+                                    $.each(servicios, function (index, serv) {
+                                        
+                                        var h5 = document.createElement("h5");
+                                        h5.id = "NombreServ"+ (index+1) + "Promo" + (x+1);
+                                        h5.style.fontFamily = "Helvetica";
+                                        h5.style.textAlign = "left";
+                                        h5.style.marginLeft = "5px";
+                                        h5.innerHTML = serv;
+                                        
+                                        var col = document.createElement("div");
+                                        col.class = "col-xs-12";
+                                        col.appendChild(h5);
+                                        col.style.borderBottomStyle = "solid";
+                                        col.style.borderBottomColor = "#01529e";
+                                        col.style.borderBottomWidth = "1px";
+                                        
+                                        var fila = document.createElement("div");
+                                        fila.id = "serv"+ (index+1) + "Promo" + (x+1);
+                                        fila.class = "row";
+                                        fila.appendChild(col);
+                                        
+                                        document.getElementById('articulosPromo' + (x+1)).appendChild(fila);
+                                        
+                                    });
+                                }
+                            } 
+                         });
+                    }
+                </script>
+                
                 <script>
                     function Promociones(){
                             for(var x = 0; x < <%= s.size() %>; x++){
-                                document.getElementById('serv' + (x+1)).style.display="none"; 
+                                document.getElementById('serv' + (x+1)).style.display="none";
                             }
                             for(var x = 0; x < <%= p.size() %>; x++){
-                                document.getElementById('promo' + (x+1)).style.display="block"; 
+                                document.getElementById('promo' + (x+1)).style.display="block";
                             }
-                        
+
                     }
                 </script>
                 <script>
                     function Servicios(){
-                            for(var x = 0; x < <%= s.size() %>; x++){
-                                document.getElementById('serv' + (x+1)).style.display="block"; 
-                            }
-                            for(var x = 0; x < <%= p.size() %>; x++){
-                                document.getElementById('promo' + (x+1)).style.display="none"; 
-                            }
-                        
+                        for(var x = 0; x < <%= s.size() %>; x++){
+                            document.getElementById('serv' + (x+1)).style.display="block";
+                        }
+                        for(var x = 0; x < <%= p.size() %>; x++){
+                            document.getElementById('promo' + (x+1)).style.display="none";
+                        }
+
                     }
                 </script>
+                
     </body></html>

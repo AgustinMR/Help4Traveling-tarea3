@@ -29,7 +29,9 @@ public abstract interface IControladorReserva {
     public abstract boolean eliminarReserva(String id);
 
     public abstract boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA);
-
-    public abstract String devolverEstadoArticulo(String idReserva, String nickP, String nombreA);
-
+    
+    public abstract boolean estaFacturadaReserva(int idReserva);
+    
+    public abstract boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA);
+    
 }

@@ -34,6 +34,45 @@ public class ManejadorSQL {
         return true;
     }
     
+    public boolean estaFacturadaReserva(int idReserva){
+        boolean ret = true;
+        String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "';";
+        Statement usuarios;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ResultSet rs = usuarios.executeQuery(sql);
+            while(rs.next()){
+                if(!rs.getBoolean("estado")){
+                    return false;
+                }
+            }
+            conex.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
+    public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA){
+        boolean ret = true;
+        String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
+        Statement usuarios;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ResultSet rs = usuarios.executeQuery(sql);
+            rs.next();
+            if(!rs.getBoolean("estado"))
+                return false;
+
+            conex.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
     public boolean esCliente(String nickname){
         boolean ret = false;
         String sql = "SELECT nicknameCliente FROM CLIENTES WHERE nicknameCliente='"+nickname+"';";
@@ -44,6 +83,27 @@ public class ManejadorSQL {
             ResultSet rs = usuarios.executeQuery(sql);
             if(rs.first())
               ret = true;
+            conex.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
+    public ArrayList<String> listarServiciosXprom(String nickP, String nombrePromo){
+        String sql = "SELECT nombreArticuloServ FROM COMPUESTOS WHERE nicknameProvServ='"+ nickP +"' AND nicknameProvProm='"+ nickP +"' AND nombreArticuloProm='"+ nombrePromo +"';";
+        Statement usuarios;
+        ArrayList<String> ret= new ArrayList<>();
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ResultSet rs = usuarios.executeQuery(sql);
+            rs.next();
+            while(rs.next()){
+                System.out.println(rs.getString("nombreArticuloServ"));
+                ret.add(rs.getString("nombreArticuloServ"));
+            }
+            conex.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -144,29 +204,13 @@ public class ManejadorSQL {
 
     public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA, String estadoNuevo){
         boolean ret = false;
-        String sql = "UPDATE INFO_RESERVA SET estado='" + estadoNuevo + "' WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
+        String sql = "UPDATE INFO_RESERVA SET estado='true' WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
         Statement usuarios;
         try {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
             ret = true;
-            conex.close();
-        } catch (SQLException ex){
-            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return ret;
-    }
-
-    public String devolverEstadoArticulo(String idReserva, String nickP, String nombreA){
-        String ret = null;
-        String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
-        Statement usuarios;
-        try {
-            Connection conex = getConex();
-            usuarios = conex.createStatement();
-            ResultSet rs = usuarios.executeQuery(sql);
-            ret = rs.getString("estado");
             conex.close();
         } catch (SQLException ex){
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);

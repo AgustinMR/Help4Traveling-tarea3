@@ -1,7 +1,11 @@
 package Modelo;
 
+import java.io.IOException;
 import java.util.List;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.misc.IOUtils;
 
 public class ModelUsuario {
     private servidor.PublicadorService service =  new servidor.PublicadorService();;
@@ -38,7 +42,12 @@ public class ModelUsuario {
     }
     
     public void agregarImagenCliente(InputStream f, String NickC){
-        //port.agregarImagenCliente(f, NickC);  
+        try {
+            byte[] ff = IOUtils.readFully(f, -1, false);
+            port.agregarImagenCliente(ff, NickC);
+        } catch (IOException ex) {
+            Logger.getLogger(ModelUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }          
     }
     
     public List<servidor.DtProveedor> listarProveedoresDatos(){

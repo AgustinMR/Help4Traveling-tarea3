@@ -1,17 +1,30 @@
 package Control;
 
+import Model.ModelArticulo;
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servidor.DtPromocion;
 
 public class devolverPromocion extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-            
+        try {
+            boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+            if (ajax) {
+                String nickname = request.getParameter("nickname");
+                String promocion = request.getParameter("promocion");
+                ModelArticulo x = new ModelArticulo();
+                DtPromocion p = x.devolverPromocion(nickname, promocion);
+                String json = new Gson().toJson(p);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
+            }           
+        } finally {
         }
     }
 

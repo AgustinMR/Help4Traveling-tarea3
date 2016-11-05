@@ -7,21 +7,27 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtPromocion implements Serializable {
+
     private String nombre;
     private String nickProv;
     private float descuento;
     private float precio;
     private ArrayList<String> servicios;
-        
-    public DtPromocion(){
+
+    public DtPromocion() {
     }
-    
-    public DtPromocion(String nombre, String nickProv, float descuento, float precio, ArrayList<String> servicios){
-       this.nombre=nombre;
-       this.nickProv=nickProv;
-       this.descuento=descuento;
-       this.precio=precio;
-       this.servicios=servicios;
+
+    public DtPromocion(String nombre, String nickProv) {
+        this.nombre = nombre;
+        this.nickProv = nickProv;
+    }
+
+    public DtPromocion(String nombre, String nickProv, float descuento, float precio, ArrayList<String> servicios) {
+        this.nombre = nombre;
+        this.nickProv = nickProv;
+        this.descuento = descuento;
+        this.precio = precio;
+        this.servicios = servicios;
     }
 
     public String getNombre() {

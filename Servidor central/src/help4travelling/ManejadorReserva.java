@@ -83,8 +83,13 @@ public class ManejadorReserva {
     public boolean actualizarEstadoArticulo(String idReserva, String nickP, String nombreA, Estado est){
         return ManejadorSQL.GetInstance().actualizarEstadoArticulo(idReserva, nickP, nombreA, est.toString());
     }
-
-    public String devolverEstadoArticulo(String idReserva, String nickP, String nombreA){
-        return ManejadorSQL.GetInstance().devolverEstadoArticulo(idReserva, nickP, nombreA);
+    
+    public boolean estaFacturadaReserva(int idReserva){
+        return ManejadorSQL.GetInstance().estaFacturadaReserva(idReserva);
     }
+    
+    public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA){
+        return ManejadorSQL.GetInstance().estaFacturadoArticulo(idReserva, nickP, nombreA);
+    }
+    
 }
