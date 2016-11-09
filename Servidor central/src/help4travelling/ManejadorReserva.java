@@ -5,10 +5,6 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Set;
 
-/**
- * @author Antares
- */
-
 public class ManejadorReserva {
     private int id=0;
     private static Map<Integer,Reserva> reservas = new HashMap<Integer,Reserva>();
@@ -90,6 +86,14 @@ public class ManejadorReserva {
     
     public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA){
         return ManejadorSQL.GetInstance().estaFacturadoArticulo(idReserva, nickP, nombreA);
+    }
+    
+    public boolean facturarArticuloReserva(int idReserva, String nickP){
+        return ManejadorSQL.GetInstance().facturarArticuloReserva(idReserva, nickP);
+    }
+    
+    public boolean agregarFactura(String idReserva, String nickCliente, float precio, DtFecha fechaGeneracion){
+        return ManejadorSQL.GetInstance().agregarFactura(idReserva, nickCliente, precio, fechaGeneracion);
     }
     
 }

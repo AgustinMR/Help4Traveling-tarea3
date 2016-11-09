@@ -1,6 +1,7 @@
 package help4travelling;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Set;
 
 public class ControladorReserva implements IControladorReserva{
@@ -95,6 +96,18 @@ public class ControladorReserva implements IControladorReserva{
     @Override
     public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA) {
         return ManejadorReserva.GetInstance().estaFacturadoArticulo(idReserva, nickP, nombreA);
+    }
+
+    @Override
+    public boolean agregarFactura(String idReserva, String nickCliente, float precio, String fecha) {
+        System.out.println(idReserva + "  " + nickCliente + "  " + precio + "  " + fecha);
+        return ManejadorReserva.GetInstance().agregarFactura(idReserva, nickCliente, precio, new DtFecha(fecha));
+        
+    }
+
+    @Override
+    public boolean facturarArticuloReserva(int idReserva, String nickP) {
+        return ManejadorReserva.GetInstance().facturarArticuloReserva(idReserva, nickP);
     }
 
 }

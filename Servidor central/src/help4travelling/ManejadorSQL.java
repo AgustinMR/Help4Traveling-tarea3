@@ -34,6 +34,40 @@ public class ManejadorSQL {
         return true;
     }
     
+    public boolean agregarFactura(String idReserva, String nickCliente, float precio, DtFecha fechaGeneracion){
+        String sql = "INSERT INTO INFO_FACTURAS (precio, fecha, nickCliente, idReserva) VALUES ('" + precio + "','" + fechaGeneracion.getAnio() + "/" + fechaGeneracion.getMes() + "/" + fechaGeneracion.getDia() + "','" + nickCliente + "','" + idReserva + "');";
+        Statement usuarios;
+        boolean ret = false;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ManejadorSQL.GetInstance().setForeignKeysOff(usuarios);
+            usuarios.executeUpdate(sql);
+            ManejadorSQL.GetInstance().setForeignKeysOn(usuarios);
+            ret = true;
+            conex.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
+    public boolean facturarArticuloReserva(int idReserva, String nickP){
+        boolean ret = false;
+        String sql = "UPDATE INFO_RESERVA SET estado='true' WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "';";
+        Statement usuarios;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            usuarios.executeUpdate(sql);
+            conex.close();
+            ret = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
     public boolean estaFacturadaReserva(int idReserva){
         boolean ret = true;
         String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "';";
@@ -55,7 +89,6 @@ public class ManejadorSQL {
     }
     
     public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA){
-        boolean ret = true;
         String sql = "SELECT estado FROM INFO_RESERVA WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
         Statement usuarios;
         try {
@@ -63,14 +96,12 @@ public class ManejadorSQL {
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
             rs.next();
-            if(!rs.getBoolean("estado"))
-                return false;
-
             conex.close();
+            return rs.getBoolean("estado");
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ret;
+        return false;
     }
     
     public boolean esCliente(String nickname){
@@ -899,7 +930,8 @@ public class ManejadorSQL {
         try {
             Connection conex = getConex();
             Statement usuario = conex.createStatement();
-            float ptR; String nickC, estado; DtFecha fc;
+            float ptR; String nickC; DtFecha fc;
+            String estado;
             ArrayList<DtInfoReserva> r = new ArrayList();
             ResultSet rs = usuario.executeQuery(sql1);
             rs.next();
@@ -907,6 +939,9 @@ public class ManejadorSQL {
             String Fecha = rs.getDate("fechaCreacion").toString();
             fc = new DtFecha(Fecha);
             estado = rs.getString("estado");
+            if (this.estaFacturadaReserva(idReserva)){
+                estado = "Facturada";
+            }
             nickC = rs.getString("nicknameCliente");
             ResultSet rs2 = usuario.executeQuery(sql2);
             while(rs2.next()){

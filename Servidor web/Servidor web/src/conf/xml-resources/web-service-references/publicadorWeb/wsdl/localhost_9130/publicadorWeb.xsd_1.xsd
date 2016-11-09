@@ -111,15 +111,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="dtInfoReservaArray" final="#all">
-<xs:sequence>
-<xs:element name="item" type="tns:dtInfoReserva" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="dtCategoriaArray" final="#all">
 <xs:sequence>
 <xs:element name="item" type="tns:dtCategoria" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dtInfoReservaArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dtInfoReserva" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

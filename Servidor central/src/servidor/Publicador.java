@@ -30,9 +30,7 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-        //System.out.println("init");
         ManejadorSQL.GetInstance().init("192.168.10.132");
-        //System.out.println(ICUsuario.chequearNick("eWatson"));
         endpoint = Endpoint.publish("http://localhost:9130/publicadorWeb", this);
     }
 
@@ -167,6 +165,26 @@ public class Publicador {
     public boolean pagarReserva(int id) {
         //System.out.println("pagada");
         return ICReserva.actualizarEstado(Estado.Pagada, id);
+    }
+    
+    @WebMethod
+    public boolean agregarFactura(String idReserva, String nickCliente, float precio, String fecha){
+        return ICReserva.agregarFactura(idReserva, nickCliente, precio, fecha);
+    }
+    
+    @WebMethod
+    public boolean facturarArticuloReserva(int idReserva, String nickP) {
+        return ICReserva.facturarArticuloReserva(idReserva, nickP);
+    }
+    
+    @WebMethod
+    public boolean estaFacturadaReserva(int idReserva){
+        return ICReserva.estaFacturadaReserva(idReserva);
+    }
+    
+    @WebMethod
+    public boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA){
+        return ICReserva.estaFacturadoArticulo(idReserva, nickP, nombreA);
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -34,4 +34,8 @@ public abstract interface IControladorReserva {
     
     public abstract boolean estaFacturadoArticulo(int idReserva, String nickP, String nombreA);
     
+    public abstract boolean agregarFactura(String idReserva, String nickCliente, float precio, String fecha);
+    
+    public abstract boolean facturarArticuloReserva(int idReserva, String nickP);
+    
 }

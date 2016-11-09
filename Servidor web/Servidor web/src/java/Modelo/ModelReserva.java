@@ -51,4 +51,8 @@ public class ModelReserva {
         //return ICReserva.actualizarEstado(Estado.Cancelada, id);
         return port.pagarReserva(id);
     }
+    
+    public boolean agregarFactura(String idReserva, String nickCliente, float precio, String fecha){
+        return port.agregarFactura(idReserva, nickCliente, precio, fecha);
+    }
 }

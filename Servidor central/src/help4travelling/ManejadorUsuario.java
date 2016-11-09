@@ -1,10 +1,8 @@
-
 package help4travelling;
 
 import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia=null;

@@ -313,7 +313,29 @@
                         doc.save(document.getElementById("nickClienteModal").innerHTML + "_" + document.getElementById("fechaModal").innerHTML + ".pdf");
                     });
                 });
+                $.get("agregarFactura", "reservaFactura=" + document.getElementById("idReservaModal").innerHTML + "&nickFactura=" + document.getElementById("nickClienteModal").innerHTML + "&precioFactura=" + document.getElementById("precioTotalModal").innerHTML, function (ingresado) {
+                    if(ingresado){
+                        alert("FACTURA INGRESADA");
+                    }
+                });
+                
             }
+        </script>
+        
+        <script type="text/javascript">
+            function enviarMail() {
+                /*var fecha = Date.getFullYear() + "/" + Date.getMonth() + "/" + Date.getDate();
+                var hora = Date.getHours() + ":" + Date.getMinutes();
+                
+                var cuerpo = "Estimado ";
+                
+                var link = "mailto: //request.getSession().getAttribute("email_usuario").toString()"
+                         + "&subject=" + escape("[Help4Traveling][" + fecha + " " + hora + "]")
+                         + "&body=" + escape(document.getElementById('myText').value);
+
+                window.location.href = link;*/
+            }
+            
         </script>
 
 
