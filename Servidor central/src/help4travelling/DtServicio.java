@@ -15,14 +15,19 @@ public class DtServicio implements Serializable {
     private ArrayList<String> categorias;
     private String ciudadOrigen;
     private String ciudadDestino;
-    private DtVisita visitas;
+    private int visitas;
 
     public DtServicio() {
     }
-
+    
     public DtServicio(String nombre, String nickProveedor) {
         this.nombre = nombre;
         this.nickProveedor = nickProveedor;
+    }
+    
+    public DtServicio(String nombre, int cantVisitas){
+        this.nombre = nombre;
+        this.visitas = cantVisitas;
     }
 
     public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino) {
@@ -35,7 +40,7 @@ public class DtServicio implements Serializable {
         this.ciudadDestino = ciudadDestino;
     }
 
-    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino, DtVisita v) {
+    public DtServicio(String nombre, String nickProv, float precio, String descripcion, ArrayList<String> categorias, String ciudadOrigen, String ciudadDestino, int v) {
         this.nombre = nombre;
         this.nickProveedor = nickProv;
         this.precio = precio;
@@ -84,7 +89,7 @@ public class DtServicio implements Serializable {
         return ciudadDestino;
     }
 
-    public DtVisita getVisitas() {
+    public int getVisitas() {
         return visitas;
     }
 
@@ -116,7 +121,7 @@ public class DtServicio implements Serializable {
         this.ciudadDestino = ciudadDestino;
     }
 
-    public void setVisitas(DtVisita visitas) {
+    public void setVisitas(int visitas) {
         this.visitas = visitas;
     }
 

@@ -44,6 +44,18 @@
         <servlet-name>VerReservas</servlet-name>
         <servlet-class>Control.VerReservas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerReserva</servlet-name>
+        <servlet-class>Control.VerReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>facturarArticulo</servlet-name>
+        <servlet-class>Control.facturarArticulo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnviarMail</servlet-name>
+        <servlet-class>Control.EnviarMail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>iniciarSesion</servlet-name>
         <url-pattern>/iniciarSesion</url-pattern>
@@ -87,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>VerReservas</servlet-name>
         <url-pattern>/VerReservas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerReserva</servlet-name>
+        <url-pattern>/VerReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>facturarArticulo</servlet-name>
+        <url-pattern>/facturarArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnviarMail</servlet-name>
+        <url-pattern>/EnviarMail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

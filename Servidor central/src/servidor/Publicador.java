@@ -48,7 +48,12 @@ public class Publicador {
         DtPromocion[] ret = prom.toArray(new DtPromocion[prom.size()]);
         return ret;
     }
-
+    
+    @WebMethod
+    public boolean agregarVisita(String nickP, String nombreA){
+        return ICArticulo.agregarVisita(nickP, nombreA);
+    }
+    
     @WebMethod
     public DtPromocion datosPromocion(String nombreProm, String nameProv) {
         return ICArticulo.datosPromociones(nombreProm, nameProv);
@@ -174,6 +179,7 @@ public class Publicador {
     
     @WebMethod
     public boolean facturarArticuloReserva(int idReserva, String nickP) {
+        //System.out.println("Publicador");
         return ICReserva.facturarArticuloReserva(idReserva, nickP);
     }
     
@@ -297,8 +303,4 @@ public class Publicador {
         }
     }
 
-    @WebMethod
-    public boolean agregarVisita(String nickP, String nombreA) {
-        return ICArticulo.agregarVisita(nickP, nombreA);
-    }
 }

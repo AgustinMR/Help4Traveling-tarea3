@@ -31,7 +31,7 @@ public class ModelArticulo {
     
     public List<servidor.DtServicio> listarServicios(){
         //return ICArticulo.ListarServicios();
-        return port.listarServicios().getItem();
+            return port.listarServicios().getItem();
     }
     
     public List<servidor.DtServicio> serviciosXcat(String nameCat){
@@ -50,6 +50,9 @@ public class ModelArticulo {
         return a;
     }
     
+    public boolean agregarVisita(String nickProveedor, String nombreServicio){
+        return port.agregarVisita(nickProveedor, nombreServicio);
+    }
     
 }
     

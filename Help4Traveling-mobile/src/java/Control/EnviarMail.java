@@ -1,9 +1,10 @@
 package Control;
 
-import Modelo.ModelReserva;
-import Modelo.ModelUsuario;
+import Model.ModelReserva;
+import Model.ModelUsuario;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,38 +20,69 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servidor.DtCliente;
+import servidor.DtInfoReserva;
+import servidor.DtReserva;
 
 public class EnviarMail extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, AddressException, MessagingException {
+
+        Properties mailServerProperties;
+	Session getMailSession;
+	MimeMessage generateMailMessage;
         
-        String nickC = request.getParameter("nickClienteMail");
-        String idReserva = request.getParameter("idReservaMail");
         ModelReserva mr = new ModelReserva();
+        String idReserva = request.getParameter("idRes");
+        DtReserva reserva = mr.devolverReserva(Integer.valueOf(idReserva));
+        
         ModelUsuario mu = new ModelUsuario();
-        
-        DtCliente cliente = mu.devolverCliente(nickC);
-        
+
+        DtCliente cliente = mu.devolverCliente(reserva.getCli());
+
+        List<DtInfoReserva> infoRes = mr.ObtenerDatosReserva(Integer.valueOf(idReserva));
+
         String to = cliente.getEmail();
         String from = "ventas@help4traveling.com";
-        String host = "localhost";
         String fecha = (Calendar.getInstance().get(Calendar.YEAR) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.DATE));
         String hora = (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE));
 
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
-
         try {
-            MimeMessage message = new MimeMessage(session);
+            String texto = "Estimado " + cliente.getNombre() + ", su compra ha sido facturada con exito: <br><br>";
+            texto += "---> Detalles de la compra:<br>";
+            texto += "- Servicios:<br>";
+            for (int x = 0; x < infoRes.size(); x++) {
+                texto += "-     Nombre: " + infoRes.get(x).getNameArticulo() + " - Proveedor: " + infoRes.get(x).getNickProveedor() + " - Cantidad: " + infoRes.get(x).getCantidad() + " - Precio: " + infoRes.get(x).getPrecioArticulo() + "<br>";
+            }
+            texto += "---> Precio total: " + reserva.getPrecio() + "<br>";
+            texto += "----------------------------------------------------------<br>";
+            texto += "Gracias por preferirnos,<br>";
+            texto += "Saludos.<br>";
+            texto += "Help4Traveling.<br>";
+
+            mailServerProperties = new Properties();
+
+            mailServerProperties = System.getProperties();
+            mailServerProperties.put("mail.smtp.port", "587");
+            mailServerProperties.put("mail.smtp.auth", "true");
+            mailServerProperties.put("mail.smtp.starttls.enable", "true");
             
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            getMailSession = Session.getDefaultInstance(mailServerProperties, null);
+            generateMailMessage = new MimeMessage(getMailSession);
+            generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            generateMailMessage.setSubject("[Help4Traveling][" + fecha + " " + hora + " ]");
+            String emailBody = "Test email by Crunchify.com JavaMail API example. " + "<br><br> Regards, <br>Crunchify Admin";
+            generateMailMessage.setContent(texto, "text/html");
+
+            Transport transport = getMailSession.getTransport("smtp");
+
+            transport.connect("smtp.gmail.com", "help4travelinggrupo1", "tecnoDBweb2016");
+            transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+            transport.close();
+
+            System.out.println("Exito!!!");
             
-            message.setSubject("[Help4Traveling][" + fecha + " " + hora + "]");
-            message.setText("This is actual message");
-            Transport.send(message);
         } catch (MessagingException mex) {
+            System.out.println("Rompiste todo! Wei... ERROR \n\n" + mex);
         }
     }
 

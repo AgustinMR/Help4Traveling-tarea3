@@ -18,8 +18,6 @@ import servidor.DtInfoReserva;
 import servidor.DtFecha;
 import servidor.Estado;
 
-
-
 public class ControllerReserva extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -27,25 +25,25 @@ public class ControllerReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            //String fecha = (Calendar.getInstance().get(Calendar.YEAR) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.DATE));
             DtFecha fechaActual = new DtFecha();
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
             ArrayList<DtInfoReserva> infodeReserva = (ArrayList<DtInfoReserva>) session.getAttribute("ListaInfoRes");
             session.setAttribute("ListaInfoRes", null);
-            int precio=0;
+            int precio = 0;
             //System.out.println(infodeReserva.size());
-            for(int i=0; i< infodeReserva.size(); i++)
-            {
-               precio+=infodeReserva.get(i).getPrecioArticulo() * infodeReserva.get(i).getCantidad();
+            for (int i = 0; i < infodeReserva.size(); i++) {
+                precio += infodeReserva.get(i).getPrecioArticulo() * infodeReserva.get(i).getCantidad();
             }
-            
+
             String nickname = request.getSession().getAttribute("usuario_logueado").toString();
-             
+
             ModelReserva modRes = new ModelReserva();
             modRes.agregarRes(Estado.REGISTRADA, fechaActual, infodeReserva, nickname, precio);
             request.getRequestDispatcher("inicioCliente.jsp").forward(request, response);
-            
+
         } finally {
-            
+
             out.close();
         }
     }

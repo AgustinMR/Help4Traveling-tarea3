@@ -35,6 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btn_servicios = new javax.swing.JLabel();
         btn_reservas = new javax.swing.JLabel();
         btn_usuarios = new javax.swing.JLabel();
+        btn_registros = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lbl_menu = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,8 +91,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ingresar_categoria = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        button1 = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
+        btn_promociones1 = new javax.swing.JLabel();
+        panel_registros = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        consultar_serviciosMasVisitados = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        consultar_registros = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.white);
@@ -113,14 +123,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_promocionesMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_promocionesMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_promocionesMouseExited(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_promocionesMouseEntered(evt);
+            }
         });
-        getContentPane().add(btn_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, 190, 40));
+        getContentPane().add(btn_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 190, 40));
 
         btn_categorias.setBackground(new java.awt.Color(51, 51, 51));
         btn_categorias.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
@@ -134,14 +144,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_categoriasMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_categoriasMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_categoriasMouseExited(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_categoriasMouseEntered(evt);
+            }
         });
-        getContentPane().add(btn_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 190, 40));
+        getContentPane().add(btn_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 190, 40));
 
         btn_servicios.setBackground(new java.awt.Color(51, 51, 51));
         btn_servicios.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
@@ -155,14 +165,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_serviciosMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_serviciosMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_serviciosMouseExited(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_serviciosMouseEntered(evt);
+            }
         });
-        getContentPane().add(btn_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 190, 40));
+        getContentPane().add(btn_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 190, 40));
 
         btn_reservas.setBackground(new java.awt.Color(51, 51, 51));
         btn_reservas.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
@@ -176,14 +186,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_reservasMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_reservasMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_reservasMouseExited(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_reservasMouseEntered(evt);
+            }
         });
-        getContentPane().add(btn_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 190, 40));
+        getContentPane().add(btn_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 190, 40));
 
         btn_usuarios.setBackground(new java.awt.Color(51, 51, 51));
         btn_usuarios.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
@@ -197,14 +207,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_usuariosMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_usuariosMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_usuariosMouseExited(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_usuariosMouseEntered(evt);
+            }
         });
-        getContentPane().add(btn_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 190, 40));
+        getContentPane().add(btn_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 190, 40));
+
+        btn_registros.setBackground(new java.awt.Color(51, 51, 51));
+        btn_registros.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
+        btn_registros.setForeground(new java.awt.Color(254, 254, 254));
+        btn_registros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_registros.setText("REGISTROS");
+        btn_registros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_registros.setName("btn_promociones"); // NOI18N
+        btn_registros.setOpaque(true);
+        btn_registros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_registrosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_registrosMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_registrosMouseEntered(evt);
+            }
+        });
+        getContentPane().add(btn_registros, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 220, 190, 40));
 
         jLabel8.setBackground(new java.awt.Color(51, 51, 51));
         jLabel8.setOpaque(true);
@@ -370,7 +401,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_usuarios.add(consultar_proveedor);
         consultar_proveedor.setBounds(170, 30, 290, 180);
 
-        getContentPane().add(panel_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 120, 140));
+        getContentPane().add(panel_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 120, 140));
         getContentPane().remove(panel_usuarios);
         getContentPane().add(panel_usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1220, 210));
         panel_usuarios.setVisible(false);
@@ -512,7 +543,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_servicios.add(actualizar_servicio);
         actualizar_servicio.setBounds(170, 30, 290, 180);
 
-        getContentPane().add(panel_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 120, 110));
+        getContentPane().add(panel_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 120, 110));
         getContentPane().remove(panel_servicios);
         getContentPane().add(panel_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1220, 210));
         panel_servicios.setVisible(false);
@@ -544,11 +575,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 consultar_promocionMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                consultar_promocionMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 consultar_promocionMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                consultar_promocionMouseEntered(evt);
             }
         });
         consultar_promocion.setLayout(null);
@@ -616,7 +647,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_promociones.add(ingresar_promocion);
         ingresar_promocion.setBounds(310, 30, 290, 180);
 
-        getContentPane().add(panel_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 310, 100, 100));
+        getContentPane().add(panel_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 100, 100));
         getContentPane().remove(panel_promociones);
         getContentPane().add(panel_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1220, 210));
         panel_promociones.setVisible(false);
@@ -759,7 +790,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_reservas.add(actualizar_estado);
         actualizar_estado.setBounds(450, 30, 290, 180);
 
-        getContentPane().add(panel_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 140, 100));
+        getContentPane().add(panel_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 140, 100));
         getContentPane().remove(panel_reservas);
         getContentPane().add(panel_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1220, 210));
         panel_reservas.setVisible(false);
@@ -823,25 +854,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_categorias.add(ingresar_categoria);
         ingresar_categoria.setBounds(460, 30, 290, 180);
 
-        getContentPane().add(panel_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 120, 140));
+        getContentPane().add(panel_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 120, 140));
         getContentPane().remove(panel_categorias);
         getContentPane().add(panel_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1218, 210));
         panel_categorias.setVisible(false);
-
-        button1.setActionCommand("btn_registro");
-        button1.setLabel("REGISTRO");
-        button1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button1MouseClicked(evt);
-            }
-        });
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 610, 120, 50));
-        button1.getAccessibleContext().setAccessibleName("Registro");
 
         jLabel1.setBackground(java.awt.Color.white);
         jLabel1.setEnabled(false);
@@ -852,7 +868,137 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1218, 470));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 1218, 470));
+
+        btn_promociones1.setBackground(new java.awt.Color(51, 51, 51));
+        btn_promociones1.setFont(new java.awt.Font("Ubuntu Light", 1, 18)); // NOI18N
+        btn_promociones1.setForeground(new java.awt.Color(254, 254, 254));
+        btn_promociones1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_promociones1.setText("PROMOCIONES");
+        btn_promociones1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_promociones1.setName("btn_promociones"); // NOI18N
+        btn_promociones1.setOpaque(true);
+        btn_promociones1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_promociones1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_promociones1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_promociones1MouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_promociones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 190, 40));
+
+        panel_registros.setBackground(java.awt.Color.darkGray);
+        panel_registros.setLayout(null);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/salir.png"))); // NOI18N
+        jLabel19.setText("jLabel4");
+        jLabel19.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel19.setFocusable(false);
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        panel_registros.add(jLabel19);
+        jLabel19.setBounds(1183, 0, 30, 30);
+
+        jLabel41.setBackground(new java.awt.Color(33, 33, 33));
+        jLabel41.setOpaque(true);
+        panel_registros.add(jLabel41);
+        jLabel41.setBounds(0, 0, 1220, 30);
+
+        consultar_serviciosMasVisitados.setBackground(java.awt.Color.darkGray);
+        consultar_serviciosMasVisitados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultar_serviciosMasVisitados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                consultar_serviciosMasVisitadosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                consultar_serviciosMasVisitadosMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                consultar_serviciosMasVisitadosMouseEntered(evt);
+            }
+        });
+        consultar_serviciosMasVisitados.setLayout(null);
+
+        jLabel24.setFont(new java.awt.Font("FreeSans", 0, 18)); // NOI18N
+        jLabel24.setForeground(java.awt.Color.white);
+        jLabel24.setText("SERVICIOS MÁS VISITADOS");
+        consultar_serviciosMasVisitados.add(jLabel24);
+        jLabel24.setBounds(20, 90, 250, 20);
+
+        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/search.png"))); // NOI18N
+        jLabel45.setText("jLabel19");
+        jLabel45.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel45MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel45MouseEntered(evt);
+            }
+        });
+        consultar_serviciosMasVisitados.add(jLabel45);
+        jLabel45.setBounds(120, 45, 42, 42);
+
+        panel_registros.add(consultar_serviciosMasVisitados);
+        consultar_serviciosMasVisitados.setBounds(600, 30, 290, 180);
+
+        consultar_registros.setBackground(java.awt.Color.darkGray);
+        consultar_registros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultar_registros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                consultar_registrosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                consultar_registrosMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                consultar_registrosMouseEntered(evt);
+            }
+        });
+        consultar_registros.setLayout(null);
+
+        jLabel44.setFont(new java.awt.Font("FreeSans", 0, 18)); // NOI18N
+        jLabel44.setForeground(java.awt.Color.white);
+        jLabel44.setText("ACCESOS AL SITIO");
+        jLabel44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel44MouseEntered(evt);
+            }
+        });
+        consultar_registros.add(jLabel44);
+        jLabel44.setBounds(60, 90, 170, 20);
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/search.png"))); // NOI18N
+        jLabel42.setText("jLabel19");
+        jLabel42.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel42MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel42MouseEntered(evt);
+            }
+        });
+        consultar_registros.add(jLabel42);
+        jLabel42.setBounds(125, 45, 42, 42);
+
+        panel_registros.add(consultar_registros);
+        consultar_registros.setBounds(310, 30, 290, 180);
+
+        getContentPane().add(panel_registros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 100, 100));
+        getContentPane().remove(panel_registros);
+        getContentPane().add(panel_registros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1220, 210));
+        panel_registros.setVisible(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1003,6 +1149,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_reservas.setVisible(false);
         panel_usuarios.setVisible(false);
         panel_servicios.setVisible(false);
+        panel_registros.setVisible(true);
+        btn_registros.setBackground(new Color(51,51,51));
         btn_reservas.setBackground(new Color(51,51,51));
         btn_usuarios.setBackground(new Color(51,51,51));
         btn_servicios.setBackground(new Color(51,51,51));
@@ -1015,6 +1163,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_reservas.setVisible(false);
         panel_usuarios.setVisible(false);
         panel_promociones.setVisible(false);
+        panel_registros.setVisible(true);
+        btn_registros.setBackground(new Color(51,51,51));
         btn_reservas.setBackground(new Color(51,51,51));
         btn_usuarios.setBackground(new Color(51,51,51));
         btn_categorias.setBackground(new Color(51,51,51));
@@ -1027,6 +1177,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_reservas.setVisible(false);
         panel_servicios.setVisible(false);
         panel_promociones.setVisible(false);
+        panel_registros.setVisible(true);
+        btn_registros.setBackground(new Color(51,51,51));
         btn_reservas.setBackground(new Color(51,51,51));
         btn_categorias.setBackground(new Color(51,51,51));
         btn_servicios.setBackground(new Color(51,51,51));
@@ -1105,6 +1257,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_usuarios.setVisible(false);
         panel_servicios.setVisible(false);
         panel_promociones.setVisible(false);
+        panel_registros.setVisible(true);
+        btn_registros.setBackground(new Color(51,51,51));
         btn_categorias.setBackground(new Color(51,51,51));
         btn_usuarios.setBackground(new Color(51,51,51));
         btn_servicios.setBackground(new Color(51,51,51));
@@ -1183,6 +1337,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_usuarios.setVisible(false);
         panel_servicios.setVisible(false);
         panel_promociones.setVisible(false);
+        panel_registros.setVisible(true);
+        btn_registros.setBackground(new Color(51,51,51));
         btn_reservas.setBackground(new Color(51,51,51));
         btn_usuarios.setBackground(new Color(51,51,51));
         btn_servicios.setBackground(new Color(51,51,51));
@@ -1269,15 +1425,91 @@ public class MenuPrincipal extends javax.swing.JFrame {
         consultarRegistro.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+    private void btn_promociones1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_promociones1MouseClicked
         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_promociones1MouseClicked
+
+    private void btn_promociones1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_promociones1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_promociones1MouseEntered
+
+    private void btn_promociones1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_promociones1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_promociones1MouseExited
+
+    private void btn_registrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrosMouseClicked
+        panel_categorias.setVisible(false);
+        panel_reservas.setVisible(false);
+        panel_usuarios.setVisible(false);
+        panel_servicios.setVisible(false);
+        btn_reservas.setBackground(new Color(51,51,51));
+        btn_usuarios.setBackground(new Color(51,51,51));
+        btn_servicios.setBackground(new Color(51,51,51));
+        btn_categorias.setBackground(new Color(51,51,51));
+        panel_promociones.setVisible(false);
+        panel_registros.setVisible(true);
+    }//GEN-LAST:event_btn_registrosMouseClicked
+
+    private void btn_registrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrosMouseEntered
+        btn_registros.setBackground(new Color(33,33,33));
+    }//GEN-LAST:event_btn_registrosMouseEntered
+
+    private void btn_registrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrosMouseExited
+        if(!panel_registros.isVisible())
+            btn_registros.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_btn_registrosMouseExited
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        btn_registros.setBackground(new Color(51,51,51));
+        panel_registros.setVisible(false);
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseClicked
         ConsultarRegistro consultarRegistro = new ConsultarRegistro();
         consultarRegistro.setVisible(true);
-    }//GEN-LAST:event_button1MouseClicked
+    }//GEN-LAST:event_jLabel42MouseClicked
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void jLabel42MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseEntered
+        consultar_registros.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_jLabel42MouseEntered
+
+    private void consultar_serviciosMasVisitadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_serviciosMasVisitadosMouseClicked
+        consultarServiciosMasVisitados consultarRegistro = new consultarServiciosMasVisitados();
+        consultarRegistro.setVisible(true);
+    }//GEN-LAST:event_consultar_serviciosMasVisitadosMouseClicked
+
+    private void consultar_serviciosMasVisitadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_serviciosMasVisitadosMouseEntered
+        consultar_serviciosMasVisitados.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_consultar_serviciosMasVisitadosMouseEntered
+
+    private void consultar_serviciosMasVisitadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_serviciosMasVisitadosMouseExited
+        consultar_serviciosMasVisitados.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_consultar_serviciosMasVisitadosMouseExited
+
+    private void consultar_registrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_registrosMouseClicked
+        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
+        consultarRegistro.setVisible(true);
+    }//GEN-LAST:event_consultar_registrosMouseClicked
+
+    private void consultar_registrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_registrosMouseEntered
+        consultar_registros.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_consultar_registrosMouseEntered
+
+    private void consultar_registrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultar_registrosMouseExited
+        consultar_registros.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_consultar_registrosMouseExited
+
+    private void jLabel45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_jLabel45MouseClicked
+
+    private void jLabel45MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseEntered
+        consultar_serviciosMasVisitados.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_jLabel45MouseEntered
+
+    private void jLabel44MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseEntered
+        consultar_registros.setBackground(new Color(51,51,51));
+    }//GEN-LAST:event_jLabel44MouseEntered
 
     /**
      * @param args the command line arguments
@@ -1319,16 +1551,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel actualizar_servicio;
     private javax.swing.JLabel btn_categorias;
     private javax.swing.JLabel btn_promociones;
+    private javax.swing.JLabel btn_promociones1;
+    private javax.swing.JLabel btn_registros;
     private javax.swing.JLabel btn_reservas;
     private javax.swing.JLabel btn_servicios;
     private javax.swing.JLabel btn_usuarios;
-    private java.awt.Button button1;
     private javax.swing.JPanel cancelar_reserva;
     private javax.swing.JPanel consultar_cliente;
     private javax.swing.JPanel consultar_promocion;
     private javax.swing.JPanel consultar_proveedor;
+    private javax.swing.JPanel consultar_registros;
     private javax.swing.JPanel consultar_reserva;
     private javax.swing.JPanel consultar_servicio;
+    private javax.swing.JPanel consultar_serviciosMasVisitados;
     private javax.swing.JPanel ingresar_categoria;
     private javax.swing.JPanel ingresar_promocion;
     private javax.swing.JPanel ingresar_servicio;
@@ -1343,11 +1578,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -1365,6 +1602,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1374,6 +1615,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_mostrar_registros1;
     private javax.swing.JPanel panel_categorias;
     private javax.swing.JPanel panel_promociones;
+    private javax.swing.JPanel panel_registros;
     private javax.swing.JPanel panel_reservas;
     private javax.swing.JPanel panel_servicios;
     private javax.swing.JPanel panel_usuarios;

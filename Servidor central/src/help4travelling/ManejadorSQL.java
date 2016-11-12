@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -54,7 +55,8 @@ public class ManejadorSQL {
     
     public boolean facturarArticuloReserva(int idReserva, String nickP){
         boolean ret = false;
-        String sql = "UPDATE INFO_RESERVA SET estado='true' WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "';";
+        //System.out.println("Manej SQL");
+        String sql = "UPDATE INFO_RESERVA SET estado=true WHERE id='" + idReserva + "' AND nicknameProveedor='" + nickP + "';";
         Statement usuarios;
         try {
             Connection conex = getConex();
@@ -131,7 +133,7 @@ public class ManejadorSQL {
             ResultSet rs = usuarios.executeQuery(sql);
             rs.next();
             while(rs.next()){
-                System.out.println(rs.getString("nombreArticuloServ"));
+                //System.out.println(rs.getString("nombreArticuloServ"));
                 ret.add(rs.getString("nombreArticuloServ"));
             }
             conex.close();
@@ -249,14 +251,33 @@ public class ManejadorSQL {
         return ret;
     }
 
-    public int devolverVisitas(String nickP, String nombreA){
-        int ret = 0;
-        String sql1 = "SELECT cantVisitas FROM RECIBEN WHERE nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
+    public ArrayList<DtServicio> devolverVisitas(){
+        ArrayList<DtServicio> ret = new ArrayList<>();
+        String sql1 = "SELECT nombreArticulo, cantVisitas FROM SERVICIOS GROUP BY cantVisitas ORDER BY cantVisitas DESC LIMIT 10;";
         Statement usuarios;
         try {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql1);
+            while(rs.next()){
+                ret.add(new DtServicio(rs.getString("nombreArticulo"), rs.getInt("cantVisitas")));
+            }
+            conex.close();
+        } catch (SQLException ex){
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+    
+    public int devolverVisitas(String nickP, String servicio){
+        int ret = 0;
+        String sql1 = "SELECT cantVisitas FROM SERVICIOS WHERE nicknameProveedor='" + nickP + "' AND nombreArticulo='" + servicio + "';";
+        Statement usuarios;
+        try {
+            Connection conex = getConex();
+            usuarios = conex.createStatement();
+            ResultSet rs = usuarios.executeQuery(sql1);
+            rs.next();
             ret = rs.getInt("cantVisitas");
             conex.close();
         } catch (SQLException ex){
@@ -272,7 +293,8 @@ public class ManejadorSQL {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             int cantVisitas = ManejadorSQL.GetInstance().devolverVisitas(nickP, nombreA);
-            String sq2 = "UPDATE RECIBEN SET cantVisitas='" + cantVisitas+1 + "' WHERE nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
+            String sq2 = "UPDATE SERVICIOS SET cantVisitas='" + cantVisitas+1 + "' WHERE nicknameProveedor='" + nickP + "' AND nombreArticulo='" + nombreA + "';";
+            // ----> NEGRADA DETECTED <----
             usuarios.executeUpdate(sq2);
             ret = true;
             conex.close();
@@ -709,8 +731,9 @@ public class ManejadorSQL {
     public boolean agregarReserva(DtReserva r){
         boolean ret = false;
         Statement usuario;
+        //String fecha = (Calendar.getInstance().get(Calendar.YEAR) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.DATE));
         //System.out.println(r.getPrecio() + "', '" + r.getDate().getAnio() + "/" + r.getDate().getMes() + "/" + r.getDate().getDia() + "', '" + r.getEstado() + "', '" + r.getCli());
-        String sql1 = "INSERT INTO RESERVAS(precioTotal,fechaCreacion,estado,nicknameCliente) VALUES ('" + r.getPrecio() + "', '" + r.getDate().getAnio() + "/" + r.getDate().getMes() + "/" + r.getDate().getDia() + "', '" + r.getEstado() + "', '" + r.getCli() + "' );";
+        String sql1 = "INSERT INTO RESERVAS(precioTotal,fechaCreacion,estado,nicknameCliente) VALUES ('" + r.getPrecio() + "', '" + Calendar.getInstance().get(Calendar.YEAR) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.DATE) + "', '" + r.getEstado() + "', '" + r.getCli() + "' );";
         String sql2 = "SELECT MAX(id) FROM RESERVAS;";
         //String sql3;
         try {
@@ -723,9 +746,9 @@ public class ManejadorSQL {
             int id = rs.getInt("MAX(id)");
             for(int x = 0; x < r.getInfoReserva().size(); x++){
                 DtInfoReserva inf = r.getInfoReserva().get(x);
-                String sql3 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,precioUnitario,precioTotal)";
+                String sql3 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,precioUnitario,precioTotal,estado)";
                 sql3 += " VALUES (" + id + "," + inf.getCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.getNameArticulo() + "',";
-                sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.getCantidad()) + ");";
+                sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.getCantidad()) + ",false);";
                 //System.out.println(sql3);
                 usuario.executeUpdate(sql3);
             }
@@ -930,8 +953,7 @@ public class ManejadorSQL {
         try {
             Connection conex = getConex();
             Statement usuario = conex.createStatement();
-            float ptR; String nickC; DtFecha fc;
-            String estado;
+            float ptR; String nickC, estado; DtFecha fc;
             ArrayList<DtInfoReserva> r = new ArrayList();
             ResultSet rs = usuario.executeQuery(sql1);
             rs.next();
@@ -939,9 +961,9 @@ public class ManejadorSQL {
             String Fecha = rs.getDate("fechaCreacion").toString();
             fc = new DtFecha(Fecha);
             estado = rs.getString("estado");
-            if (this.estaFacturadaReserva(idReserva)){
+            if(this.estaFacturadaReserva(idReserva))
                 estado = "Facturada";
-            }
+            
             nickC = rs.getString("nicknameCliente");
             ResultSet rs2 = usuario.executeQuery(sql2);
             while(rs2.next()){

@@ -1,5 +1,6 @@
 package Model;
 
+import servidor.DtCliente;
 import servidor.Publicador;
 import servidor.PublicadorService;
 
@@ -19,5 +20,10 @@ public class ModelUsuario {
         return port.autenticarProveedor(nick, pass);
     }
     
+    public DtCliente devolverCliente(String nickname){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        return port.devolverCliente(nickname);
+    }
     
 }

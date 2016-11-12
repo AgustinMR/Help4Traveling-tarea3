@@ -11,6 +11,13 @@
 <message name="listarPromocionesResponse">
 <part name="return" type="tns:dtPromocionArray"></part>
 </message>
+<message name="agregarVisita">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="agregarVisitaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
 <message name="datosPromocion">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -112,6 +119,36 @@
 <message name="pagarReservaResponse">
 <part name="return" type="xsd:boolean"></part>
 </message>
+<message name="agregarFactura">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+<part name="arg2" type="xsd:float"></part>
+<part name="arg3" type="xsd:string"></part>
+</message>
+<message name="agregarFacturaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="facturarArticuloReserva">
+<part name="arg0" type="xsd:int"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="facturarArticuloReservaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="estaFacturadaReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="estaFacturadaReservaResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="estaFacturadoArticulo">
+<part name="arg0" type="xsd:int"></part>
+<part name="arg1" type="xsd:string"></part>
+<part name="arg2" type="xsd:string"></part>
+</message>
+<message name="estaFacturadoArticuloResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
 <message name="autenticarProveedor">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -175,7 +212,7 @@
 <part name="return" type="tns:dtProveedor"></part>
 </message>
 <message name="agregarImagenCliente">
-<part name="arg0" type="tns:inputStream"></part>
+<part name="arg0" type="xsd:base64Binary"></part>
 <part name="arg1" type="xsd:string"></part>
 </message>
 <message name="agregarImagenClienteResponse"></message>
@@ -214,17 +251,14 @@
 <message name="agregarRegistroResponse">
 <part name="return" type="xsd:int"></part>
 </message>
-<message name="agregarVisita">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="agregarVisitaResponse">
-<part name="return" type="xsd:boolean"></part>
-</message>
 <portType name="Publicador">
 <operation name="listarPromociones">
 <input wsam:Action="http://servidor/Publicador/listarPromocionesRequest" message="tns:listarPromociones"></input>
 <output wsam:Action="http://servidor/Publicador/listarPromocionesResponse" message="tns:listarPromocionesResponse"></output>
+</operation>
+<operation name="agregarVisita" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/agregarVisitaRequest" message="tns:agregarVisita"></input>
+<output wsam:Action="http://servidor/Publicador/agregarVisitaResponse" message="tns:agregarVisitaResponse"></output>
 </operation>
 <operation name="datosPromocion" parameterOrder="arg0 arg1">
 <input wsam:Action="http://servidor/Publicador/datosPromocionRequest" message="tns:datosPromocion"></input>
@@ -289,6 +323,22 @@
 <operation name="pagarReserva">
 <input wsam:Action="http://servidor/Publicador/pagarReservaRequest" message="tns:pagarReserva"></input>
 <output wsam:Action="http://servidor/Publicador/pagarReservaResponse" message="tns:pagarReservaResponse"></output>
+</operation>
+<operation name="agregarFactura" parameterOrder="arg0 arg1 arg2 arg3">
+<input wsam:Action="http://servidor/Publicador/agregarFacturaRequest" message="tns:agregarFactura"></input>
+<output wsam:Action="http://servidor/Publicador/agregarFacturaResponse" message="tns:agregarFacturaResponse"></output>
+</operation>
+<operation name="facturarArticuloReserva" parameterOrder="arg0 arg1">
+<input wsam:Action="http://servidor/Publicador/facturarArticuloReservaRequest" message="tns:facturarArticuloReserva"></input>
+<output wsam:Action="http://servidor/Publicador/facturarArticuloReservaResponse" message="tns:facturarArticuloReservaResponse"></output>
+</operation>
+<operation name="estaFacturadaReserva">
+<input wsam:Action="http://servidor/Publicador/estaFacturadaReservaRequest" message="tns:estaFacturadaReserva"></input>
+<output wsam:Action="http://servidor/Publicador/estaFacturadaReservaResponse" message="tns:estaFacturadaReservaResponse"></output>
+</operation>
+<operation name="estaFacturadoArticulo" parameterOrder="arg0 arg1 arg2">
+<input wsam:Action="http://servidor/Publicador/estaFacturadoArticuloRequest" message="tns:estaFacturadoArticulo"></input>
+<output wsam:Action="http://servidor/Publicador/estaFacturadoArticuloResponse" message="tns:estaFacturadoArticuloResponse"></output>
 </operation>
 <operation name="autenticarProveedor" parameterOrder="arg0 arg1">
 <input wsam:Action="http://servidor/Publicador/autenticarProveedorRequest" message="tns:autenticarProveedor"></input>
@@ -358,14 +408,19 @@
 <input wsam:Action="http://servidor/Publicador/agregarRegistroRequest" message="tns:agregarRegistro"></input>
 <output wsam:Action="http://servidor/Publicador/agregarRegistroResponse" message="tns:agregarRegistroResponse"></output>
 </operation>
-<operation name="agregarVisita" parameterOrder="arg0 arg1">
-<input wsam:Action="http://servidor/Publicador/agregarVisitaRequest" message="tns:agregarVisita"></input>
-<output wsam:Action="http://servidor/Publicador/agregarVisitaResponse" message="tns:agregarVisitaResponse"></output>
-</operation>
 </portType>
 <binding name="PublicadorPortBinding" type="tns:Publicador">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"></soap:binding>
 <operation name="listarPromociones">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="agregarVisita">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -510,6 +565,42 @@
 </output>
 </operation>
 <operation name="pagarReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="agregarFactura">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="facturarArticuloReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="estaFacturadaReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://servidor/"></soap:body>
+</output>
+</operation>
+<operation name="estaFacturadoArticulo">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>
@@ -663,15 +754,6 @@
 </output>
 </operation>
 <operation name="agregarRegistro">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://servidor/"></soap:body>
-</output>
-</operation>
-<operation name="agregarVisita">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://servidor/"></soap:body>

@@ -1,38 +1,28 @@
 package Control;
 
-import Model.ModelArticulo;
+import Modelo.ModelArticulo;
+import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class devolverImagen extends HttpServlet {
+public class agregarVisita extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String nickU = request.getParameter("nickP");
-            //System.out.println(nickU);
-            String nomA = request.getParameter("nomA");
-            //System.out.println(nomA);
-            String campo = "imagen";
-            campo += request.getParameter("campo");
-            //System.out.println(campo);
-            
-            response.setContentType("image/jpg");
-            try{
-                byte[] img = ModelArticulo.getInstance().getImagen(nickU, nomA, campo);
-                ServletOutputStream oStream = response.getOutputStream();
-                if (img != null)
-                    oStream.write(img);
-                oStream.flush();
-                oStream.close();
-            }catch(Exception e){   
+            boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+            if (ajax) {
+                String nickP = request.getParameter("nickProveedor");
+                String servicio = request.getParameter("nombreServicio");
+                ModelArticulo mr = new ModelArticulo();
+                String json = new Gson().toJson(mr.agregarVisita(nickP, servicio));
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
             }
-            
         } finally {
-
         }
     }
 

@@ -39,9 +39,9 @@ public class iniciarSesion extends HttpServlet {
             EstadoSesion nuevoEstado;
             RequestDispatcher dispatcher = null;
             try {
-                System.out.println("ssadsafdsafsaf");
+                //System.out.println("ssadsafdsafsaf");
                 boolean usr = ModelUsuario.getInstance().autenticarProveedor(nickname, hashtext);
-                System.out.println(usr);
+                //System.out.println(usr);
                 //System.out.println("ssadsafdsafsaf");
                 if(!usr){
                         //out.print("sdfkgjfdkg");

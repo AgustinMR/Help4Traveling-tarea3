@@ -120,4 +120,9 @@ public class ControladorArticulo implements IControladorArticulo {
         return ManejadorArticulo.GetInstance().listarServiciosXprom(nickP, nombrePromo);
     }
 
+    @Override
+    public ArrayList<DtServicio> devolverVisitas() {
+        return ManejadorSQL.GetInstance().devolverVisitas();
+    }
+
 }

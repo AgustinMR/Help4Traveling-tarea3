@@ -24,4 +24,5 @@ public abstract interface IControladorArticulo {
     public abstract int devolverVisitas(String nickP, String nombreA);
     public abstract boolean agregarVisita(String nickP, String nombreA);
     public abstract ArrayList<String> listarServiciosXprom(String nickP, String nombrePromo);
+    public abstract ArrayList<DtServicio> devolverVisitas();
 }

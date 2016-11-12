@@ -100,7 +100,7 @@ public class ControladorReserva implements IControladorReserva{
 
     @Override
     public boolean agregarFactura(String idReserva, String nickCliente, float precio, String fecha) {
-        System.out.println(idReserva + "  " + nickCliente + "  " + precio + "  " + fecha);
+        //System.out.println(idReserva + "  " + nickCliente + "  " + precio + "  " + fecha);
         return ManejadorReserva.GetInstance().agregarFactura(idReserva, nickCliente, precio, new DtFecha(fecha));
         
     }

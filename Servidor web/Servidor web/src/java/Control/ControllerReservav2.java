@@ -14,7 +14,7 @@ public class ControllerReservav2 extends HttpServlet {
             throws ServletException, IOException {
         
         ModelReserva modRes = new ModelReserva();
-        ModelReserva modArt = new ModelReserva();
+        ModelArticulo modArt = new ModelArticulo();
         
         request.setAttribute("ModeloCarrito", modRes);
         request.setAttribute("ModeloServicio", modArt);

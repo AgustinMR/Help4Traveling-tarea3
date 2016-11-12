@@ -1,34 +1,28 @@
 package Control;
 
-import Modelo.ModelRegistro;
+import Model.ModelReserva;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class agregarRegistro extends HttpServlet {
+public class facturarArticulo extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
+
+        //System.out.println("askhfbsahjfbj");
+        int idReserva = Integer.valueOf(request.getParameter("idRes"));
+        String nickP = request.getSession().getAttribute("usuario_logueado").toString();
+        ModelReserva mr = new ModelReserva();
+        mr.facturarArticuloReserva(idReserva, nickP);
         
-        try {
-            String uri = request.getRequestURL().toString();
-            String ip = request.getParameter("ip");
-            String so = request.getParameter("so");
-            String nav = request.getParameter("nav");
-            //System.out.print(uri + "/" + so + "/" + nav + "/" + ip);
-            //out.print(uri + "/" + so + "/" + nav + "/" + ip);
-            ModelRegistro modReg = new ModelRegistro();
-            if(modReg.agregarRegistro(ip, uri, nav, so))
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            else
-                request.getRequestDispatcher("errorVisitante.jsp").forward(request, response);
-        } finally {
-            out.close();
+        if(mr.estaFacturadaReserva(idReserva)){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/EnviarMail");
+            dispatcher.forward(request, response);
         }
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

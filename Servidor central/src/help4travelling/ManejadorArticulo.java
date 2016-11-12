@@ -147,6 +147,10 @@ public class ManejadorArticulo {
     public int devolverVisitas(String nickP, String nombreA){
         return ManejadorSQL.GetInstance().devolverVisitas(nickP, nombreA);
     }
+    
+    public ArrayList<DtServicio> devolverVisitas(){
+        return ManejadorSQL.GetInstance().devolverVisitas();
+    }
 
     public boolean agregarVisita(String nickP, String nombreA){
         return ManejadorSQL.GetInstance().ingresarVisita(nickP, nombreA);

@@ -35,15 +35,14 @@
     </head>
     <body>
 
-        <!jsp:include page="header/header.jsp"/>
+        <jsp:include page="header/header.jsp"/>
 
-        <div class="container">
-        <h2>Reservas del proveedor</h2>    
+        <div class="container">   
             <%
                 //Obtencion de datos de modelo
                 try {
                     //Prox: Obtener nombre de proveedor mediante sesion
-                    String nickProv = "mHooch";
+                    String nickProv = request.getSession().getAttribute("usuario_logueado").toString();
 
                     //Obtengo la funcion para saber si el articulo es promocion o servicio
                     ModelArticulo modArt = (ModelArticulo) request.getAttribute("modeloArticulo");
@@ -62,7 +61,7 @@
 
             <!-- Listado de reservas -->            
             <% for (int i = 0; i < allRes.size(); i++) {%>
-            <div class="panel panel-primary">                
+            <div class="panel panel-primary" style="margin-top: 60px">                
                 <div class="panel-heading">
                     <table class="table">
                         <thead>
@@ -72,7 +71,7 @@
                                 <th>Cliente: <%= infoRes.get(i).getCli()%></th>
                                 <th>Precio Total: $<%= Math.round(infoRes.get(i).getPrecio())%></th>
                                 <% if (infoRes.get(i).getEstado() == Estado.PAGADA) { %>
-                                <button class="btn-primary" style="float:right;" value="<%= infoRes.get(i).getId() %>">Facturar</button>
+                        <button class="btn-primary" style="float:right;" value="<%= infoRes.get(i).getId() %>" onclick="facturarReserva()" id="btnFact">Facturar</button>
                                 <% } %>
                             </tr>
                         </thead>
@@ -91,6 +90,7 @@
                             <tr>
                                 <td><%= y.getNameArticulo()%></td>
                                 <td>$<%= y.getPrecioArticulo()%></td>
+                                <td><% if(y.isEstado()){ %> Facturada <% }else{ %> No Facturada <% } %> </td>
                                 <td><% if (modArt.esServicio(y.getNameArticulo()) == true) {%>Servicio<%} else {%>Promocion<%}%></td>
                             </tr>                     
                             <%
@@ -126,11 +126,13 @@
         
         <script>
             //prox: Llamar al servlet que realiza las facturaciones mediante ajax post o get
-            function facturarReserva(e) {
-                e.stopPropagation();
-                $(this).hide(3000);
-                var id = $(this).attr("value");
-                $.post("FacturarReserva", "idRes="+id);
+            function facturarReserva() {
+                var id = document.getElementById("btnFact").value;
+                $.post("facturarArticulo", "idRes="+ id, function (state) {
+                    document.getElementById("btnFact").style.display = "none";
+                    alert("Reserva Facturada");
+                });
+                //alert("fact END");
             };
         </script>
         
@@ -138,7 +140,7 @@
             //Manejador de eventos
             $('.panel-heading').on('click', desplegarReserva);
             //$('button').click({param: $(this).attr("value")} facturarReserva);
-            $('button').on('click', facturarReserva);
+            //$('button').on('click', facturarReserva);
         </script>
     </body>
 </html>

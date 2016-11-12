@@ -1,7 +1,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 import net.java.dev.jaxb.array.IntArray;
+import servidor.DtInfoReserva;
 import servidor.DtReserva;
 import servidor.Publicador;
 import servidor.PublicadorService;
@@ -37,6 +39,24 @@ public class ModelReserva {
         PublicadorService service =  new PublicadorService();
         Publicador port = service.getPublicadorPort();
         return port.actualizarEstadoArticulo(idReserva, nickP, nombreA);
+    }
+    
+    public boolean facturarArticuloReserva(int idReserva, String nickProveedor){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        return port.facturarArticuloReserva(idReserva, nickProveedor);
+    }
+    
+    public boolean estaFacturadaReserva(int idReserva){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        return port.estaFacturadaReserva(idReserva);
+    }
+    
+    public List<DtInfoReserva> ObtenerDatosReserva(int idReserva){
+        PublicadorService service =  new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        return port.obtenerDatosReserva(idReserva).getItem();
     }
     
 }

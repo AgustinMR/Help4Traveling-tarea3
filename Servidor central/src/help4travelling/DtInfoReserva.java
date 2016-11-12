@@ -14,10 +14,10 @@ public class DtInfoReserva implements Serializable {
     private String nickProveedor;
     private int idReserva;
     private float precioArticulo;
-    private Estado estado;
+    private boolean estado;
 
     public DtInfoReserva() {
-
+        this.estado = false;
     }
 
     public DtInfoReserva(DtFecha fechaIni, DtFecha fechaFin, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo) {
@@ -48,7 +48,7 @@ public class DtInfoReserva implements Serializable {
         this.precioArticulo = precio;
     }
 
-    public DtInfoReserva(DtFecha fechaIni, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo, Estado estado) {
+    public DtInfoReserva(DtFecha fechaIni, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo, boolean estado) {
         this.fechaIni = fechaIni;
         this.cantidad = cantidad;
         this.nameArticulo = nameArticulo;
@@ -58,11 +58,11 @@ public class DtInfoReserva implements Serializable {
         this.estado = estado;
     }
 
-    public Estado getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
